@@ -1,0 +1,71 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\PaymentDetailController;
+use App\Http\Controllers\PeriodController;
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SubscriptionController;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+// Route::get('/home', function () {
+//     return view('pages.index');
+// });
+
+// Route::controller(HomeController::class)->group(function () {
+//     Route::post('home', 'index');
+//     Route::get('/', 'index');
+//     Route::post('save_volanteer', 'storeVolanteer');
+//     Route::get('contact-us', 'show_contact');
+// });
+Route::get('/', [HomeController::class, 'show'])->name('home');
+Route::get('/category/{id}', [ProductController::class, 'show'])->name('category');
+Route::get('/product/{id}', [ProductController::class, 'showsingle'])->name('product');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::get('/dashboard_welcome', function () {
+    return view('welcome-dashboard');
+})->name('dashboard.dashboard_login');
+
+Route::resource('dashboard/users', UserController::class);
+Route::resource('dashboard/categories', CategoryController::class);
+Route::resource('dashboard/products', ProductController::class);
+Route::resource('dashboard/orders', OrderController::class);
+Route::resource('dashboard/plans', PlanController::class);
+Route::resource('dashboard/periods', PeriodController::class);
+Route::resource('dashboard/coupons', CouponController::class);
+Route::resource('dashboard/orderdetails', OrderDetailController::class);
+Route::resource('dashboard/paymentdetails', PaymentDetailController::class);
+Route::resource('dashboard/subscriptions', SubscriptionController::class);
+
+
+
+
+require __DIR__.'/auth.php';

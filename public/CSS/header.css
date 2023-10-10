@@ -1,0 +1,229 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    /* font-family: "DM Serif Display", serif; */
+    box-sizing: border-box;
+    transition: 0.4s ease all;
+    /* width: 100%; */
+}
+
+h2 {
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+}
+.links {
+    padding: 0;
+    margin: 0;
+}
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 0;
+}
+.icon {
+    transform: scale(1.3);
+    color: #365d5a;
+    margin-right: 20px;
+}
+.navbar {
+    background: #c2cecd;
+    color: #000;
+    /* padding-bottom: 15px; */
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2); */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.navbar .logo {
+    cursor: pointer;
+    font-family: "Raleway", sans-serif;
+    transform: scale(1.5);
+    margin-left: 70px;
+    color: #365d5a;
+}
+.navbar ul.links {
+    margin-left: auto;
+    margin-right: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    transition: 0.4s ease all, 0s ease background;
+}
+.navbar ul.links li {
+    text-transform: uppercase;
+    padding: 0 15px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s ease all, 0s ease margin;
+}
+.navbar ul.links li a {
+    text-decoration: none;
+    color: #365d5a;
+    font-weight: bolder;
+}
+.navbar div a {
+    text-decoration: none;
+    color: #fff;
+    padding-right: 10%;
+    padding-left: 50%;
+}
+.signin a {
+    text-decoration: none;
+    color: #fff;
+}
+.navbar ul.links li:hover {
+    background: #365d5a;
+    cursor: pointer;
+}
+.navbar ul.links li:hover a {
+    color: #fff;
+}
+button.signin {
+    background: #365d5a;
+    outline: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    letter-spacing: 1px;
+    margin: 0 20px;
+}
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: white;
+    background: rgb(236, 110, 85);
+    border-color: rgb(236, 110, 85);
+}
+.content {
+    background: url("https://images.unsplash.com/photo-1563733758230-a5d441824696?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80")
+        no-repeat;
+    background-size: cover;
+    height: calc(100vh - 65px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.navbar.sticky {
+    position: fixed;
+    z-index: 40;
+    top: 0 !important;
+}
+.navbar.sticky ~ main {
+    position: relative;
+    z-index: 20;
+    top: 65px;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar .right {
+        height: 0;
+        overflow: hidden;
+    }
+    .toggle {
+        position: absolute;
+        top: 32.5px;
+        right: 20px;
+        z-index: 99;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .toggle > * {
+        width: 80%;
+        height: 2px;
+        background: #365d5a;
+        margin: 3px 0;
+    }
+    .navbar.collapsed .toggle .line1 {
+        transform: rotate(-45deg) translate(-4px, 5px);
+    }
+    .navbar.collapsed .toggle .line2 {
+        opacity: 0;
+    }
+    .navbar.collapsed .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    .navbar.collapsed .logo {
+        position: absolute;
+        z-index: 44;
+    }
+    .navbar .links {
+        position: fixed;
+        background: #c2cecd;
+        z-index: 40;
+        top: 0;
+        left: -100%;
+        flex-direction: column;
+        width: 45vw;
+        height: 100vh;
+    }
+    .navbar .links li:first-child {
+        margin-top: 80px;
+    }
+    .navbar.collapsed .links {
+        left: 0;
+    }
+    .navbar.collapsed .links a {
+        color: #fff;
+    }
+    .navbar.collapsed .links li {
+        width: 100%;
+    }
+    .navbar.collapsed .links li:hover a {
+        color: #080808;
+    }
+    .navbar div a {
+        text-decoration: none;
+        color: #fff;
+        padding-right: 0;
+    }
+    .signin a {
+        text-decoration: none;
+        color: #fff;
+    }
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 0;
+    }
+    .navbar .logo {
+        cursor: pointer;
+        font-family: "Raleway", sans-serif;
+        transform: scale(1.5);
+        padding-left: 0px;
+        color: #365d5a;
+    }
+    .icon {
+        transform: scale(1.5);
+        color: #365d5a;
+        margin-top: 20px;
+    }
+    .navbar.collapsed .right {
+        position: fixed;
+        width: 45vw;
+        text-align: center;
+        height: auto;
+        bottom: 40px;
+        left: 22.5vw;
+        transform: translateX(-50%);
+        z-index: 45;
+    }
+    .navbar.collapsed ~ main {
+        filter: blur(1px);
+        opacity: 0.8;
+    }
+    .navbar.sticky {
+        position: fixed;
+        z-index: 40;
+        top: 0;
+    }
+}
