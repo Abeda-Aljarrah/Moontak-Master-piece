@@ -169,6 +169,9 @@
                                                                     </tr>
                                                                 @endif
                                                             @endforeach
+                                                            @php
+                                                                session(['totalPrice' => $totalSubtotal]);
+                                                            @endphp
                                                         </tbody>
                                                     </table>
                                                 @else
@@ -204,7 +207,7 @@
                         <div class="shoping__cart__btns">
                             <a href="./product-page.php" class="primary-btn cart-btn button">CONTINUE SHOPPING</a>
                             <!-- <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                                                                                        Upadate Cart</a> -->
+                                                                                                Upadate Cart</a> -->
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -224,8 +227,11 @@
                             <ul>
                                 <li>Subtotal <span>${{ $totalSubtotal }} </span></li>
                                 <li>Total <span>${{ $totalSubtotal }}</span></li>
+
+
                             </ul>
-                            <a href="{{ route('checkout1', ['id' => auth()->user()->id]) }}" class="primary-btn button">PROCEED TO CHECKOUT</a>
+                            <a href="{{ route('checkout1', ['id' => auth()->user()->id]) }}"
+                                class="primary-btn button">PROCEED TO CHECKOUT</a>
                         </div>
                     </div>
                 </div>

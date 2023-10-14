@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Period;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -49,9 +50,15 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Order $order, $userId)
     {
         //
+        $user = User::find($userId);
+        $periods = Period::all();
+
+        return view('pages.checkout-4', compact('userId', 'periods'));
+
+
     }
 
     /**

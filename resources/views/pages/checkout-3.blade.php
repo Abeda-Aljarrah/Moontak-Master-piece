@@ -9,8 +9,15 @@
 @endsection
 
 @section('content')
+@php
+    $totalPrice = session('totalPrice');
+@endphp
 
-    <form action="" class="main">
+{{-- <h3>Total Price: ${{ $totalPrice }}</h3> --}}
+
+    <form action="" class="main" method="POST">
+        @csrf
+        @method('post')
         <div class="all-container active" data-step="1">
             <h1>Checkout</h1>
             <div class="step-wizard">
@@ -116,7 +123,7 @@
                         </div>
                         <div class="Sub">
                             <span>Sub total</span>
-                            <span class="price">JOD 60.26</span>
+                            <span class="price">JOD {{ $totalPrice }}</span>
                         </div>
 
                         <div class="Discount">
@@ -125,7 +132,7 @@
                         </div>
                         <div class="Discount">
                             <span>Subscription fee</span>
-                            <span class="pri-dis">0.0</span>
+                            <span class="pri-dis">JOD {{ $selectedPeriod->price }}</span>
                         </div>
 
                         <div class="Total">

@@ -46,6 +46,7 @@ Route::get('/checkout/{id}', [OrderDetailController::class, 'show'])->name('chec
 Route::post('/checkout2/{id}', [OrderDetailController::class, 'update'])->name('checkout2');
 Route::post('/checkoutsub/{userId}/{planId}', [OrderDetailController::class, 'edit'])->name('checkoutsub');
 Route::post('/checkout3/{userId}/{periodId}', [PeriodController::class, 'show'])->name('checkout3');
+Route::post('/checkout4/{userId}/{periodId}', [OrderController::class, 'show'])->name('checkout4');
 
 
 Route::get('/dashboard', function () {

@@ -64,6 +64,7 @@ class PeriodController extends Controller
     public function show(Request $request, $userId, $periodId)
 {
     $user = User::find($userId);
+    $selectedPeriod = Period::find($periodId);
 
     // Retrieve the available periods
     $periods = Period::all();
@@ -83,7 +84,7 @@ class PeriodController extends Controller
         'end_date' => date("Y-m-d", strtotime($startDay . " + 30 days")),
     ]);
 
-    return view('pages.checkout-3', compact('userId', 'plans', 'periods'));
+    return view('pages.checkout-3', compact('userId', 'plans', 'periods', 'selectedPeriod'));
 }
 
 
