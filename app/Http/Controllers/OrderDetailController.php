@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\OrderDetail;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\DeliveryInfo;
+use App\Models\Period;
 use App\Models\Product;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class OrderDetailController extends Controller
@@ -24,7 +27,7 @@ class OrderDetailController extends Controller
         $product = Product::all();
 
 
-        return view('dashboard.orderdetails.index', compact('OrderDetails','user','product','order'));
+        return view('dashboard.orderdetails.index', compact('OrderDetails', 'user', 'product', 'order'));
     }
 
     /**
@@ -54,10 +57,17 @@ class OrderDetailController extends Controller
      * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(OrderDetail $orderDetail)
+    public function show($id)
     {
-        //
+        if (auth()->check()) {
+
+            $user = auth()->user();
+            return view('pages.checkout-1', compact('user', 'id'));
+        } else {
+            return view('auth.login');
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -65,10 +75,34 @@ class OrderDetailController extends Controller
      * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(OrderDetail $orderDetail)
-    {
-        //
-    }
+    public function edit(Request $request, $userId, $planId)
+{
+    // Retrieve the authenticated user based on the provided user ID
+    $user = User::find($userId);
+
+    // Retrieve the selected plan ID from the form data using the correct name
+    $selectedPlanID = $request->input('selectedPlanID');
+
+    // Retrieve the selected plan based on the provided plan ID
+    $plan = Plan::find($selectedPlanID);
+
+    // Retrieve the available periods
+    $periods = Period::all();
+    $plans = Plan::all(); // Add this line to retrieve the plans
+    // dd($periods);
+
+
+    // For debugging purposes, you can check the $plan->id here
+    // dd($plan->id);
+
+    // Rest of your code
+
+    return view('pages.checkoutsub', compact('userId', 'plan', 'periods', 'selectedPlanID','plans'));
+}
+
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -77,9 +111,30 @@ class OrderDetailController extends Controller
      * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrderDetail $orderDetail)
+    public function update(Request $request, $id, OrderDetail $orderDetail)
     {
         //
+        $plan = Plan::where('id', $id)->first();
+
+        $plans = Plan::all();
+        $periods = Period::all();
+
+        User::find($id)->update([
+            'address' => $request->input('address'),
+            'phone' => $request->input('phone'),
+        ]);
+
+        // DeliveryInfo::create([
+            DeliveryInfo::create([
+                'user_id' => $id,
+                'main_address' => $request->input('address'),
+                'phone' => $request->input('phone'),
+                'street_name' => $request->input('street'),
+                'building_name' => $request->input('building'),
+            ]);
+
+
+        return view('pages.checkout-2', compact('id', 'plans', 'periods','plan'));
     }
 
     /**

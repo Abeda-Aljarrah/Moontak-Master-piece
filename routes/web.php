@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
@@ -35,9 +36,16 @@ use Illuminate\Support\Facades\Route;
 //     Route::post('save_volanteer', 'storeVolanteer');
 //     Route::get('contact-us', 'show_contact');
 // });
+
 Route::get('/', [HomeController::class, 'show'])->name('home');
 Route::get('/category/{id}', [ProductController::class, 'show'])->name('category');
 Route::get('/product/{id}', [ProductController::class, 'showsingle'])->name('product');
+Route::get('/list/{id}', [CartController::class, 'show'])->name('list');
+Route::post('/addToCart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
+Route::get('/checkout/{id}', [OrderDetailController::class, 'show'])->name('checkout1');
+Route::post('/checkout2/{id}', [OrderDetailController::class, 'update'])->name('checkout2');
+Route::post('/checkoutsub/{userId}/{planId}', [OrderDetailController::class, 'edit'])->name('checkoutsub');
+Route::post('/checkout3/{userId}/{periodId}', [PeriodController::class, 'show'])->name('checkout3');
 
 
 Route::get('/dashboard', function () {

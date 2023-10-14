@@ -23,7 +23,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     <title>@yield('title')</title>
     <script src="path/to/aos.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="{{ asset('CSS/footer.css') }}" rel="stylesheet" />
     <link href="{{ asset('CSS/header.css') }}" rel="stylesheet" />
@@ -41,14 +42,22 @@
 
 
         <ul class="links">
-            <li><a href="./index.php">Home</a></li>
-            <li><a href="./product-page.php">Shope</a></li>
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('category', ['id' => 1]) }}">Shope</a></li>
             <li><a href="./about-us.php">About</a></li>
             <li><a href="./contact.php">Contact Us</a></li>
             <li><a href="#">Blog</a></li>
             <div>
-                <a href="../HTML/list.php">
-                    <span class="material-symbols-outlined icon">shopping_cart</span> </a>
+                @if (auth()->check())
+                    <a href="{{ route('list', ['id' => auth()->user()->id]) }}">
+                        <span class="material-symbols-outlined icon">shopping_cart</span>
+                    </a>
+                @else
+                    <a href="{{ url('list') }}">
+                        <span class="material-symbols-outlined icon">shopping_cart</span>
+                    </a>
+                @endif
+
             </div>
             <div>
                 <a href="./profile.php">
@@ -56,9 +65,9 @@
                 </a>
             </div>
             @if (auth()->check())
-            <button class="signin"><a href="{{ route('logout') }}">Logout</a></button>
+                <button class="signin"><a href="{{ route('logout') }}">Logout</a></button>
             @else
-            <button class="signin"><a href="{{ url('login') }}">Login</a></button>
+                <button class="signin"><a href="{{ url('login') }}">Login</a></button>
             @endif
         </ul>
 

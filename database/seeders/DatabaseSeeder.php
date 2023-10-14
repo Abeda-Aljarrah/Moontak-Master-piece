@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             PlanSeeder::class,
             ProductSeeder::class,
+            UserSeeder::class,
+            PeriodSeeder::class,
          ]);
 
     }

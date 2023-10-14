@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Discount;
@@ -35,7 +36,7 @@ class ProductController extends Controller
         $discountPercents = Discount::get();
 
         // $categories= $donations->category->name;
-        return view('dashboard.products.create', compact('categoryNames','discountPercents'));
+        return view('dashboard.products.create', compact('categoryNames', 'discountPercents'));
     }
 
     /**
@@ -86,29 +87,79 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
-        $products = Product::get();
+        $products = Product::where('category_id', $id)->get();
         $categories = Category::all();
 
-        // dd($product);
-
-    return view('pages.product-page', compact('categories', 'products'));
-
+        return view('pages.product-page', compact('categories', 'products', 'id'));
     }
+
+
     public function showsingle($id)
-{
-    $product = Product::find($id);
-    $categories = Category::all();
+    {
+        $product = Product::find($id);
+        $categories = Category::all();
 
-    if (!$product) {
-        // Handle the case where the product is not found, e.g., display an error message or redirect
-        return redirect()->route('home')->with('error', 'Product not found.');
+        if (!$product) {
+            // Handle the case where the product is not found, e.g., display an error message or redirect
+            return redirect()->route('home')->with('error', 'Product not found.');
+        }
+
+        return view('pages.single-product', compact('categories', 'product'));
+    }
+    public function addToCart(Request $request, $id)
+    {
+        $product = Product::find($id);
+
+        if (auth()->user()) {
+            $user_idd = auth()->user()->id;
+            $cart = new Cart();
+            $cart->user_id = $user_idd; // Replace with the actual user ID.
+            $cart->product_id = $id;
+            $cart->unit_price = $product->main_price;
+            $cart->Qty = $request->input('Qty');
+            // dd($cart->Qty);
+            if ($cart->Qty < 1) {
+                // Handle the case where the quantity is less than 1, e.g., set a default value or return an error message.
+                return redirect()->route('product', ['id' => $id])->with('error', 'Invalid quantity.');
+            }
+
+            // $cart->Qty = $qty;
+            $cart->save();
+            if (!$product) {
+                // Handle the case where the product is not found, e.g., display an error message or redirect
+                return redirect()->route('home')->with('error', 'Product not found.');
+            }
+
+            // Logic to add the product to the cart (e.g., using a session or database)
+            // You can implement your cart logic here
+
+            return redirect()->route('product', ['id' => $id])->with('success', 'Product added to the cart.');
+        } else {
+            $cart[$id] = [
+                'product_id' => $id,
+                'unit_price' => $product->main_price,
+                'Qty' => $request->input('Qty'),
+            ];
+
+            session()->put('cart', $cart);
+            return redirect()->route('product', ['id' => $id]);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 
-    return view('pages.single-product', compact('categories', 'product'));
-}
 
     /**
      * Show the form for editing the specified resource.
@@ -125,7 +176,7 @@ class ProductController extends Controller
 
 
 
-        return view('dashboard.products.edit', compact('products','discountPercents','categoryNames'));
+        return view('dashboard.products.edit', compact('products', 'discountPercents', 'categoryNames'));
     }
 
     /**
@@ -158,7 +209,6 @@ class ProductController extends Controller
 
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully');
-
     }
 
     /**
@@ -182,6 +232,5 @@ class ProductController extends Controller
 
 
         return $relativeImagePath;
-
     }
 }

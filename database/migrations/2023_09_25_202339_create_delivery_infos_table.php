@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('main_address');
             $table->string('street_name');
             $table->string('building_name');
-            $table->string('city');
-            $table->integer('postal_code');
+            $table->string('city')->nullable();
+            $table->integer('postal_code')->nullable();
             $table->integer('phone');
-            $table->text('notes');
-            $table->string('delivery_status');
+            $table->text('notes')->nullable();
+            $table->string('delivery_status')->nullable();
             $table->timestamps();
         });
     }

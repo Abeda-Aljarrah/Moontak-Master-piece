@@ -34,6 +34,10 @@ class Product extends Model
     }
 
     // Product.php
+    public function cart()
+    {
+        return $this->hasMany(Cart::class, 'product_id');
+    }
     public function discount()
     {
         return $this->belongsTo(Discount::class, 'discount_id');

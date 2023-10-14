@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -44,10 +47,28 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
-    {
-        //
+    public function show($id)
+{
+    $user = auth()->user();
+
+    if ($user && $user->id == $id) {
+        $categories = Category::all();
+        $products = Product::all();
+        $cart = Cart::where('user_id', '=', $id)->get();
+        // $cart = $user->carts;
+    } else {
+        // Handle the case when the user is not authenticated or when the provided $id is not valid
+        return redirect()->route('home')->with('error', 'Access denied');
     }
+
+    if ($cart === null) {
+        $cart = []; // Set cart to an empty array if it's null
+    }
+    // dd($categories, $cart);
+
+    return view('pages.list', compact('cart', 'categories', 'products', 'id'));
+}
+
 
     /**
      * Show the form for editing the specified resource.
