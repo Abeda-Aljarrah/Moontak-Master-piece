@@ -32,20 +32,20 @@
                 <ul class="step-wizard-list">
                     <li class="step-wizard-item">
                         <span class="progress-count">1</span>
-                        <span class="progress-label">Adders</span>
+                        <span class="progress-label">Subscription</span>
                     </li>
                     <li class="step-wizard-item current-item">
                         <span class="progress-count">2</span>
-                        <span class="progress-label">Subscription</span>
+                        <span class="progress-label">Delivery</span>
                     </li>
                     <li class="step-wizard-item">
                         <span class="progress-count">3</span>
                         <span class="progress-label">Payment</span>
                     </li>
-                    <li class="step-wizard-item">
+                    {{-- <li class="step-wizard-item">
                         <span class="progress-count">4</span>
                         <span class="progress-label">Review order</span>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <div class="all">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Cart;
+use App\Models\DeliveryInfo;
 use App\Models\Period;
 use App\Models\PaymentDetail;
 use App\Models\User;
@@ -56,32 +57,32 @@ class OrderController extends Controller
     public function show(Request $request, $userId)
     {
 
-        $totalPrice = session('totalPrice');
-        // Fetch the subscription fee from the database based on the selected period ID
-        // $subscriptionFee = Period::find($periodId)->price;
-
-        // // Calculate the total
-        // $total = $totalPrice + $subscriptionFee;
-
-        // // Set 'total' in the session with the calculated value
-        // session(['total' => $total]);
-
-        dd($totalPrice);
-
-
-
         $user = auth()->user();
-
-        PaymentDetail::create([
-            'method' => $request->input('payment'),
-            'amount' => $total,
+        User::find($userId)->update([
+            'address' => $request->input('address'),
+            'phone' => $request->input('phone'),
         ]);
-        
-        Order::create([
+
+        // Create a new DeliveryInfo record
+        $deliveryInfo = DeliveryInfo::create([
             'user_id' => $userId,
-            'payment_id' => $PaymentDetail->id,
-            'total_price' => $total,
-            'delivery_id' => true,
+            'main_address' => $request->input('address'),
+            'phone' => $request->input('phone'),
+            'street_name' => $request->input('street'),
+            'building_name' => $request->input('building'),
+        ]);
+
+
+        $paymentDetail = PaymentDetail::create([
+            'method' => $request->input('payment'),
+            'amount' => $request->input('total'), // You need to ensure 'total' is in the form data
+        ]);
+
+        $order = Order::create([
+            'user_id' => $userId,
+            'payment_id' => $paymentDetail->id,
+            'total_price' => $request->input('total'),
+            'delivery_id' => $deliveryInfo->id,
         ]);
 
         // Get the user's cart items
@@ -90,35 +91,19 @@ class OrderController extends Controller
         // Create order details for each cart item
         foreach ($cartItems as $cartItem) {
             OrderDetail::create([
-                'user_id' => $user->id,
+                'order_id' => $order->id,
                 'product_id' => $cartItem->product_id,
-                'quantity' => $cartItem->quantity,
+                'unit_price' => $cartItem->unit_price,
+                'Qty' => $cartItem->Qty,
                 // Other relevant fields for order details
             ]);
         }
 
         // Delete the user's cart items
         Cart::where('user_id', $user->id)->delete();
-        // $user = User::find($userId);
-        // $periods = Period::all();
-        // PaymentDetail::create([
-        //     'method' => $userId,
-        //     'amount' => true,
-        // ]);
-        // Order::create([
-        //     'user_id' => $userId,
-        //     'payment_id' => true,
-        //     'total_price' => true,
-        //     'delivery_id' => true,
-        // ]);
-        // OrderDetail::create([
-        //     'order_id' => $userId,
-        //     'product_id' => true,
-        //     'unit_price' => true,
-        //     'Qty' => true,
-        // ]);
 
-        return view('pages.checkout-4', compact('userId', 'periods'));
+        return redirect()->route('home', compact('userId'))->with('success', 'Your order placed.');
+
     }
 
 

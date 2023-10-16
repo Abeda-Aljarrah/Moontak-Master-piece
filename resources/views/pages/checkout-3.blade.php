@@ -22,20 +22,20 @@
                 <ul class="step-wizard-list">
                     <li class="step-wizard-item">
                         <span class="progress-count">1</span>
-                        <span class="progress-label">Adders</span>
+                        <span class="progress-label">Subscription</span>
                     </li>
                     <li class="step-wizard-item">
                         <span class="progress-count">2</span>
-                        <span class="progress-label">Subscription</span>
+                        <span class="progress-label">Delivery</span>
                     </li>
                     <li class="step-wizard-item current-item">
                         <span class="progress-count">3</span>
                         <span class="progress-label">Payment</span>
                     </li>
-                    <li class="step-wizard-item">
+                    {{-- <li class="step-wizard-item">
                         <span class="progress-count">4</span>
                         <span class="progress-label">Review order</span>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
             <div class="all">
@@ -104,6 +104,31 @@
                                 </div>
                             </div>
                             <input type="checkbox" name="save_card" class="checkbox">Save this card</input>
+                            <hr />
+                            <div class="part-one">
+                                <div class="name">
+                                    <label for="address">Enter your adders</label>
+                                    <input type="text" name="address" required />
+                                </div>
+                                <div class="email">
+                                    <label for="street">Street Name</label>
+                                    <input type="text" name="street" required />
+                                </div>
+                                <div class="phone">
+                                    <label for="building">Building Name and Number</label>
+                                    <input type="text" name="building" required />
+                                </div>
+                            </div>
+                            <div class="part-two">
+                                <div class="pass">
+                                    <label for="title">Title</label>
+                                    <input type="text" name="title" value="{{ $user->name }}" required />
+                                </div>
+                                <div class="re-pass">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" name="phone" required />
+                                </div>
+                            </div>
                         </form>
                     </div>
 
@@ -147,9 +172,7 @@
                             <h4 class="tot-price">JOD {{ $total }}</h4>
                         </div>
 
-                        @php
-                            session(['total' => $total]);
-                        @endphp
+                        <input type="hidden" name="total" id="total" value="{{ $total }}">
 
                     </div>
                 </div>
@@ -158,7 +181,7 @@
 
             <div class="button">
                 <button class="previous" type="submit"><a href="./checkout-2.php">Back</a></button>
-                <button class="next" type="submit">Next</button>
+                <button class="next" type="submit">Place order</button>
             </div>
         </div>
     </form>

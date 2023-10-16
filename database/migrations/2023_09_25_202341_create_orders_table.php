@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('total_price');
             $table->unsignedBigInteger('delivery_id');
             $table->foreign('delivery_id')->references('id')->on('delivery_infos')->onDelete('cascade');
-            $table->dateTime('require_date');
+            $table->dateTime('require_date')->nullable();
             $table->timestamps();
         });
     }

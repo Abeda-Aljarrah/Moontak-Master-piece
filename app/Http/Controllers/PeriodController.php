@@ -63,6 +63,18 @@ class PeriodController extends Controller
      */
     public function show(Request $request, $userId)
     {
+
+        // $plan = Plan::where('id', $id)->first();
+
+        // $plans = Plan::all();
+        // $periods = Period::all();
+        // if (auth()->check()) {
+
+        //     $user = auth()->user();
+        //     return view('pages.checkout-1', compact('id', 'plans', 'periods','plan'));
+        // } else {
+        //     return view('auth.login');
+        // }
         $user = User::find($userId);
 
         // Retrieve the available periods
@@ -89,8 +101,8 @@ class PeriodController extends Controller
     $subscriptionFee = Period::find($periodId)->price;
 
 
-        return view('pages.checkout-3', compact('userId', 'plans', 'periods','subscriptionFee'));
-    }
+    return view('pages.checkout-3', compact('userId', 'plans', 'periods', 'subscriptionFee', 'user'));
+}
 
 
     /**

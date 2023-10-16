@@ -59,10 +59,15 @@ class OrderDetailController extends Controller
      */
     public function show($id)
     {
+
+        $plan = Plan::where('id', $id)->first();
+
+        $plans = Plan::all();
+        $periods = Period::all();
         if (auth()->check()) {
 
             $user = auth()->user();
-            return view('pages.checkout-1', compact('user', 'id'));
+            return view('pages.checkout-1', compact('id', 'plans', 'periods','plan'));
         } else {
             return view('auth.login');
         }

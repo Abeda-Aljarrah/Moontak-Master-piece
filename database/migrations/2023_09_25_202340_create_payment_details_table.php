@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('method');
             $table->decimal('amount');
-            $table->dateTime('date');
+            // $table->dateTime('date');
             $table->timestamps();
         });
     }
