@@ -61,31 +61,36 @@ class PeriodController extends Controller
      * @param  \App\Models\Period  $period
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $userId, $periodId)
-{
-    $user = User::find($userId);
-    $selectedPeriod = Period::find($periodId);
+    public function show(Request $request, $userId)
+    {
+        $user = User::find($userId);
 
-    // Retrieve the available periods
-    $periods = Period::all();
-    $plans = Plan::all(); // Add this line to retrieve the plans
-    // Retrieve the selected plan ID from the form data
-    $periodId = $request->input('period');
+        // Retrieve the available periods
+        $periods = Period::all();
+        $plans = Plan::all(); // Add this line to retrieve the plans
+        // Retrieve the selected plan ID from the form data
+        $periodId = $request->input('period');
 
-    // Retrieve the selected start day from the form data
-    $startDay = $request->input('start');
-// dd($startDay);
-    // Save the user's selection to the database
-    Subscription::create([
-        'user_id' => $userId,
-        'is_active'=>true,
-        'period_id' => $periodId,
-        'start_date' => $startDay,
-        'end_date' => date("Y-m-d", strtotime($startDay . " + 30 days")),
-    ]);
+        // Retrieve the selected start day from the form data
+        $startDay = $request->input('start');
+        // dd($periodId);
+        // Save the user's selection to the database
+        Subscription::create([
+            'user_id' => $userId,
+            'is_active' => true,
+            'period_id' => $periodId,
+            'start_date' => $startDay,
+            'end_date' => date("Y-m-d", strtotime($startDay . " + 30 days")),
+        ]);
 
-    return view('pages.checkout-3', compact('userId', 'plans', 'periods', 'selectedPeriod'));
-}
+        // $periodId = session('subfee'); // Get the selected period_id from the session
+        // $price = Period::where('id', $periodId)->value('price'); // Assuming PriceModel is your model name
+        // Fetch the subscription fee based on the selected period ID
+    $subscriptionFee = Period::find($periodId)->price;
+
+
+        return view('pages.checkout-3', compact('userId', 'plans', 'periods','subscriptionFee'));
+    }
 
 
     /**

@@ -26,17 +26,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/home', function () {
-//     return view('pages.index');
-// });
-
-// Route::controller(HomeController::class)->group(function () {
-//     Route::post('home', 'index');
-//     Route::get('/', 'index');
-//     Route::post('save_volanteer', 'storeVolanteer');
-//     Route::get('contact-us', 'show_contact');
-// });
-
 Route::get('/', [HomeController::class, 'show'])->name('home');
 Route::get('/category/{id}', [ProductController::class, 'show'])->name('category');
 Route::get('/product/{id}', [ProductController::class, 'showsingle'])->name('product');
@@ -45,8 +34,8 @@ Route::post('/addToCart/{id}', [ProductController::class, 'addToCart'])->name('a
 Route::get('/checkout/{id}', [OrderDetailController::class, 'show'])->name('checkout1');
 Route::post('/checkout2/{id}', [OrderDetailController::class, 'update'])->name('checkout2');
 Route::post('/checkoutsub/{userId}/{planId}', [OrderDetailController::class, 'edit'])->name('checkoutsub');
-Route::post('/checkout3/{userId}/{periodId}', [PeriodController::class, 'show'])->name('checkout3');
-Route::post('/checkout4/{userId}/{periodId}', [OrderController::class, 'show'])->name('checkout4');
+Route::post('/checkout3/{userId}/{periodId?}', [PeriodController::class, 'show'])->name('checkout3');
+Route::post('/checkout4/{userId}', [OrderController::class, 'show'])->name('checkout4');
 
 
 Route::get('/dashboard', function () {

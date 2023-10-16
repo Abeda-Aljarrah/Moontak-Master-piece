@@ -9,13 +9,11 @@
 @endsection
 
 @section('content')
-@php
-    $totalPrice = session('totalPrice');
-@endphp
+    @php
+        $totalPrice = session('totalPrice');
+    @endphp
 
-{{-- <h3>Total Price: ${{ $totalPrice }}</h3> --}}
-
-    <form action="" class="main" method="POST">
+    <form action="{{ route('checkout4', ['userId' => auth()->user()->id]) }}" class="main" method="POST">
         @csrf
         @method('post')
         <div class="all-container active" data-step="1">
@@ -79,33 +77,33 @@
                         <form autocomplete="off" class="form" role="form">
                             <div class="form-group">
                                 <label for="cc_name" class="name">Card Holder's Name</label>
-                                <input class="form-controll" id="cc_name" pattern="\w+ \w+.*" title="First and last name"
-                                    type="text">
+                                <input class="form-controll" name="cc_name" id="cc_name" pattern="\w+ \w+.*"
+                                    title="First and last name" type="text">
                             </div>
                             <div class="form-group">
-                                <label>Card Number</label>
-                                <input autocomplete="off" id="cc_num" class="form-controll" maxlength="20"
+                                <label for="cc_num">Card Number</label>
+                                <input autocomplete="off" id="cc_num" name="cc_num" class="form-controll" maxlength="20"
                                     pattern="\d{16}" title="Credit card number" type="text">
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-4">
-                                    <label class="col-md-12">Expiry date</label>
+                                    <label class="col-md-12" for="cc_exp_mo">Expiry date</label>
                                     <input class="form-controll" name="cc_exp_mo" size="0"
                                         placeholder="YY/MM"></input>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-md-12">Security number</label>
-                                    <input autocomplete="off" class="form-controll" maxlength="3" pattern="\d{3}"
-                                        placeholder="CVC" required="" title="Three digits on the back of your card"
+                                    <label class="col-md-12" for="CVC">Security number</label>
+                                    <input autocomplete="off" class="form-controll" name="CVC" maxlength="3"
+                                        pattern="\d{3}" placeholder="CVC" title="Three digits on the back of your card"
                                         type="text">
                                 </div>
                                 <div class="form-group">
-                                    <label>Zip code</label>
-                                    <input autocomplete="off" id="cc_num" class="form-controll" maxlength="6"
-                                        type="text">
+                                    <label for="zip">Zip code</label>
+                                    <input autocomplete="off" name="zip" id="cc_num" class="form-controll"
+                                        maxlength="6" type="text">
                                 </div>
                             </div>
-                            <input type="checkbox" class="checkbox">Save this card</input>
+                            <input type="checkbox" name="save_card" class="checkbox">Save this card</input>
                         </form>
                     </div>
 
@@ -132,13 +130,26 @@
                         </div>
                         <div class="Discount">
                             <span>Subscription fee</span>
-                            <span class="pri-dis">JOD {{ $selectedPeriod->price }}</span>
+                            <span class="price-dis">JOD {{ $subscriptionFee }}</span>
                         </div>
+
+                        @php
+                            // $discountAmount = ($discountPercentage / 100) * $totalPrice;
+                            // $totalWithDiscount = $totalPrice + $price - $discountAmount;
+                            $total = $totalPrice + $subscriptionFee;
+                        @endphp
+
+                        {{-- <span class="pri-dis">{{ $discountPercentage }}%</span> --}}
+
 
                         <div class="Total">
                             <h4>Total</h4>
-                            <h4 class="tot-price">JOD 60.26</h4>
+                            <h4 class="tot-price">JOD {{ $total }}</h4>
                         </div>
+
+                        @php
+                            session(['total' => $total]);
+                        @endphp
 
                     </div>
                 </div>
@@ -147,7 +158,7 @@
 
             <div class="button">
                 <button class="previous" type="submit"><a href="./checkout-2.php">Back</a></button>
-                <button class="next" type="submit"><a href="./checkout-4.php">Next</a></button>
+                <button class="next" type="submit">Next</button>
             </div>
         </div>
     </form>

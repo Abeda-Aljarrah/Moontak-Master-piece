@@ -6,13 +6,24 @@
 @endsection
 
 @section('js')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+        $('#periodSelect').on('change', function() {
+            var selectedPeriodId = $(this).val();
+            var formAction = "{{ route('checkout3', ['userId' => auth()->user()->id, 'periodId' => ':periodId']) }}";
+            formAction = formAction.replace(':periodId', selectedPeriodId);
+            $('#checkoutForm').attr('action', formAction);
+        });
+    });
+    </script>
 @endsection
 
 @section('content')
 
 
 
-<form action="{{ route('checkout3', ['userId' => auth()->user()->id, 'periodId' => $periods->first()->id]) }}" method="post" class="main">
+<form action="{{ route('checkout3', ['userId' => auth()->user()->id, 'periodId' => '']) }}" method="post" class="main" id="checkoutForm">
     @csrf
         @method('post')
         <div class="all-container active" data-step="1">
@@ -47,7 +58,7 @@
                     <div class="part-two">
                         <div class="pass">
                             <label for="start">Start day</label>
-                            <input type="date" name="start" required />
+                            <input type="date" name="start" id="start" required />
                         </div>
                         <div class="re-pass">
                             <label for="period">Select the period</label>
@@ -61,6 +72,9 @@
                                         @endforeach
                                     @endif
                                 @endforeach
+                                @php
+                                    session(['subfee' => $period->id]);
+                                @endphp
                             </select>
                         </div>
 
@@ -71,6 +85,7 @@
                 <!-- /.container -->
 
             </div>
+            <input type="hidden" name="periodId" id="hiddenPeriodIdInput">
 
             <div class="button">
                 <button class="previous"><a href="./checkout-1.php">Back</a></button>
