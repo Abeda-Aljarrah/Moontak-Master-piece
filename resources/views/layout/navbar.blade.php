@@ -44,8 +44,8 @@
         <ul class="links">
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('category', ['id' => 1]) }}">Shope</a></li>
-            <li><a href="./about-us.php">About</a></li>
-            <li><a href="./contact.php">Contact Us</a></li>
+            <li><a href="{{ route('about') }}">About</a></li>
+            <li><a href="{{ route('contact') }}">Contact Us</a></li>
             <li><a href="#">Blog</a></li>
             <div>
                 @if (auth()->check())

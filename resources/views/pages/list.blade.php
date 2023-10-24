@@ -32,7 +32,7 @@
         background-image: url('../image/twitter-header-1500x500.jpg') ; height: 30vh;
       ">
             <div class="container">
-                <h1 class="pt-5">Your Cart</h1>
+                <h1 class="pt-5">Your List</h1>
             </div>
         </div>
     </section>

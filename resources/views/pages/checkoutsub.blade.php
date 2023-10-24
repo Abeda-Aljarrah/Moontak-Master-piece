@@ -3,19 +3,29 @@
 @section('title', 'Checkout')
 @section('css')
     <link href="{{ asset('CSS/checkout-2.css') }}" rel="stylesheet" />
+    <style>
+        #periodSelect {
+            height: 40px;
+            border: #365d5a solid 1px;
+            border-radius: 10px;
+            padding: 10px;
+            /* Add any additional styles you want */
+        }
+    </style>
 @endsection
 
 @section('js')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-        $('#periodSelect').on('change', function() {
-            var selectedPeriodId = $(this).val();
-            var formAction = "{{ route('checkout3', ['userId' => auth()->user()->id, 'periodId' => ':periodId']) }}";
-            formAction = formAction.replace(':periodId', selectedPeriodId);
-            $('#checkoutForm').attr('action', formAction);
+            $('#periodSelect').on('change', function() {
+                var selectedPeriodId = $(this).val();
+                var formAction =
+                    "{{ route('checkout3', ['userId' => auth()->user()->id, 'periodId' => ':periodId']) }}";
+                formAction = formAction.replace(':periodId', selectedPeriodId);
+                $('#checkoutForm').attr('action', formAction);
+            });
         });
-    });
     </script>
 @endsection
 
@@ -23,8 +33,9 @@
 
 
 
-<form action="{{ route('checkout3', ['userId' => auth()->user()->id, 'periodId' => '']) }}" method="post" class="main" id="checkoutForm">
-    @csrf
+    <form action="{{ route('checkout3', ['userId' => auth()->user()->id, 'periodId' => '']) }}" method="post" class="main"
+        id="checkoutForm">
+        @csrf
         @method('post')
         <div class="all-container active" data-step="1">
             <h1>Checkout</h1>
@@ -51,7 +62,7 @@
             <div class="all">
                 <div class="edit">
                     <h4>Subscription</h4>
-                    <span><a href="">Edit</a></span>
+                    {{-- <span><a href="">Edit</a></span> --}}
                 </div>
                 <hr />
                 <div class="container">

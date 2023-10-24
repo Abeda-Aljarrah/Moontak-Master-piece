@@ -1,31 +1,13 @@
 @extends('layout.master')
 @section('title', 'Contact Us')
 
-{{-- <!DOCTYPE html>
-<html lang="en">
+@section('css')
+    <link href="{{ asset('CSS/contact.css') }}" rel="stylesheet" />
+@endsection
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-  <link href="{{ asset('CSS/contact.css') }}" rel="stylesheet" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Delicious+Handrawn&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous" />
+@section('js')
+@endsection
 
-  <title>Moontak</title>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-
-<body> --}}
-  <!-- /********************************************NAV**********************************************/ -->
 
   @section('content')
 
@@ -39,36 +21,6 @@
         <h1 class="pt-5">Contact Us</h1>
       </div>
     </div>
-
-    <!-- <div class="social">
-      <i
-        class="fab fa-brands fa-circle fa-facebook"
-        style="color: #2977f5; font-size: 100px"
-      ></i>
-      <i
-        class="fab fa-instagram fa-circle fill-gradient-instagram"
-        style="
-          font-size: 90px;
-          border-radius: 60%;
-          padding: 10px;
-          color: white;
-          background-clip: text;
-          background: radial-gradient(
-            circle at 30% 107%,
-            #fdf497 0%,
-            #fdf497 5%,
-            #fd5949 45%,
-            #d6249f 60%,
-            #285aeb 90%
-          );
-        "
-      ></i>
-      <i
-        class="fab fa-brands fa-twitter"
-        style="color: #2977f5; font-size: 100px"
-      ></i>
-      <i class="fab fa-circle fa-google" style="font-size: 100px"></i>
-    </div> -->
     <div class="form-container">
       <div class="form">
         <h1>Write <span>HERE!</span></h1>
@@ -377,11 +329,3 @@
       </section>
     </div>
     @endsection
-
-
-
-  <!-- /********************************************footer**********************************************/ -->
-
-{{-- </body>
-
-</html> --}}

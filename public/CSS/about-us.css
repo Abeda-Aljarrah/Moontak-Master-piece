@@ -7,8 +7,8 @@
     padding-top: 150px !important;
     margin-right: 900px;
     color: white;
-    font-family: "Caveat", cursive;
-    font-family: "Delicious Handrawn", cursive;
+    /* font-family: "Caveat", cursive; */
+    font-family: 'Open Sans', sans-serif;
     font-size: 110px;
     /* height: 80vh; */
   }
@@ -126,7 +126,7 @@
 }
 .our-team:hover .pic:before{
 height: 100%;
-  background: #365d5a; 
+  background: #365d5a;
 }
 .our-team .pic:after {
   content: "";

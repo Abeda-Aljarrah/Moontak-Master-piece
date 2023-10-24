@@ -68,7 +68,7 @@
             <div class="all">
                 <div class="edit">
                     <h4>Subscription</h4>
-                    <span><a href="">Edit</a></span>
+                    {{-- <span><a href="">Edit</a></span> --}}
                 </div>
                 <hr />
                 <div class="container">

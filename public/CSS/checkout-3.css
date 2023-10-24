@@ -8,7 +8,7 @@
     display: grid;
     /* background-color: #F6EEE6; */
     grid-template-columns: auto auto;
-    border: #365d5a solid 1px; 
+    border: #365d5a solid 1px;
     width: 70%;
     /* justify-content: center; Horizontally center the grid */
     align-items: center;  /* Vertically center the grid */
@@ -16,7 +16,7 @@
     /* gap: 50px; */
     margin: 20px auto; /* Center the entire grid horizontally */
     color: #365d5a;
-    
+
   }
   .all-container{
     /* background-color: #F6EEE6; */
@@ -73,7 +73,7 @@
   }
   button:hover{
     background-color: #f1895e;
-  
+
   }
   button a{
     font-family: "Work Sans", sans-serif;
@@ -82,15 +82,20 @@
     font-weight: 700;
     font-size: 1.1875rem;
   }
-  .previous{
+  /* .previous{
     margin-left: 220px;
   }
   .next{
     margin-left: 580px;
+  } */
+
+  .button{
+    display: flex;
+    justify-content: space-evenly;
   }
-  
+
   /********************************step-wizard**********************/
-  
+
   .step-wizard {
     /* background-color: #21d4fd; */
     /* background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%); */
@@ -111,7 +116,7 @@
     position: relative;
     z-index: 10;
   }
-  
+
   .step-wizard-item{
     padding: 0 20px;
     flex-basis: 0;

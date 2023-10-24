@@ -3,6 +3,32 @@
 @section('title', 'Checkout')
 @section('css')
     <link href="{{ asset('CSS/checkout-3.css') }}" rel="stylesheet" />
+    <style>
+        .row .form-control
+        {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 10px;
+        width: 100%;
+        height: 40px;
+        border: #365d5a solid 1px;
+        border-radius: 10px;
+        padding: 10px;
+        }
+
+        .part-two .phone .title {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 10px;
+            width: 100%;
+            height: 40px;
+            border: #365d5a solid 1px;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -105,36 +131,43 @@
                             </div>
                             <input type="checkbox" name="save_card" class="checkbox">Save this card</input>
                             <hr />
-                            <div class="part-one">
-                                <div class="name">
-                                    <label for="address">Enter your adders</label>
-                                    <input type="text" name="address" required />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="name">
+                                        <label for="address">Enter your address</label>
+                                        <input type="text" name="address" required class="form-control">
+                                    </div>
+                                    <div class="email">
+                                        <label for="street">Street Name</label>
+                                        <input type="text" name="street" required class="form-control">
+                                    </div>
+                                    <div class="phone">
+                                        <label for="building">Building Name and Number</label>
+                                        <input type="text" name="building" required class="form-control">
+                                    </div>
                                 </div>
-                                <div class="email">
-                                    <label for="street">Street Name</label>
-                                    <input type="text" name="street" required />
-                                </div>
-                                <div class="phone">
-                                    <label for="building">Building Name and Number</label>
-                                    <input type="text" name="building" required />
+                                <div class="col-md-6">
+                                    <div class="pass">
+                                        <label for="title">Title</label>
+                                        <input type="text" name="title" value="{{ $user->name }}" required class="form-control">
+                                    </div>
+                                    <div class="re-pass">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" name="phone" required class="form-control">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="part-two">
-                                <div class="pass">
-                                    <label for="title">Title</label>
-                                    <input type="text" name="title" value="{{ $user->name }}" required />
-                                </div>
-                                <div class="re-pass">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="tel" name="phone" required />
-                                </div>
-                            </div>
+
+                            {{-- <div class="part-two">
+                            </div> --}}
                         </form>
                     </div>
 
                 </div>
 
                 <hr />
+
+
                 <div class="summary-wrapper">
                     <div class="title" class="Summary">
                         <div>
@@ -154,7 +187,7 @@
                             <span class="pri-dis">0.0</span>
                         </div>
                         <div class="Discount">
-                            <span>Subscription fee</span>
+                            <span>Sub fee</span>
                             <span class="price-dis">JOD {{ $subscriptionFee }}</span>
                         </div>
 

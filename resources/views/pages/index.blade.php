@@ -3,6 +3,124 @@
 @section('title', 'Home')
 @section('css')
     <link href="{{ asset('CSS/index.css') }}" rel="stylesheet" />
+    <style>
+        .carousel-item img {
+            max-height: 700px;
+            /* Adjust the desired height */
+            width: 100%;
+        }
+
+        /* Style the text and button on the left */
+        /* Adjust the font size and add space between text and button */
+        .carousel-caption {
+            text-align: left;
+            font-family: 'Open Sans', sans-serif;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-30%);
+            padding-left: 100px;
+            animation: slideInLeft 1s ease-in-out;
+        }
+
+        .carousel-caption h2 {
+            font-size: 100px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            /* Adjust the font size as needed */
+        }
+
+        .carousel-caption h3 {
+            font-weight: 800;
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+
+        /* Add animation keyframes for sliding in from the left */
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Style the buttons */
+        .carousel-caption a.btn {
+            border: none;
+            background: rgb(236, 110, 85);
+            font-family: "Work Sans", sans-serif;
+            padding: 10px;
+            height: 47px;
+            width: 200px;
+            font-weight: 700;
+            font-size: 1.1875rem;
+            color: rgb(255, 255, 255);
+            border-radius: 8px;
+            border: none;
+            transition: background-color 0.3s ease-in-out 0s;
+            margin-top: 20px;
+            /* Add space above the button */
+        }
+
+
+        /* Style the Next button with the provided styles */
+        .carousel-control-next {
+            background: rgb(236, 110, 85);
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            border-radius: 8px;
+            border: none;
+            transition: background-color 0.3s ease-in-out 0s;
+        }
+
+        .carousel-control-prev {
+            background: rgb(236, 110, 85);
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            border-radius: 8px;
+            border: none;
+            transition: background-color 0.3s ease-in-out 0s;
+        }
+
+        /* Add hover effect for the Next button */
+        .carousel-control-next:hover {
+            background: #f1895e;
+        }
+
+        #vola_message {
+            position: fixed;
+            top: 20%;
+            right: 10px;
+            background: #f1895e;
+            /* Background color for success messages */
+            color: #fff;
+            font-size: 24px;
+            /* Text color for success messages */
+            border-radius: 5px;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        #vola_message.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -11,9 +129,71 @@
 
 
 @section('content')
+    @if (session('success'))
+        <div id="vola_message" class="alert alert-primary">{{ session('success') }}</div>
+        <script>
+            // Wait for the document to be fully loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                // Select the message element
+                const message = document.getElementById('vola_message');
 
+                // Add the 'show' class to make the message visible
+                message.classList.add('show');
 
-    <div class="jumbotron jumbotron-bg text-center rounded-0"
+                // Set a timeout to remove the 'show' class after 5 seconds
+                setTimeout(function() {
+                    message.classList.remove('show');
+                }, 2000); // 5000 milliseconds = 5 seconds
+            });
+        </script>
+    @endif
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../image/facebook-page-cover-820x312 (2) (1)-modified (1).jpg" class="d-block mx-auto"
+                    alt="...">
+                <div class="carousel-caption">
+                    <h1>Stay Home</h1>
+                    <h2>We DELEVER!</h2>
+                    <a href="link-to-page-1" class="btn btn-primary">See more</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../image/facebook-page-cover-820x312 (5)-modified.jpg" class="d-block mx-auto" alt="...">
+                <div class="carousel-caption">
+
+                    <h3>All You Need</h3>
+                    <h3>In Front Of Your Door</h3>
+                    <a href="link-to-page-1" class="btn btn-primary">Shop now</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../image/facebook-page-cover-820x312 (7)-modified.jpg" class="d-block mx-auto" alt="...">
+                <div class="carousel-caption">
+                    <div class="slide-3ct slide-7kv">
+                        <h2> Top selling!</h2>
+                        <h1>Fresh for your heath</h1>
+                        <a href="link-to-page-1" class="btn btn-primary">Shop now</a>
+                    </div>
+                    {{-- <h2>Slide 3</h2>
+                <p>This is the third slide content.</p> --}}
+                    {{-- <a href="link-to-page-3" class="btn btn-primary">Button 3</a> --}}
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" ariahidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    {{-- <div class="jumbotron jumbotron-bg text-center rounded-0"
         style="
           background-image: url('../image/facebook-page-cover-820x312\ \(2\)\ \(1\)-modified\ \(1\).jpg');
         ">
@@ -23,7 +203,7 @@
     @endif
             <h1 class="pt-5 tracking-in-contract">Stay home we deliver</h1>
         </div>
-    </div>
+    </div> --}}
 
     </section>
 
@@ -61,7 +241,7 @@
                             <div class="px-3 text-center pb-3">
                                 <h4>Create your list by shopping</h4>
                                 <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                deleniti et fugit iusto nesciunt.</p> -->
+                                                        deleniti et fugit iusto nesciunt.</p> -->
                             </div>
                         </div>
                     </div>
@@ -76,7 +256,7 @@
                             <div class="px-3 text-center pb-3">
                                 <h4>Choose a plane</h4>
                                 <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                deleniti et fugit iusto nesciunt.</p> -->
+                                                        deleniti et fugit iusto nesciunt.</p> -->
                             </div>
                         </div>
                     </div>
@@ -91,7 +271,7 @@
                             <div class="px-3 text-center pb-3">
                                 <h4>Choose the days/period you want to deliver your list</h4>
                                 <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                deleniti et fugit iusto nesciunt.</p> -->
+                                                        deleniti et fugit iusto nesciunt.</p> -->
                             </div>
                         </div>
                     </div>
@@ -106,7 +286,7 @@
                             <div class="px-3 text-center pb-3">
                                 <h4>Add a correct location</h4>
                                 <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                deleniti et fugit iusto nesciunt.</p> -->
+                                                        deleniti et fugit iusto nesciunt.</p> -->
                             </div>
                         </div>
                     </div>
@@ -120,7 +300,7 @@
                             <div class="px-3 text-center pb-3">
                                 <h4>Enjoy your journey with us!</h4>
                                 <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                deleniti et fugit iusto nesciunt.</p> -->
+                                                        deleniti et fugit iusto nesciunt.</p> -->
                             </div>
                         </div>
                     </div>

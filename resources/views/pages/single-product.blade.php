@@ -3,6 +3,31 @@
 @section('title', 'Shop')
 @section('css')
     <link href="{{ asset('CSS/single-product.css') }}" rel="stylesheet" />
+    <style>
+        /* Style the success message as a pop-up */
+        #vola_message {
+            position: fixed;
+            top: 20%;
+            right: 10px;
+            background:#f1895e;
+            /* Background color for success messages */
+            color: #fff;
+            font-size: 24px;
+            /* Text color for success messages */
+            border-radius: 5px;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        #vola_message.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -11,9 +36,25 @@
 
 @section('content')
 
-    @if (session('success'))
-        <div id="vola_message" class="alert alert-primary">{{ session('success') }}</div>
-    @endif
+@if (session('success'))
+<div id="vola_message" class="alert alert-primary">{{ session('success') }}</div>
+<script>
+    // Wait for the document to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select the message element
+        const message = document.getElementById('vola_message');
+
+        // Add the 'show' class to make the message visible
+        message.classList.add('show');
+
+        // Set a timeout to remove the 'show' class after 5 seconds
+        setTimeout(function() {
+            message.classList.remove('show');
+        }, 2000); // 5000 milliseconds = 5 seconds
+    });
+</script>
+@endif
+
     <section id="prodetails" class="section-p1">
         <div class="single-pro-image">
             <img src="{{ asset($product->main_image) }}" width="100%" id="MainImage" alt="mango" />
@@ -21,7 +62,7 @@
                 <div class="small-img-col">
                     <img src="{{ asset($product->main_image) }}" width="100%" class="small-img" alt="mango" />
                 </div>
-                <div class="small-img-col">
+                {{-- <div class="small-img-col">
                     <img src="{{ asset($product->main_image) }}" width="100%" class="small-img" alt="mango" />
                 </div>
                 <div class="small-img-col">
@@ -29,19 +70,19 @@
                 </div>
                 <div class="small-img-col">
                     <img src="{{ asset($product->main_image) }}" width="100%" class="small-img" alt="mango" />
-                </div>
+                </div> --}}
             </div>
         </div>
 
         <div class="single-pro-details">
             <h6>Home / Fruits & Vegetables</h6>
             <!-- <div class="pro-links">
-                        <a href="#" class="pro-links">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                              </svg>
-                        </a>
-                    </div> -->
+                            <a href="#" class="pro-links">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                  </svg>
+                            </a>
+                        </div> -->
             <h4>{{ $product->name }}</h4>
 
             <h2>Approx 1 pieces/Kg</h2>
@@ -50,8 +91,8 @@
 
             <select name="" id="">
                 <option value="">0.5 Kg (JOD 0.57)</option>
-                <option value="">1 Kg (JOD 1.59)</option>
-                <option value="">1.5 Kg (JOD 1.59)</option>
+                <option value="">1 Kg (JOD 1.79)</option>
+                <option value="">1.5 Kg (JOD 1.79)</option>
                 <option value="">2 Kg (JOD 2)</option>
                 <option value="">2.5 Kg (JOD 2.85)</option>
                 <option value="">3 Kg (JOD 3.40)</option>

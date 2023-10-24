@@ -32,8 +32,8 @@
 
         <div class="signup-form">
             <div class="Register">
-                <h1>Sign In</h1>
-                <span>You don't have an account?<a href="{{ route('register') }}">Sign in</a></span>
+                <h1>Login In</h1>
+                <span>You don't have an account?<a href="{{ route('register') }}">Sign up</a></span>
             </div>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -67,8 +67,8 @@
                         @endif
                     </div>
 
-                    <button type="submit">Sign in</button>
-                    <h4>OR Sign in by</h4>
+                    <button type="submit">Login in</button>
+                    <h4>OR Login in by</h4>
                     <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
                             <path

@@ -40,7 +40,7 @@ body {
     opacity: 1;
     transform: translateX(0px);
   }
-  
+
 
 .our-plans {
   /* background-color: #c1d9d4; */
@@ -351,13 +351,13 @@ h3 {
   /* grid-template-columns: auto auto auto auto auto auto; */
   align-items: center;
   justify-content: space-evenly;
- 
+
   width: 90%;
   margin: 0 auto;
 }
 .supp-image {
   width: 150px;
-  
+
 }
 .suppliers-title {
   margin-bottom: 50px;
@@ -624,7 +624,7 @@ h3 {
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .swiper-wrapper {
     grid-template-columns: auto auto;
     justify-content: center;
@@ -714,7 +714,7 @@ h3 {
     padding: 10px;
   }
 }
-@media (max-width: 790px) { 
+@media (max-width: 790px) {
   .testimonial-heading h1 {
     font-size: 1.4rem;
   }
