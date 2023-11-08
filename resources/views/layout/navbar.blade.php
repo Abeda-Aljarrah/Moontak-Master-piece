@@ -37,7 +37,7 @@
     <div class="navbar">
 
         <div class="logo">
-            <h2>Moontak</h2>
+            <img src="../image/moontakk.png" alt="" style="height: 30px" width="150px">
         </div>
 
 
@@ -47,29 +47,29 @@
             <li><a href="{{ route('about') }}">About</a></li>
             <li><a href="{{ route('contact') }}">Contact Us</a></li>
             <li><a href="#">Blog</a></li>
-            <div>
-                @if (auth()->check())
-                    <a href="{{ route('list', ['id' => auth()->user()->id]) }}">
-                        <span class="material-symbols-outlined icon">shopping_cart</span>
-                    </a>
-                @else
-                    <a href="{{ url('list') }}">
-                        <span class="material-symbols-outlined icon">shopping_cart</span>
-                    </a>
-                @endif
-
-            </div>
-            <div>
-                <a href="./profile.php">
-                    <span class="material-symbols-outlined icon">account_circle</span>
-                </a>
-            </div>
-            @if (auth()->check())
-                <button class="signin"><a href="{{ route('logout') }}">Logout</a></button>
-            @else
-                <button class="signin"><a href="{{ url('login') }}">Login</a></button>
-            @endif
         </ul>
+        <div>
+            @if (auth()->check())
+                <a href="{{ route('list', ['id' => auth()->user()->id]) }}">
+                    <span class="material-symbols-outlined icon">shopping_cart</span>
+                </a>
+            @else
+                <a href="{{ url('list') }}">
+                    <span class="material-symbols-outlined icon">shopping_cart</span>
+                </a>
+            @endif
+
+        </div>
+        <div>
+            <a href="./profile.php">
+                <span class="material-symbols-outlined icon">account_circle</span>
+            </a>
+        </div>
+        @if (auth()->check())
+            <button class="signin"><a href="{{ route('logout') }}">Logout</a></button>
+        @else
+            <button class="signin"><a href="{{ url('login') }}">Login</a></button>
+        @endif
 
 
 

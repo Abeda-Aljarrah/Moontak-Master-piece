@@ -18,13 +18,14 @@
             position: absolute;
             top: 50%;
             transform: translateY(-30%);
-            padding-left: 100px;
+            padding-left: 30px;
             animation: slideInLeft 1s ease-in-out;
+            color: #232323
         }
 
         .carousel-caption h2 {
-            font-size: 100px;
-            font-weight: 800;
+            font-size: 70px;
+            font-weight: 700;
             margin-bottom: 10px;
             /* Adjust the font size as needed */
         }
@@ -52,7 +53,7 @@
         /* Style the buttons */
         .carousel-caption a.btn {
             border: none;
-            background: rgb(236, 110, 85);
+            background: #5FA800;
             font-family: "Work Sans", sans-serif;
             padding: 10px;
             height: 47px;
@@ -70,7 +71,7 @@
 
         /* Style the Next button with the provided styles */
         .carousel-control-next {
-            background: rgb(236, 110, 85);
+            background: #5FA800;
             width: 50px;
             height: 50px;
             position: absolute;
@@ -82,7 +83,7 @@
         }
 
         .carousel-control-prev {
-            background: rgb(236, 110, 85);
+            background: #5FA800;
             width: 50px;
             height: 50px;
             position: absolute;
@@ -95,7 +96,10 @@
 
         /* Add hover effect for the Next button */
         .carousel-control-next:hover {
-            background: #f1895e;
+            background: #5FA800;
+        }
+        .carousel-control-prev:hover {
+            background: #5FA800;
         }
 
         #vola_message {
@@ -150,7 +154,7 @@
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../image/facebook-page-cover-820x312 (2) (1)-modified (1).jpg" class="d-block mx-auto"
+                <img src="../image/Untitled design (29).png" class="d-block mx-auto"
                     alt="...">
                 <div class="carousel-caption">
                     <h1>Stay Home</h1>
@@ -159,16 +163,16 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="../image/facebook-page-cover-820x312 (5)-modified.jpg" class="d-block mx-auto" alt="...">
+                <img src="../image/Untitled design (31).png" class="d-block mx-auto" alt="...">
                 <div class="carousel-caption">
 
-                    <h3>All You Need</h3>
-                    <h3>In Front Of Your Door</h3>
+                    <h1>All You Need</h1>
+                    <h2>In Front Of Your Door</h2>
                     <a href="link-to-page-1" class="btn btn-primary">Shop now</a>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="../image/facebook-page-cover-820x312 (7)-modified.jpg" class="d-block mx-auto" alt="...">
+                <img src="../image/facebook-page-cover-820x312 (7).jpg" class="d-block mx-auto" alt="...">
                 <div class="carousel-caption">
                     <div class="slide-3ct slide-7kv">
                         <h2> Top selling!</h2>
@@ -208,103 +212,79 @@
     </section>
 
 
-    <section style="color: #365d5a;">
+    <section style="color: #232323;">
         <div class="container my-5">
             <section id="steps">
                 <div class="text-center mb-5">
-                    <h2 class="font-weight-bold display-4" style="color: #365d5a;">How It <span
-                            style=" color: #f1895e">Works?</span></h2>
+                    <h2 class="font-weight-bold display-4 ">How It <span style=" color: #5FA800">Works?</span></h2>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="bg-light position-relative px-3 my-5">
                             <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; ">
-                                <img src="../image/How it works/2202250_account_avatar_human_man_profile_icon.png"
-                                    class="how-image" />
-
+                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
+                                1
                             </div>
                             <div class="px-3 text-center pb-3">
                                 <h4>Create an account</h4>
-                                <!-- <p class="font-weight-light my-3">Create an account</p> -->
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="bg-light position-relative px-3 my-5">
                             <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                style="width: 60px;height: 60px;top: -30px;border-width: 4px !important;">
-                                <img src="../image/How it works/3586362_checklist_document_list_paper_icon.png"
-                                    class="how-image" />
-
+                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
+                                2
                             </div>
                             <div class="px-3 text-center pb-3">
                                 <h4>Create your list by shopping</h4>
-                                <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                                        deleniti et fugit iusto nesciunt.</p> -->
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="bg-light position-relative px-3 my-5">
                             <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                style="width: 60px;height: 60px;top: -30px;border-width: 4px !important;">
-                                <img src="../image/How it works/7114165_application_notification_subscription_subscribe_alarm_icon.png"
-                                    class="how-image" />
-
+                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
+                                3
                             </div>
                             <div class="px-3 text-center pb-3">
                                 <h4>Choose a plane</h4>
-                                <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                                        deleniti et fugit iusto nesciunt.</p> -->
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="bg-light position-relative px-3 my-5">
                             <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                style="width: 60px;height: 60px;top: -30px;border-width: 4px !important;">
-                                <img src="../image/How it works/9876797_calendar_calendar date_shipping_delivery_logistics_icon.png"
-                                    class="how-image" />
-
+                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
+                                4
                             </div>
                             <div class="px-3 text-center pb-3">
-                                <h4>Choose the days/period you want to deliver your list</h4>
-                                <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                                        deleniti et fugit iusto nesciunt.</p> -->
+                                <h4>Choose deliver time</h4>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="bg-light position-relative px-3 my-5">
                             <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                style="width: 60px;height: 60px;top: -30px;border-width: 4px !important;">
-                                <img src="../image/How it works/3586361_location_map_navigation_pointer_icon.png"
-                                    class="how-image" />
-
+                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
+                                5
                             </div>
                             <div class="px-3 text-center pb-3">
                                 <h4>Add a correct location</h4>
-                                <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                                        deleniti et fugit iusto nesciunt.</p> -->
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="bg-light position-relative px-3 my-5">
                             <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                style="width: 60px;height: 60px;top: -30px;border-width: 4px !important;">
-                                <img src="../image/How it works/9027005_shopping_cart_thin_icon.png" class="how-image" />
-
+                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
+                                6
                             </div>
                             <div class="px-3 text-center pb-3">
                                 <h4>Enjoy your journey with us!</h4>
-                                <!-- <p class="font-weight-light my-3">Lorem ipsum dolor sit consectetur adipisicing elit. Alias amet
-                                                        deleniti et fugit iusto nesciunt.</p> -->
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
         </div>

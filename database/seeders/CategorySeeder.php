@@ -18,27 +18,27 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'name' => 'Meat & Poultry',
-            'image' => 'image\icons\barbecue.png',
+            'image' => 'image\icons\pngegg.png',
         ]);
         Category::create([
             'name' => 'Fruits & Vegetables',
-            'image' => 'image\icons\healthy-food (2).png',
+            'image' => 'image\icons\pngegg (1).png',
         ]);
         Category::create([
             'name' => 'Dairy',
-            'image' => 'image\icons\dairy.png',
+            'image' => 'image\icons\pngegg (2).png',
         ]);
         Category::create([
             'name' => 'Cleaning & Household',
-            'image' => 'image\icons\cleaning.png',
+            'image' => 'image\icons\pngegg (3).png',
         ]);
         Category::create([
             'name' => 'Food Cupboard',
-            'image' => 'image\icons\shopping-cart.png',
+            'image' => 'image\icons\pngegg (4).png',
         ]);
         Category::create([
             'name' => 'Baby Products',
-            'image' => 'image\icons\baby-products (1).png',
+            'image' => 'image\icons\pngegg (6).png',
         ]);
     }
 }
