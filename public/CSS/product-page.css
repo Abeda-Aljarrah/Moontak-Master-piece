@@ -1,11 +1,11 @@
 * {
   padding: 0px;
   margin: 0px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 /***********************************************Products*****************************************************/
 .title {
-  color: #365d5a;
+  color: #232323;
   margin-left: 50px;
   margin-top: 30px;
   font-weight: bold;
@@ -36,11 +36,11 @@ h3 {
   /* box-shadow: 20px 20px 30px rgba(54, 93, 90, 0.2); */
   margin: 15px 0px;
   transition: 0.2s ease;
-  color: #365d5a;
+  color: #232323;
 }
 #product .pro a {
   margin-left: 20px;
-  color: #365d5a;
+  color: #232323;
 }
 #product .pro:hover {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
@@ -153,7 +153,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .slider {
   height: 5px;
   position: relative;
-  background: #365d5a;
+  background: #fff;
   border-radius: 5px;
 }
 .slider .progress {
@@ -162,7 +162,7 @@ input[type="number"]::-webkit-inner-spin-button {
   right: 25%;
   position: absolute;
   border-radius: 5px;
-  background: #f1895e;
+  background: #5FA800;
 }
 .range-input {
   position: relative;
@@ -181,7 +181,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 17px;
   width: 17px;
   border-radius: 50%;
-  background: #f1895e;
+  background: #5FA800;
   pointer-events: auto;
   -webkit-appearance: none;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
@@ -191,7 +191,7 @@ input[type="range"]::-moz-range-thumb {
   width: 17px;
   border: none;
   border-radius: 50%;
-  background: #f1895e;
+  background: #5FA800;
   pointer-events: auto;
   -moz-appearance: none;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
@@ -233,10 +233,12 @@ input[type="range"]::-moz-range-thumb {
   padding-left: 10px;
 }
 .search-hotel button {
-  width: 50px;
-  background-color: #f1895e;
+  width: 40px;
+  height: 35px;
+  background-color: #5FA800;
   border-radius: 10px;
   border: none;
+  color: #fff;
 }
 .side-bar ul {
   padding-left: 1rem;
@@ -256,7 +258,7 @@ input[type="range"]::-moz-range-thumb {
   border-bottom: 2px solid currentcolor;
   /* font-weight: bold; */
   letter-spacing: 0.15em;
-  color: #f1895e;
+  color: #5FA800;
   border-radius: 0;
   &:focus,
   &:active {
@@ -348,11 +350,11 @@ input[type="range"]::-moz-range-thumb {
   /* box-shadow: 20px 20px 30px rgba(54, 93, 90, 0.2); */
   margin: 15px 0px;
   transition: 0.2s ease;
-  color: #365d5a;
+  color: #232323;
 }
 .best-seller .pro a {
   margin-left: 20px;
-  color: #365d5a;
+  color: #232323;
 }
 .best-seller .pro:hover {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
@@ -389,7 +391,7 @@ input[type="range"]::-moz-range-thumb {
 /*****************************************************pagination-wrapper***********************************************************/
 .btn2 {
   transform: translateY(-50%);
-  fill: #365d5a;
+  fill: #232323;
   cursor: pointer;
   transition: opacity 0.2s;
   margin-top: 130px;

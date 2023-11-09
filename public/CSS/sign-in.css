@@ -1,7 +1,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -11,7 +11,7 @@
   gap: 100px;
   align-items: center;
   justify-content: center;
-  color: #365d5a;
+  color: #232323;
   background-color: rgb(154, 174, 172, 0.1);
   border-radius: 50px;
   margin: 20px 200px;
@@ -26,7 +26,7 @@
   font-weight: bold;
 }
 .signup-container a {
-  color: #f1895e;
+  color: #5FA800;
 }
 .signup-form {
   display: flex;
@@ -51,7 +51,7 @@
 .re-pass input,
 .phone input {
   height: 40px;
-  border: #365d5a solid 1px;
+  border: #232323 solid 1px;
   border-radius: 10px;
   padding: 10px;
 }
@@ -68,7 +68,7 @@ button {
 .form-group {
   font-size: 13px;
   line-height: 1.8;
-  color: #222;
+  color: #232323;
   font-weight: 400;
   font-family: Poppins;
   position: relative;
@@ -76,8 +76,8 @@ button {
   overflow: hidden;
 }
 .signup-container button {
-  border: 1px solid #365d5a;
-  background-color: #f1895e;
+  border: none;
+  background-color: #5FA800;
   padding: 10px;
   border-radius: 5px;
   height: 47px;

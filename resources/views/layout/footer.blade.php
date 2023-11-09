@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-menu">
-                    <img src="../image/logo/Screenshot 2023-08-05 202745.png" alt="logo" class="footer-logo" />
+                    <img src="../image/logo-footer.png" alt="logo" class="footer-logo" />
                     <div class="social-links mt-5">
                         <ul class="d-flex list-unstyled gap-2">
                             <li>
@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <img src="../image/Delivery_concept_handsome_caucasian_featuring_delivery__food__and_courier-removebg-preview.png"
+                <img src="../image/Delivery.png"
                     alt="" class="delivery-gay" />
             </div>
         </div>

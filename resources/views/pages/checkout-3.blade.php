@@ -4,17 +4,16 @@
 @section('css')
     <link href="{{ asset('CSS/checkout-3.css') }}" rel="stylesheet" />
     <style>
-        .row .form-control
-        {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        margin-top: 10px;
-        width: 100%;
-        height: 40px;
-        border: #365d5a solid 1px;
-        border-radius: 10px;
-        padding: 10px;
+        .row .form-control {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 10px;
+            width: 100%;
+            height: 40px;
+            border: #365d5a solid 1px;
+            border-radius: 10px;
+            padding: 10px;
         }
 
         .part-two .phone .title {
@@ -39,10 +38,9 @@
         $totalPrice = session('totalPrice');
     @endphp
 
-    <form action="{{ route('checkout4', ['userId' => auth()->user()->id]) }}" class="main" method="POST">
-        @csrf
-        @method('post')
-        <div class="all-container active" data-step="1">
+    <div class="container" style="margin-top: 50px; margin-bottom: 50px" data-step="1">
+        <div class="text-center">
+
             <h1>Checkout</h1>
             <div class="step-wizard">
                 <ul class="step-wizard-list">
@@ -58,164 +56,191 @@
                         <span class="progress-count">3</span>
                         <span class="progress-label">Payment</span>
                     </li>
-                    {{-- <li class="step-wizard-item">
-                        <span class="progress-count">4</span>
-                        <span class="progress-label">Review order</span>
-                    </li> --}}
                 </ul>
             </div>
-            <div class="all">
-                <div class="edit">
-                    <h4>Payment information</h4>
-                    <!-- <span><a href="">Edit</a></span> -->
-                </div>
-                <hr />
-                <div class="checkout-panel">
-                    <h3 class="title">Method</h3>
+        </div>
 
-                    <div class="payment-method">
-                        <label for="card" class="method visa">
-                            <div class="card-logos">
-                                <div class="radio-input">
-                                    <input id="card" type="radio" name="payment" />
-                                </div>
-                                <img src="https://designmodo.com/demo/checkout-panel/img/visa_logo.png" />
-                                <img src="https://designmodo.com/demo/checkout-panel/img/mastercard_logo.png" />
-                            </div>
-
-                        </label>
-
-                        <label for="paypal" class="method paypal">
-                            <div class="card-logos">
-                                <div class="radio-input">
-                                    <input id="paypal" type="radio" name="payment" />
-                                </div>
-                                <img src="https://designmodo.com/demo/checkout-panel/img/paypal_logo.png" />
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <hr />
-                <div>
-                    <h3 class="title">Card information</h3>
-                    <div class="card-body">
-                        <form autocomplete="off" class="form" role="form">
-                            <div class="form-group">
-                                <label for="cc_name" class="name">Card Holder's Name</label>
-                                <input class="form-controll" name="cc_name" id="cc_name" pattern="\w+ \w+.*"
-                                    title="First and last name" type="text">
-                            </div>
-                            <div class="form-group">
-                                <label for="cc_num">Card Number</label>
-                                <input autocomplete="off" id="cc_num" name="cc_num" class="form-controll" maxlength="20"
-                                    pattern="\d{16}" title="Credit card number" type="text">
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-4">
-                                    <label class="col-md-12" for="cc_exp_mo">Expiry date</label>
-                                    <input class="form-controll" name="cc_exp_mo" size="0"
-                                        placeholder="YY/MM"></input>
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="col-md-12" for="CVC">Security number</label>
-                                    <input autocomplete="off" class="form-controll" name="CVC" maxlength="3"
-                                        pattern="\d{3}" placeholder="CVC" title="Three digits on the back of your card"
-                                        type="text">
-                                </div>
-                                <div class="form-group">
-                                    <label for="zip">Zip code</label>
-                                    <input autocomplete="off" name="zip" id="cc_num" class="form-controll"
-                                        maxlength="6" type="text">
-                                </div>
-                            </div>
-                            <input type="checkbox" name="save_card" class="checkbox">Save this card</input>
-                            <hr />
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="name">
-                                        <label for="address">Enter your address</label>
-                                        <input type="text" name="address" required class="form-control">
-                                    </div>
-                                    <div class="email">
-                                        <label for="street">Street Name</label>
-                                        <input type="text" name="street" required class="form-control">
-                                    </div>
-                                    <div class="phone">
-                                        <label for="building">Building Name and Number</label>
-                                        <input type="text" name="building" required class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="pass">
-                                        <label for="title">Title</label>
-                                        <input type="text" name="title" value="{{ $user->name }}" required class="form-control">
-                                    </div>
-                                    <div class="re-pass">
-                                        <label for="phone">Phone Number</label>
-                                        <input type="tel" name="phone" required class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-
-                            {{-- <div class="part-two">
-                            </div> --}}
-                        </form>
-                    </div>
-
-                </div>
-
-                <hr />
-
-
-                <div class="summary-wrapper">
-                    <div class="title" class="Summary">
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Payment Summary</span>
+                    <span class="badge badge-secondary badge-pill">3</span>
+                </h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h3>Payment Summary</h3>
+                            <h6 class="my-0">Sub total</h6>
+                            <small class="text-muted">Brief description</small>
                         </div>
-                        <div class="voucher">
-                            <h4>voucher code</h4>
-                            <input type="text" />
+                        <span class="text-muted">JOD {{ $totalPrice }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Sub fee</h6>
+                            <small class="text-muted">Brief description</small>
                         </div>
-                        <div class="Sub">
-                            <span>Sub total</span>
-                            <span class="price">JOD {{ $totalPrice }}</span>
+                        <span class="text-muted">JOD {{ $subscriptionFee }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Discount</h6>
+                            <small class="text-muted">Brief description</small>
                         </div>
+                        <span class="text-muted">JOD 0</span>
+                    </li>
+                    @php
+                        // $discountAmount = ($discountPercentage / 100) * $totalPrice;
+                        // $totalWithDiscount = $totalPrice + $price - $discountAmount;
+                        $total = $totalPrice + $subscriptionFee;
+                    @endphp
 
-                        <div class="Discount">
-                            <span>Discount</span>
-                            <span class="pri-dis">0.0</span>
+
+                    <li class="list-group-item d-flex justify-content-between bg-light">
+                        <div class="text-success">
+                            <h6 class="my-0">Promo code</h6>
+                            <small>EXAMPLECODE</small>
                         </div>
-                        <div class="Discount">
-                            <span>Sub fee</span>
-                            <span class="price-dis">JOD {{ $subscriptionFee }}</span>
-                        </div>
+                        <span class="text-success">0</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span >Total (JOD)</span>
+                        <strong>JOD {{ $total }}</strong>
+                    </li>
+                    <input type="hidden" name="total" id="total" value="{{ $total }}">
 
-                        @php
-                            // $discountAmount = ($discountPercentage / 100) * $totalPrice;
-                            // $totalWithDiscount = $totalPrice + $price - $discountAmount;
-                            $total = $totalPrice + $subscriptionFee;
-                        @endphp
+                </ul>
 
-                        {{-- <span class="pri-dis">{{ $discountPercentage }}%</span> --}}
-
-
-                        <div class="Total">
-                            <h4>Total</h4>
-                            <h4 class="tot-price">JOD {{ $total }}</h4>
-                        </div>
-
-                        <input type="hidden" name="total" id="total" value="{{ $total }}">
-
+                <form class="card p-2">
+                    <div style="display: flex; align-items: center;">
+                        <input type="text" class="form-control" placeholder="Promo code">
+                        <button style="background-color: #5FA800; height: 40px; margin:10px; border:none " type="submit" class="btn btn-secondary">Apply</button>
                     </div>
-                </div>
+                </form>
+
 
             </div>
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Billing address</h4>
+                <form action="{{ route('checkout4', ['userId' => auth()->user()->id]) }}" method="POST"
+                    class="needs-validation main" novalidate>
+                    @csrf
+                    @method('post')
+                    <input type="hidden" name="total" id="total" value="{{ $total }}">
 
-            <div class="button">
-                <button class="previous" type="submit"><a href="./checkout-2.php">Back</a></button>
-                <button class="next" type="submit">Place order</button>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName">Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder=""
+                                value="{{ $user->name }}" required>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone">Phone number</label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder=""
+                                value="" required>
+                            <div class="invalid-feedback">
+                                Valid Phone number is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St"
+                            required>
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="street">Street Name <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="street" name="street"
+                            placeholder="Apartment or suite">
+                    </div>
+                    <div class="mb-3">
+                        <label for="building">Building Name<span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="building" name="building"
+                            placeholder="Apartment or suite">
+                    </div>
+
+                    <hr class="mb-4">
+                    {{-- <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="same-address">
+                        <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
+                            address</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="save-info">
+                        <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                    </div>
+                    <hr class="mb-4"> --}}
+
+                    <h4 class="mb-3">Payment</h4>
+
+                    <div class="d-block my-3">
+                        <div class="custom-control custom-radio">
+                            <input id="card" type="radio" name="payment" class="custom-control-input" checked
+                                required>
+                            <label class="custom-control-label" for="card">Credit card</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="cash" type="radio" name="payment" class="custom-control-input" required>
+                            <label class="custom-control-label" for="cash">Cash</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="paypal" type="radio" name="payment" class="custom-control-input" required>
+                            <label class="custom-control-label" for="paypal">PayPal</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Name on card</label>
+                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                            <small class="text-muted">Full name as displayed on card</small>
+                            <div class="invalid-feedback">
+                                Name on card is required
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-number">Credit card number</label>
+                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Credit card number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">Expiration</label>
+                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Expiration date required
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-cvv">CVV</label>
+                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Security code required
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" style="background-color: #5FA800; border: none" type="submit">Place order</button>
+                </form>
             </div>
         </div>
-    </form>
+
+        {{-- <footer class="my-5 pt-5 text-muted text-center text-small">
+            <p class="mb-1">&copy; 2017-2019 Company Name</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Privacy</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+        </footer> --}}
+    </div>
 @endsection

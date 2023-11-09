@@ -175,7 +175,7 @@
     @endif
 
 
-        <section class="pagination-container">
+        {{-- <section class="pagination-container">
             <ul class="pagination modal-1">
                 <li><a href="#" class="prev">&laquo</a></li>
                 <li><a href="#" class="active">1</a></li>
@@ -186,7 +186,7 @@
                 <li><a href="#" class="next">&raquo;</a></li>
             </ul>
             <br />
-        </section>
+        </section> --}}
     </section>
 
     <h2 class="title best">Best seller</h2>

@@ -98,6 +98,7 @@
         .carousel-control-next:hover {
             background: #5FA800;
         }
+
         .carousel-control-prev:hover {
             background: #5FA800;
         }
@@ -106,7 +107,7 @@
             position: fixed;
             top: 20%;
             right: 10px;
-            background: #f1895e;
+            background: #5FA800;
             /* Background color for success messages */
             color: #fff;
             font-size: 24px;
@@ -129,6 +130,64 @@
 
 @section('js')
     <script src="{{ asset('JS/index.js') }}"></script>
+    <script>
+        // JavaScript for the testimonial slider
+        const slider = document.querySelector('.slider');
+        const testimonials = document.querySelector('.testimonials');
+        const nextBtn = document.querySelector('.btn--next');
+        const prevBtn = document.querySelector('.btn--prev');
+        const testimonialBoxes = document.querySelectorAll('.testimonial-box');
+
+        let currentIndex = 0;
+        const testimonialWidth = testimonialBoxes[0].offsetWidth;
+        const totalTestimonials = testimonialBoxes.length;
+        const visibleTestimonials = 3;
+        const moveAmount = testimonialWidth * visibleTestimonials;
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < totalTestimonials - visibleTestimonials) {
+                currentIndex++;
+                moveSlider();
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                moveSlider();
+            }
+        });
+
+        function moveSlider() {
+            const position = -currentIndex * moveAmount;
+            testimonials.style.transform = `translateX(${position}px)`;
+        }
+    </script>
+
+<script>
+    $(document).ready(function () {
+        const supplierSlider = $("#supplier-slider");
+        const slides = supplierSlider.find(".slide");
+        let currentSlideIndex = 0;
+
+        function showNextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            const translateX = -currentSlideIndex * 500; // 500% for each set of 5 slides
+            supplierSlider.css("transform", `translateX(${translateX}%)`);
+        }
+
+        setInterval(showNextSlide, 5000);
+    });
+</script>
+
+
+
+
+
+
+
+
+
 @endsection
 
 
@@ -154,8 +213,7 @@
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../image/Untitled design (29).png" class="d-block mx-auto"
-                    alt="...">
+                <img src="../image/Untitled design (29).png" class="d-block mx-auto" alt="...">
                 <div class="carousel-caption">
                     <h1>Stay Home</h1>
                     <h2>We DELEVER!</h2>
@@ -211,8 +269,29 @@
 
     </section>
 
+    <section class="cat-sec">
 
-    <section style="color: #232323;">
+        <div class="col-md-12">
+            <div class="section-header d-flex justify-content-between mb-5">
+                <h2 class="section-title">Our Categories</h2>
+            </div>
+        </div>
+
+        <div class="category-carousel swiper swiper-initialized swiper-horizontal">
+            <div class="swiper-wrapper" id="swiper-wrapper-fac3d4d32a28dfbd" aria-live="polite">
+                @foreach ($categories as $category)
+                    <a href="{{ route('category', $category->id) }}" class="bounce-in-fwd">
+                        <img src="{{ $category->image }}" class="category-image" />
+                        <h3 class="category-title">{{ $category->name }}</h3>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+
+    </section>
+
+
+    {{-- <section style="color: #232323;">
         <div class="container my-5">
             <section id="steps">
                 <div class="text-center mb-5">
@@ -288,30 +367,11 @@
                 </div>
             </section>
         </div>
-    </section>
+    </section> --}}
 
 
 
-    <section class="cat-sec">
 
-        <div class="col-md-12">
-            <div class="section-header d-flex justify-content-between mb-5">
-                <h2 class="section-title">Our Categories</h2>
-            </div>
-        </div>
-
-        <div class="category-carousel swiper swiper-initialized swiper-horizontal">
-            <div class="swiper-wrapper" id="swiper-wrapper-fac3d4d32a28dfbd" aria-live="polite">
-                @foreach ($categories as $category)
-                    <a href="{{ route('category', $category->id) }}" class="bounce-in-fwd">
-                        <img src="{{ $category->image }}" class="category-image" />
-                        <h3 class="category-title">{{ $category->name }}</h3>
-                    </a>
-                @endforeach
-            </div>
-        </div>
-
-    </section>
 
 
     <div class="our-plans">
@@ -330,125 +390,336 @@
     </div>
 
 
-
-
-
-
-
+    <h2 class="section-title">Feedback</h2>
     <section id="testimonials">
-        <!--heading--->
-        <div class="testimonial-heading">
-            <h2 class="section-title">Feedback</h2>
-        </div>
-        <!--testimonials-box-container------>
         <div class="testimonial-box-container">
-            <!--BOX-1-------------->
-            <div class="testimonial-box">
-                <!--top------------------------->
-                <div class="box-top">
-                    <!--profile----->
-                    <div class="profile">
-                        <!--img---->
-                        <div class="profile-img">
-                            <img src="../image/persons/ian-dooley-d1UPkiFd04A-unsplash.jpg" />
+            <svg class="btn2 btn--prev" height="96" viewBox="0 0 24 24" width="96"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
+                <path d="M0-.5h24v24H0z" fill="none" />
+            </svg>
+            <div class="slider">
+                <div class="testimonials">
+                    <!-- Testimonial boxes go here -->
+                    <!--BOX-1-------------->
+                    <div class="testimonial-box">
+                        <!--top------------------------->
+                        <div class="box-top">
+                            <!--profile----->
+                            <div class="profile">
+                                <!--img---->
+                                <div class="profile-img">
+                                    <img src="../image/persons/ian-dooley-d1UPkiFd04A-unsplash.jpg" />
+                                </div>
+                                <!--name-and-username-->
+                                <div class="name-user">
+                                    <strong>Liam mendes</strong>
+                                    <span>@liammendes</span>
+                                </div>
+                            </div>
+                            <!--reviews------>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i><!--Empty star-->
+                            </div>
                         </div>
-                        <!--name-and-username-->
-                        <div class="name-user">
-                            <strong>Liam mendes</strong>
-                            <span>@liammendes</span>
+                        <!--Comments---------------------------------------->
+                        <div class="client-comment">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Exercitationem, quaerat quis? Provident temporibus architecto
+                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
+                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                            </p>
                         </div>
                     </div>
-                    <!--reviews------>
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i><!--Empty star-->
+                    <!--BOX-2-------------->
+                    <div class="testimonial-box">
+                        <!--top------------------------->
+                        <div class="box-top">
+                            <!--profile----->
+                            <div class="profile">
+                                <!--img---->
+                                <div class="profile-img">
+                                    <img src="../image/persons/rachel-mcdermott-0fN7Fxv1eWA-unsplash.jpg" />
+                                </div>
+                                <!--name-and-username-->
+                                <div class="name-user">
+                                    <strong>Noah Wood</strong>
+                                    <span>@noahwood</span>
+                                </div>
+                            </div>
+                            <!--reviews------>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><!--Empty star-->
+                            </div>
+                        </div>
+                        <!--Comments---------------------------------------->
+                        <div class="client-comment">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Exercitationem, quaerat quis? Provident temporibus architecto
+                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
+                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <!--Comments---------------------------------------->
-                <div class="client-comment">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Exercitationem, quaerat quis? Provident temporibus architecto
-                        asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                        tenetur voluptates incidunt blanditiis sed atque cumque.
-                    </p>
+                    <!--BOX-3-------------->
+                    <div class="testimonial-box">
+                        <!--top------------------------->
+                        <div class="box-top">
+                            <!--profile----->
+                            <div class="profile">
+                                <!--img---->
+                                <div class="profile-img">
+                                    <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
+                                </div>
+                                <!--name-and-username-->
+                                <div class="name-user">
+                                    <strong>Oliver Queen</strong>
+                                    <span>@oliverqueen</span>
+                                </div>
+                            </div>
+                            <!--reviews------>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i><!--Empty star-->
+                            </div>
+                        </div>
+                        <!--Comments---------------------------------------->
+                        <div class="client-comment">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Exercitationem, quaerat quis? Provident temporibus architecto
+                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
+                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                            </p>
+                        </div>
+                    </div>
+                    <!--BOX-3-------------->
+                    <div class="testimonial-box">
+                        <!--top------------------------->
+                        <div class="box-top">
+                            <!--profile----->
+                            <div class="profile">
+                                <!--img---->
+                                <div class="profile-img">
+                                    <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
+                                </div>
+                                <!--name-and-username-->
+                                <div class="name-user">
+                                    <strong>Oliver Queen</strong>
+                                    <span>@oliverqueen</span>
+                                </div>
+                            </div>
+                            <!--reviews------>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i><!--Empty star-->
+                            </div>
+                        </div>
+                        <!--Comments---------------------------------------->
+                        <div class="client-comment">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Exercitationem, quaerat quis? Provident temporibus architecto
+                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
+                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                            </p>
+                        </div>
+                    </div>
+                    <!--BOX-3-------------->
+                    <div class="testimonial-box">
+                        <!--top------------------------->
+                        <div class="box-top">
+                            <!--profile----->
+                            <div class="profile">
+                                <!--img---->
+                                <div class="profile-img">
+                                    <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
+                                </div>
+                                <!--name-and-username-->
+                                <div class="name-user">
+                                    <strong>Oliver Queen</strong>
+                                    <span>@oliverqueen</span>
+                                </div>
+                            </div>
+                            <!--reviews------>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i><!--Empty star-->
+                            </div>
+                        </div>
+                        <!--Comments---------------------------------------->
+                        <div class="client-comment">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Exercitationem, quaerat quis? Provident temporibus architecto
+                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
+                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Repeat for other testimonial boxes -->
                 </div>
             </div>
-            <!--BOX-2-------------->
-            <div class="testimonial-box">
-                <!--top------------------------->
-                <div class="box-top">
-                    <!--profile----->
-                    <div class="profile">
-                        <!--img---->
-                        <div class="profile-img">
-                            <img src="../image/persons/rachel-mcdermott-0fN7Fxv1eWA-unsplash.jpg" />
-                        </div>
-                        <!--name-and-username-->
-                        <div class="name-user">
-                            <strong>Noah Wood</strong>
-                            <span>@noahwood</span>
-                        </div>
-                    </div>
-                    <!--reviews------>
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i><!--Empty star-->
-                    </div>
-                </div>
-                <!--Comments---------------------------------------->
-                <div class="client-comment">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Exercitationem, quaerat quis? Provident temporibus architecto
-                        asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                        tenetur voluptates incidunt blanditiis sed atque cumque.
-                    </p>
-                </div>
-            </div>
-            <!--BOX-3-------------->
-            <div class="testimonial-box">
-                <!--top------------------------->
-                <div class="box-top">
-                    <!--profile----->
-                    <div class="profile">
-                        <!--img---->
-                        <div class="profile-img">
-                            <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
-                        </div>
-                        <!--name-and-username-->
-                        <div class="name-user">
-                            <strong>Oliver Queen</strong>
-                            <span>@oliverqueen</span>
-                        </div>
-                    </div>
-                    <!--reviews------>
-                    <div class="reviews">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i><!--Empty star-->
-                    </div>
-                </div>
-                <!--Comments---------------------------------------->
-                <div class="client-comment">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Exercitationem, quaerat quis? Provident temporibus architecto
-                        asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                        tenetur voluptates incidunt blanditiis sed atque cumque.
-                    </p>
-                </div>
-            </div>
+            <svg class="btn2 btn--next" height="96" viewBox="0 0 24 24" width="96"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
+                <path d="M0-.25h24v24H0z" fill="none" />
+            </svg>
         </div>
     </section>
+
+
+
+
+
+    {{-- <h2 class="section-title">Feedback</h2>
+    <section id="testimonials">
+        <!--heading--->
+        <!--testimonials-box-container------>
+        <div class="testimonial-box-container">
+            <svg class="btn2 btn--prev" height="96" viewBox="0 0 24 24" width="96"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
+                <path d="M0-.5h24v24H0z" fill="none" />
+            </svg>
+
+            <div id="slider">
+                <div class="testimonials">
+                    <!--BOX-1-------------->
+                    <div class="testimonial-box">
+                        <!--top------------------------->
+                        <div class="box-top">
+                            <!--profile----->
+                            <div class="profile">
+                                <!--img---->
+                                <div class="profile-img">
+                                    <img src="../image/persons/ian-dooley-d1UPkiFd04A-unsplash.jpg" />
+                                </div>
+                                <!--name-and-username-->
+                                <div class="name-user">
+                                    <strong>Liam mendes</strong>
+                                    <span>@liammendes</span>
+                                </div>
+                            </div>
+                            <!--reviews------>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i><!--Empty star-->
+                            </div>
+                        </div>
+                        <!--Comments---------------------------------------->
+                        <div class="client-comment">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Exercitationem, quaerat quis? Provident temporibus architecto
+                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
+                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                            </p>
+                        </div>
+                    </div>
+                    <!--BOX-2-------------->
+                    <div class="testimonial-box">
+                        <!--top------------------------->
+                        <div class="box-top">
+                            <!--profile----->
+                            <div class="profile">
+                                <!--img---->
+                                <div class="profile-img">
+                                    <img src="../image/persons/rachel-mcdermott-0fN7Fxv1eWA-unsplash.jpg" />
+                                </div>
+                                <!--name-and-username-->
+                                <div class="name-user">
+                                    <strong>Noah Wood</strong>
+                                    <span>@noahwood</span>
+                                </div>
+                            </div>
+                            <!--reviews------>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><!--Empty star-->
+                            </div>
+                        </div>
+                        <!--Comments---------------------------------------->
+                        <div class="client-comment">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Exercitationem, quaerat quis? Provident temporibus architecto
+                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
+                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                            </p>
+                        </div>
+                    </div>
+                    <!--BOX-3-------------->
+                    <div class="testimonial-box">
+                        <!--top------------------------->
+                        <div class="box-top">
+                            <!--profile----->
+                            <div class="profile">
+                                <!--img---->
+                                <div class="profile-img">
+                                    <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
+                                </div>
+                                <!--name-and-username-->
+                                <div class="name-user">
+                                    <strong>Oliver Queen</strong>
+                                    <span>@oliverqueen</span>
+                                </div>
+                            </div>
+                            <!--reviews------>
+                            <div class="reviews">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i><!--Empty star-->
+                            </div>
+                        </div>
+                        <!--Comments---------------------------------------->
+                        <div class="client-comment">
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Exercitationem, quaerat quis? Provident temporibus architecto
+                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
+                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <svg class="btn2 btn--next" height="96" viewBox="0 0 24 24" width="96"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
+                <path d="M0-.25h24v24H0z" fill="none" />
+            </svg>
+        </div>
+    </section> --}}
+
     <section style="margin: 50px;">
         <div class="section-header">
             <h2 class="section-title suppliers-title">Suppliers</h2>
@@ -464,4 +735,9 @@
             <!-- <img src="/image/Suppliers/المراعي-removebg-preview (1).png" alt="maraee" class="supp-image"> -->
         </div>
     </section>
+
+
+
+
+
 @endsection

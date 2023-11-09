@@ -4,31 +4,37 @@
 .footer-logo {
     width: 300px !important;
     height: 70px;
-    margin-top: 100px;
+    margin-top: 50px;
   }
   .py-5 {
-    background-color: #365d5a;
-    color: #d6cda4;
+    background-color: #5FA800;
+    color: #fff;
     padding-top: 50px !important;
     padding-left: 50px !important;
     padding-bottom: 0px !important;
   }
   .delivery-gay {
-    width: 300px;
-    height: 400px;
+    width: 250px;
+    height: 250px;
   }
-  .col-md-2 {
+  /* .col-md-2 {
     padding-top: 50px;
-  }
+  } */
   .footer-menu h3 {
     font-size: 30px !important;
     font-weight: bold;
+    line-height: 1.5; /* You can adjust the value to increase or decrease the line spacing */
+
   }
   .d-flex svg {
-    color: #d6cda4;
+    color: #fff;
   }
 
-  
+  .nav-link{
+    line-height: 2; /* You can adjust the value to increase or decrease the line spacing */
+
+  }
+
   /***********************************************Mobile*****************************************************/
 @media screen and (max-width: 480px) {
     .py-5 {
@@ -41,7 +47,7 @@
     .delivery-gay {
       display: none;
     }
-    
+
     .footer-logo {
       width: 250px !important;
     }
@@ -52,9 +58,9 @@
       font-size: 30px;
     }
   }
-  
+
   /***********************************************Tablet*****************************************************/
-  
+
   @media screen and (min-width: 481px) and (max-width: 768px) {
     .py-5 {
       background-color: #365d5a;
@@ -66,7 +72,7 @@
     .delivery-gay {
       display: none;
     }
-   
+
     .footer-logo {
       width: 250px !important;
     }
@@ -80,10 +86,9 @@
     h2 {
       font-size: 40px;
     }
- 
-  
- 
+
+
+
   }
 
- 
-  
+
