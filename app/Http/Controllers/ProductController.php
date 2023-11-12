@@ -137,6 +137,9 @@ class ProductController extends Controller
 
             return redirect()->route('product', ['id' => $id])->with('success', 'Product added to the cart.');
         } else {
+
+            $cart = session()->get('cart', []);
+
             $cart[$id] = [
                 'product_id' => $id,
                 'unit_price' => $product->main_price,
@@ -144,20 +147,18 @@ class ProductController extends Controller
             ];
 
             session()->put('cart', $cart);
-            return redirect()->route('product', ['id' => $id]);
+            return redirect()->route('product', ['id' => $id])->with('success', 'Product added to the cart.');
 
+
+            // $cart = new Cart();
+            // $cart->product_id = $id;
+            // $cart->unit_price = $product->main_price;
+            // $cart->Qty = $request->input('Qty');
+
+            // $cart->save();
+
+            // return redirect()->route('product', ['id' => $id])->with('success', 'Product added to the cart.');
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 
 

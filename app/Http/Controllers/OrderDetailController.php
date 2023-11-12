@@ -57,17 +57,17 @@ class OrderDetailController extends Controller
      * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
 
-        $plan = Plan::where('id', $id)->first();
+        $plan = Plan::first();
 
         $plans = Plan::all();
         $periods = Period::all();
         if (auth()->check()) {
 
             $user = auth()->user();
-            return view('pages.checkout-1', compact('id', 'plans', 'periods','plan'));
+            return view('pages.checkout-1', compact('plans', 'periods','plan'));
         } else {
             return view('auth.login');
         }
@@ -80,10 +80,10 @@ class OrderDetailController extends Controller
      * @param  \App\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $userId, $planId)
+    public function edit(Request $request, $planId)
 {
     // Retrieve the authenticated user based on the provided user ID
-    $user = User::find($userId);
+    // $user = User::find($userId);
 
     // Retrieve the selected plan ID from the form data using the correct name
     $selectedPlanID = $request->input('selectedPlanID');
@@ -102,7 +102,7 @@ class OrderDetailController extends Controller
 
     // Rest of your code
 
-    return view('pages.checkoutsub', compact('userId', 'plan', 'periods', 'selectedPlanID','plans'));
+    return view('pages.checkoutsub', compact('plan', 'periods', 'selectedPlanID','plans'));
 }
 
 

@@ -50,21 +50,26 @@
         </ul>
         <div>
             @if (auth()->check())
-                <a href="{{ route('list', ['id' => auth()->user()->id]) }}">
+                <a href="{{ route('list') }}">
                     <span class="material-symbols-outlined icon">shopping_cart</span>
                 </a>
             @else
-                <a href="{{ url('list') }}">
+                <a href="{{ route('list') }}">
                     <span class="material-symbols-outlined icon">shopping_cart</span>
                 </a>
             @endif
 
         </div>
         <div>
-            <a href="./profile.php">
-                <span class="material-symbols-outlined icon">account_circle</span>
-            </a>
+            @if (auth()->check())
+                <a href="{{ route('myprofile', ['userId' => auth()->user()->id]) }}">
+                    <span class="material-symbols-outlined icon">account_circle</span>
+                </a>
+            @endif
         </div>
+
+
+
         @if (auth()->check())
             <button class="signin"><a href="{{ route('logout') }}">Logout</a></button>
         @else

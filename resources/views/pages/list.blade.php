@@ -36,6 +36,7 @@
             </div>
         </div>
     </section>
+
     <section>
 
         <!-- Shoping Cart Section Begin -->
@@ -57,16 +58,164 @@
                                     @php
                                         $totalSubtotal = 0;
                                     @endphp
+
+                                    {{-- if user logged in --}}
+                                    @if (auth()->user())
+                                        @foreach ($categories as $category)
+                                            @php
+                                                $totalQuantity = 0; // Initialize the total quantity for this category
+                                                $totalPrice = 0; // Initialize the total quantity for this category
+                                            @endphp
+                                            @foreach ($cart as $cartItem)
+                                                @if ($category->id == $cartItem->product->category_id)
+                                                    @php
+                                                        $totalQuantity += $cartItem->Qty;
+                                                        $totalPrice += $cartItem->unit_price * $cartItem->Qty;
+                                                    @endphp
+                                                @endif
+                                            @endforeach
+                                            @php
+                                                $totalSubtotal += $totalPrice; // Accumulate the subtotal for all categories
+                                            @endphp
+                                            <tr class="category-row">
+                                                <td class="shoping__cart__item">
+                                                    <img src="{{ asset($category->image) }}" style="width: 10%;"
+                                                        alt="">
+                                                    <h5>{{ $category->name }}</h5>
+                                                </td>
+                                                @if (count($category->products) > 0)
+                                                    <td class="shoping__cart__quantity">
+                                                        <div class="quantity">
+                                                            <div class="pro-qty">
+                                                                <input type="text" value="{{ $totalQuantity }}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    {{-- {{ var_dump($cart) }} --}}
+                                                    <td class="shoping__cart__total">
+                                                        {{ $totalPrice }}
+                                                    </td>
+                                                @else
+                                                    <td class="shoping__cart__quantity">
+                                                        <div class="quantity">
+                                                            <div class="pro-qty">
+                                                                <input type="text" value="{{ $totalQuantity }}">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="shoping__cart__total">
+                                                        {{ $totalPrice }}
+                                                    </td>
+                                                @endif
+
+                                                <td class="shoping__cart__item__close">
+                                                    <span class="category-toggle">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="16" fill="currentColor"
+                                                            class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                                        </svg>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr class="product-details">
+                                                <td>
+                                                    @if (count($category->products) > 0)
+                                                        <table>
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="shoping__product">Products</th>
+                                                                    <th>Price</th>
+                                                                    <th>Quantity</th>
+                                                                    <th>Total</th>
+                                                                    <th class="shoping__cart__item__close" id="action">
+                                                                        Action
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($cart as $cartItem)
+                                                                    @if ($category->id == $cartItem->product->category_id)
+                                                                        <tr>
+                                                                            <td class="shoping__cart__item">
+                                                                                @if ($cartItem->product)
+                                                                                    <img src="{{ asset($cartItem->product->main_image) }}"
+                                                                                        style="width: 20%;" alt="">
+                                                                                    <h5>{{ $cartItem->product->name }}</h5>
+                                                                                    </h5>
+                                                                                @endif
+                                                                            </td>
+                                                                            <td class="shoping__cart__price">
+                                                                                {{ $cartItem->unit_price }}
+                                                                            </td>
+                                                                            <td class="shoping__cart__quantity">
+                                                                                <div class="quantity">
+                                                                                    <div class="pro-qty">
+                                                                                        <input type="text"
+                                                                                            value="{{ $cartItem->Qty }}">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="shoping__cart__total">
+                                                                                ${{ $cartItem->unit_price * $cartItem->Qty }}
+                                                                            </td>
+                                                                            <td class="shoping__cart__item__close">
+                                                                                <span class="icon-container">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                        width="16" height="16"
+                                                                                        fill="currentColor"
+                                                                                        class="bi bi-trash"
+                                                                                        viewBox="0 0 16 16">
+                                                                                        <path
+                                                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z">
+                                                                                        </path>
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endif
+                                                                @endforeach
+                                                                @php
+                                                                    session(['totalPrice' => $totalSubtotal]);
+                                                                @endphp
+                                                            </tbody>
+                                                        </table>
+                                                    @else
+                                                <td style="width: 100%;">
+                                                    <h5>There is no product here</h5>
+                                                    <span class="icon-container">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="16" fill="currentColor"
+                                                            class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z" />
+                                                        </svg>
+                                                    </span>
+                                                    <label class="label">
+                                                        <span>Add</span>
+                                                    </label>
+                                                </td>
+                                        @endif
+                                        </td>
+                                        </tr>
+                                    @endforeach
+
+                                    {{-- if user not logged in --}}
+                                @else
                                     @foreach ($categories as $category)
                                         @php
                                             $totalQuantity = 0; // Initialize the total quantity for this category
                                             $totalPrice = 0; // Initialize the total quantity for this category
                                         @endphp
-                                        @foreach ($cart as $cartItem)
-                                            @if ($category->id == $cartItem->product->category_id)
+                                        @foreach (session('cart') as $id => $cartItem)
+                                            @php
+                                                $product = \App\Models\Product::find($cartItem['product_id']);
+                                            @endphp
+                                            @if ($product && $category->id == $product->category_id)
                                                 @php
-                                                    $totalQuantity += $cartItem->Qty;
-                                                    $totalPrice += $cartItem->unit_price * $cartItem->Qty;
+                                                    $totalQuantity += $cartItem['Qty'];
+                                                    $totalPrice += $cartItem['unit_price'] * $cartItem['Qty'];
                                                 @endphp
                                             @endif
                                         @endforeach
@@ -75,7 +224,8 @@
                                         @endphp
                                         <tr class="category-row">
                                             <td class="shoping__cart__item">
-                                                <img src="{{ asset($category->image) }}" style="width: 10%;" alt="">
+                                                <img src="{{ asset($category->image) }}" style="width: 10%;"
+                                                    alt="">
                                                 <h5>{{ $category->name }}</h5>
                                             </td>
                                             @if (count($category->products) > 0)
@@ -102,7 +252,6 @@
                                                     {{ $totalPrice }}
                                                 </td>
                                             @endif
-
                                             <td class="shoping__cart__item__close">
                                                 <span class="category-toggle">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -114,9 +263,10 @@
                                                 </span>
                                             </td>
                                         </tr>
+
                                         <tr class="product-details">
                                             <td>
-                                                @if (count($category->products) > 0)
+                                                @if (session('cart'))
                                                     <table>
                                                         <thead>
                                                             <tr>
@@ -124,41 +274,44 @@
                                                                 <th>Price</th>
                                                                 <th>Quantity</th>
                                                                 <th>Total</th>
-                                                                <th class="shoping__cart__item__close" id="action">Action
+                                                                <th class="shoping__cart__item__close" id="action">
+                                                                    Action
                                                                 </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach ($cart as $cartItem)
-                                                                @if ($category->id == $cartItem->product->category_id)
+                                                            @foreach (session('cart') as $id => $cartItem)
+                                                                @php
+                                                                    $product = \App\Models\Product::find($cartItem['product_id']);
+                                                                @endphp
+                                                                @if ($product && $category->id == $product->category_id)
                                                                     <tr>
                                                                         <td class="shoping__cart__item">
-                                                                            @if ($cartItem->product)
-                                                                                <img src="{{ asset($cartItem->product->main_image) }}"
-                                                                                    style="width: 20%;" alt="">
-                                                                                <h5>{{ $cartItem->product->name }}</h5>
-                                                                                </h5>
-                                                                            @endif
+                                                                            <img src="{{ asset($product->main_image) }}"
+                                                                                style="width: 20%;" alt="">
+                                                                            <h5>{{ $product->name }}</h5>
+                                                                            </h5>
                                                                         </td>
                                                                         <td class="shoping__cart__price">
-                                                                            {{ $cartItem->unit_price }}
+                                                                            {{ $cartItem['unit_price'] }}
                                                                         </td>
                                                                         <td class="shoping__cart__quantity">
                                                                             <div class="quantity">
                                                                                 <div class="pro-qty">
                                                                                     <input type="text"
-                                                                                        value="{{ $cartItem->Qty }}">
+                                                                                        value="{{ $cartItem['Qty'] }}">
                                                                                 </div>
                                                                             </div>
                                                                         </td>
                                                                         <td class="shoping__cart__total">
-                                                                            ${{ $cartItem->unit_price * $cartItem->Qty }}
+                                                                            ${{ $cartItem['unit_price'] * $cartItem['Qty'] }}
                                                                         </td>
                                                                         <td class="shoping__cart__item__close">
                                                                             <span class="icon-container">
                                                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                                                     width="16" height="16"
-                                                                                    fill="currentColor" class="bi bi-trash"
+                                                                                    fill="currentColor"
+                                                                                    class="bi bi-trash"
                                                                                     viewBox="0 0 16 16">
                                                                                     <path
                                                                                         d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z">
@@ -193,7 +346,7 @@
                                     </td>
                                     </tr>
                                     @endforeach
-
+                                    @endif
 
                                 </tbody>
                             </table>
@@ -207,7 +360,7 @@
                         <div class="shoping__cart__btns">
                             <a href="./product-page.php" class="primary-btn cart-btn button">CONTINUE SHOPPING</a>
                             <!-- <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                                                                                                Upadate Cart</a> -->
+                                                                                                                    Upadate Cart</a> -->
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -227,11 +380,12 @@
                             <ul>
                                 <li>Subtotal <span>${{ $totalSubtotal }} </span></li>
                                 <li>Total <span>${{ $totalSubtotal }}</span></li>
-
-
                             </ul>
-                            <a href="{{ route('checkout1', ['id' => auth()->user()->id]) }}"
-                                class="primary-btn button">PROCEED TO CHECKOUT</a>
+                            @if (auth()->user())
+                                <a href="{{ route('checkout1') }}" class="primary-btn button">PROCEED TO CHECKOUT</a>
+                            @else
+                                <a href="{{ route('login') }}" class="primary-btn button">Login to Checkout</a>
+                            @endif
                         </div>
                     </div>
                 </div>

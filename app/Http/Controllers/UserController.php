@@ -1,20 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $users=User::get();
+        $users = User::get();
         return view('dashboard.users.index', compact('users'));
     }
 
@@ -57,7 +58,7 @@ class UserController extends Controller
         $users->phone = $request->input('mobile');
         $users->address = $request->input('address');
         $users->role = $request->input('role');
-        $users->password = Hash::make ($request->input('password'));
+        $users->password = Hash::make($request->input('password'));
 
         $users->save();
 
@@ -70,10 +71,21 @@ class UserController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
-    {
-        //
+    public function show($userId)
+{
+    // Retrieve the user based on the provided $userId
+    $user = User::find($userId);
+
+    // Check if the user is found
+    if (!$user) {
+        // Handle the case where the user is not found, for example, redirect to an error page.
+        return redirect()->route('error.page');
     }
+
+    return view('pages.profile', compact('user'));
+}
+
+
 
     /**
      * Show the form for editing the specified resource.

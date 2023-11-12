@@ -47,27 +47,30 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
 {
     $user = auth()->user();
 
-    if ($user && $user->id == $id) {
+    if ($user) {
         $categories = Category::all();
         $products = Product::all();
-        $cart = Cart::where('user_id', '=', $id)->get();
-        // $cart = $user->carts;
+        $cart = Cart::where('user_id', '=', $user->id)->get();
     } else {
-        // Handle the case when the user is not authenticated or when the provided $id is not valid
-        return redirect()->route('home')->with('error', 'Access denied');
+        $categories = Category::all();
+        $products = Product::all();
+        $cart = Cart::all();
+
+        // Handle the case when the user is not authenticated
+        return view('pages.list', compact('cart', 'categories', 'products'));
     }
 
     if ($cart === null) {
         $cart = []; // Set cart to an empty array if it's null
     }
-    // dd($categories, $cart);
 
-    return view('pages.list', compact('cart', 'categories', 'products', 'id'));
+    return view('pages.list', compact('cart', 'categories', 'products'));
 }
+
 
 
     /**

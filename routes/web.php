@@ -29,14 +29,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'show'])->name('home');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/myprofile/{userId}', [UserController::class, 'show'])->name('myprofile');
 Route::get('/test', [HomeController::class, 'index'])->name('test');
 Route::get('/category/{id}', [ProductController::class, 'show'])->name('category');
 Route::get('/product/{id}', [ProductController::class, 'showsingle'])->name('product');
-Route::get('/list/{id}', [CartController::class, 'show'])->name('list');
+Route::get('/list', [CartController::class, 'show'])->name('list');
 Route::post('/addToCart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
-Route::get('/checkout/{id}', [OrderDetailController::class, 'show'])->name('checkout1');
+Route::get('/checkout', [OrderDetailController::class, 'show'])->name('checkout1');
 Route::post('/checkout2/{id}', [OrderDetailController::class, 'update'])->name('checkout2');
-Route::post('/checkoutsub/{userId}/{planId}', [OrderDetailController::class, 'edit'])->name('checkoutsub');
+Route::post('/checkoutsub/{planId}', [OrderDetailController::class, 'edit'])->name('checkoutsub');
 Route::post('/checkout3/{userId}/{periodId?}', [PeriodController::class, 'show'])->name('checkout3');
 Route::post('/checkout4/{userId}', [OrderController::class, 'show'])->name('checkout4');
 

@@ -1,286 +1,525 @@
 * {
     padding: 0px;
     margin: 0px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Open Sans', sans-serif;
   }
-  
-  
 
-  /****************************************/
-  h2{
-    color: #365d5a;
-    font-weight: bolder;
-    margin-left: 100px;
+  @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+  @font-face {
+    font-family:"Font Awesome 5 Free";
+    font-style:normal;
+    font-weight:400;
+    font-display:auto;
+    src:url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-regular-400.eot);
+    src:url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-regular-400d41d.eot?#iefix) format("embedded-opentype"),url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-regular-400.woff2) format("woff2"),url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-regular-400.woff) format("woff"),url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-regular-400.ttf) format("truetype"),url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-regular-400.svg#fontawesome) format("svg");
   }
-  .profile-card {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    text-align: center;
-}
-
-.profile-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-top: 50px;
-}
-.profile-header button{
-    border: 1px solid #365d5a;
-    background-color: #f1895e;
-    padding: 10px;
-    border-radius: 5px;
-    height: 47px;
-    width: 100px;
-    color: white;
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-.profile-picture {
-    width: 300px;
-    height: 300px !important;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.user-name {
-    margin: 10px 0;
-    color: #333;
-}
-
-.profile-details {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.user-email,
-.user-address {
-    margin: 5px 0;
-    color: #666;
-}
-
-.edit-profile {
-    display: inline-block;
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.edit-profile:hover {
-    background-color: #0056b3;
-}
-.profile-container {
-    display: flex;
-    /* justify-content: space-between; */
-    gap: 100px;
-    max-width: 1200px;
-    margin: 50px 50px;
-}
-
-.settings-sidebar {
-    /* flex: 1; */
-    background-color: rgba(154,174,172, 0.3);
-    padding: 20px;
-}
-
-.settings-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0px;
-}
-
-.settings-list li {
-    margin-bottom: 50px;
-    font-size: 20px;
-}
-.settings-list li.active{
-    font-weight: bold;
-}
-.settings-list a {
-    color: #365d5a;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.settings-list a:hover {
-    color: #f1895e;
-}
-
-.profile-card {
-    flex: 2;
-    /* ... (existing styles) */
-}
-.profile-picture-container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
-
-.profile-picture {
-    max-width: 100%;
-    height: auto;
-}
-
-
-
-.signup-container {
-    display: flex;
-    gap: 100px;
-    align-items: center;
-    justify-content: center;
-    color: #365d5a;
-    background-color: rgb(154,174,172, 0.1);
-    border-radius: 50px;
-    margin: 20px 200px;
-    padding: 10px;
-    box-shadow: 2px 2px 10px 10px rgb(154,174,172, 01) ;
+  @font-face {
+    font-family:"Font Awesome 5 Free";
+    font-style:normal;
+    font-weight:900;
+    font-display:auto;
+    src:url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-solid-900.eot);
+    src:url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-solid-900d41d.eot?#iefix) format("embedded-opentype"),url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-solid-900.woff2) format("woff2"),url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-solid-900.woff) format("woff"),url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-solid-900.ttf) format("truetype"),url(https://andit.co/projects/html/and-tour/demo/assets/webfonts/fa-solid-900.svg#fontawesome) format("svg");
   }
-  .signup-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 70px;
-  }
-  .name,
-  .email,
-  .pass,
-  .re-pass,
-  .phone {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    gap: 5px;
-    margin-bottom: 10px;
-    width: 300px;
-  }
-  .name input, .email input, .pass input, .re-pass input, .phone input {
-    height: 40px;
-    border: #365d5a solid 1px;
-    border-radius: 10px;
-  }
-  .save {
-    border: 1px solid #365d5a;
-    background-color: #f1895e;
-    padding: 10px;
-    border-radius: 5px;
-    height: 47px;
-    width: 200px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-left: 60px;
-    margin-top: 30px;
-  }
-/***********************************************Responsive*****************************************************/
-
-/***********************************************Mobile*****************************************************/
-
-@media screen and (max-width: 480px) {
-    .img-fluid {
-      margin-left: 0px;
-    }
-    .icon {
-      transform: scale(1);
-      color: #365d5a;
-      margin-right: 10px;
-    }
-    .py-5 {
-      background-color: #365d5a;
-      color: #d6cda4;
-      padding-top: 50px !important;
-      padding-left: 10px !important;
-      padding-bottom: 0px !important;
-    }
-    .delivery-gay {
-      display: none;
-    }
-    h2 {
-      margin-left: 10px;
-      padding-top: 30px;
-      color: #365d5a;
-      font-weight: bolder;
-      font-size: 30px;
-    }
-    .title {
-      display: none;
-      margin-left: 10px;
-    }
-  
-    .footer-logo {
-      width: 250px !important;
-    }
-    h3 {
-      font-size: 15px;
-    }
-    .profile-container {
-        display: flex;
-        flex-direction: column;
-        /* justify-content: space-between; */
-        gap: 100px;
-        max-width: 1200px;
-        margin: 50px 5px;
-    }
-}
-
-/***********************************************Tablet*****************************************************/
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-    .img-fluid {
-      width: 300px;
-      margin-left: 0px;
-    }
-    .icon {
-      transform: scale(1);
-      color: #365d5a;
-      margin-right: 10px;
-    }
     body {
-      padding: 0px;
-      margin: 0px;
+      font-family:var(--bs-font-sans-serif);
+      font-size:1rem;
+      font-weight:400;
+      line-height:1.5;
+      color:#212529;
     }
-    .py-5 {
-      background-color: #365d5a;
-      color: #d6cda4;
-      padding-top: 50px !important;
-      padding-left: 10px !important;
-      padding-bottom: 0px !important;
+  body {
+  /* CSS Variables that may have been missed get put on body */
+      --bs-gutter-x:  1.5rem;
+      --bs-gutter-y:  0;
+  }
+
+  * {
+      box-sizing: border-box;
+  }
+
+  body {
+      margin: 0;
+      font-family: var(--bs-font-sans-serif);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      background-color: #fff;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+      height: 100%;
+  }
+
+  body {
+      padding: 0;
+      margin: 0;
+      font-size: 16px;
+      font-family: 'Roboto', sans-serif;
+  }
+
+  html {
+      height: 100%;
+  }
+
+  :root {
+      --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    :root {
+      scroll-behavior: smooth;
     }
-    .delivery-gay {
-      display: none;
+  }
+
+  :root {
+      --main-color: #5FA800;
+      --black-color: #2B2540;
+      --paragraph-color: #818090;
+  }
+
+  section {
+      position: relative;
+  }
+
+  .section-3ng {
+      padding: 100px 0;
+  }
+
+  *,:after,:before {
+      box-sizing: border-box;
+  }
+
+  .container-7hc {
+      width: 100%;
+      padding-right: var(--bs-gutter-x,.75rem);
+      padding-left: var(--bs-gutter-x,.75rem);
+      margin-right: auto;
+      margin-left: auto;
+  }
+
+  @media (min-width: 576px){
+    .container-7hc {
+      max-width: 540px;
     }
-  
-    .footer-logo {
-      width: 250px !important;
+  }
+
+  @media (min-width: 768px){
+    .container-7hc {
+      max-width: 720px;
     }
-  
-    .footer-menu h3 {
-      font-size: 25px !important;
-      font-weight: bold;
+  }
+
+  @media (min-width: 992px){
+    .container-7hc {
+      max-width: 960px;
     }
-  
-    .title {
-      display: none;
-      margin-left: 10px;
+  }
+
+  @media (min-width: 1200px){
+    .container-7hc {
+      max-width: 1140px;
     }
-    .profile-container {
-        display: flex;
-        flex-direction: column;
-        /* justify-content: space-between; */
-        gap: 100px;
-        max-width: 1200px;
-        margin: 50px 20px;
+  }
+
+  @media (min-width: 1400px){
+    .container-7hc {
+      max-width: 1320px;
     }
-}
+
+    .container-7hc {
+      max-width: 1440px;
+    }
+  }
+
+  .row-v2a {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: calc(var(--bs-gutter-y) * -1);
+      margin-right: calc(var(--bs-gutter-x) * -.5);
+      margin-left: calc(var(--bs-gutter-x) * -.5);
+  }
+
+  .row-v2a > *  {
+      flex-shrink: 0;
+      width: 100%;
+      max-width: 100%;
+      padding-right: calc(var(--bs-gutter-x) * .5);
+      padding-left: calc(var(--bs-gutter-x) * .5);
+      margin-top: var(--bs-gutter-y);
+  }
+
+  @media (min-width: 992px){
+    .col-ox5 {
+      flex: 0 0 auto;
+      width: 33.33333333%;
+    }
+
+    .col-xd8 {
+      flex: 0 0 auto;
+      width: 66.66666667%;
+    }
+  }
+
+  .sidebar-ooy {
+      background: #FFFFFF;
+      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+  }
+
+  .table-ckw {
+      background: #f5f9ef;
+      border-radius: 12px;
+      padding: 25px 30px;
+  }
+
+  .sidebar-aba {
+      text-align: center;
+      padding: 30px 20px;
+      background: #f5f9ef;
+  }
+
+  .menu-oi8 {
+      padding: 40px 20px;
+  }
+
+  h3 {
+      margin-top: 0;
+      margin-bottom: .5rem;
+      font-weight: 500;
+      line-height: 1.2;
+  }
+
+  h3 {
+      font-size: calc(1.3rem + .6vw);
+  }
+
+  @media (min-width: 1200px){
+    h3 {
+      font-size: 1.75rem;
+    }
+  }
+
+  h3 {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+  }
+
+  h3 {
+      font-size: 24px;
+      font-weight: 300;
+  }
+
+  .table-ckw h3  {
+      font-weight: 500;
+      border-bottom: 1px solid #d5d5d5;
+      padding-bottom: 11px;
+      position: relative;
+  }
+
+  .table-ckw h3::after {
+      content: "";
+      width: 140px;
+      height: 2px;
+      background: var(--main-color);
+      position: absolute;
+      left: 0;
+      bottom: 0;
+  }
+
+  img {
+      vertical-align: middle;
+  }
+
+  img {
+      max-width: 100%;
+      height: auto;
+  }
+
+  .sidebar-aba img  {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+  }
+
+  .sidebar-aba h3  {
+      padding-top: 20px;
+      font-weight: 500;
+  }
+
+  p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+  }
+
+  p {
+      font-size: 16px;
+      line-height: 28px;
+      color: var(--paragraph-color);
+      font-weight: 400;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 0;
+  }
+
+  .sidebar-aba p  {
+      line-height: 17px;
+      padding-top: 10px;
+  }
+
+  p:last-child {
+      margin-bottom: 0;
+  }
+
+  ul {
+      padding-left: 2rem;
+  }
+
+  ul {
+      margin-top: 0;
+      margin-bottom: 1rem;
+  }
+
+  ul {
+      padding: 0;
+      margin: 0;
+  }
+
+  #pro-23m {
+      padding-top: 35px;
+  }
+
+  a {
+      color: #0d6efd;
+      text-decoration: underline;
+  }
+
+  a {
+      text-decoration: none;
+      -webkit-transition: all 0.3s ease-in-out 0.1s;
+      transition: all 0.3s ease-in-out 0.1s;
+      outline: 0 !important;
+      color: var(--main-color);
+  }
+
+  .sidebar-aba p a  {
+      color: var(--paragraph-color);
+  }
+
+  a:hover {
+      color: #0a58ca;
+  }
+
+  a:hover {
+      text-decoration: none;
+      color: var(--heading-color);
+  }
+
+  .sidebar-aba p a:hover {
+      color: var(--main-color);
+  }
+
+  ul li  {
+      list-style: none;
+      padding: 0;
+  }
+
+  .menu-oi8 ul li  {
+      margin-bottom: 30px;
+      font-size: 18px;
+  }
+
+  .menu-oi8 ul li:hover {
+      color: var(--main-color);
+      cursor: pointer;
+  }
+
+  .dropdown-ds6 {
+      position: relative;
+  }
+
+  .menu-oi8 ul li:last-child  {
+      margin-bottom: 0px;
+  }
+
+  .menu-oi8 ul li a  {
+      color: var(--black-color);
+  }
+
+  .menu-oi8 ul li a:hover {
+      color: var(--main-color);
+  }
+
+  .fa-lfe {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      line-height: 1;
+  }
+
+  .fa-lfe {
+      font-family: "Font Awesome 5 Free";
+  }
+
+  .fa-lfe {
+      font-weight: 900;
+  }
+
+  .menu-oi8 ul li i  {
+      padding-right: 10px;
+  }
+
+  .card-pg2:before {
+      content: "\f2bb";
+  }
+
+  .dropdown-ds6 span  {
+      position: absolute;
+      right: 0;
+      display: block;
+      top: 0;
+  }
+
+  .sidebar-nge {
+      padding-top: 30px;
+      padding-left: 30px;
+  }
+
+  .menu-oi8 ul li a.act-8n7  {
+      color: var(--main-color);
+  }
+
+  @media (min-width: 992px){
+    .col-1rq {
+      flex: 0 0 auto;
+      width: 50%;
+    }
+  }
+
+  .fa-htn:before {
+      content: "\f3fd";
+  }
+
+  .fa-ase:before {
+      content: "\f107";
+  }
+
+  ul ul  {
+      margin-bottom: 0;
+  }
+
+  .fa-a6k:before {
+      content: "\f2bd";
+  }
+
+  .fa-fey:before {
+      content: "\f555";
+  }
+
+  .fa-rdr:before {
+      content: "\f0f3";
+  }
+
+  .fa-dyx:before {
+      content: "\f2f5";
+  }
+
+  #pro-23m .form-group-egv  {
+      margin-bottom: 30px;
+  }
+
+  #pro-23m .field-2t6  {
+      position: relative;
+  }
+
+  .input-1gq h3  {
+      margin-bottom: 30px;
+  }
+
+  label {
+      display: inline-block;
+  }
+
+  #pro-23m label  {
+      margin-bottom: 10px;
+  }
+
+  input {
+      margin: 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+  }
+
+  .form-control-t3a {
+      display: block;
+      width: 100%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+
+  .form-control-t3a {
+      height: 50px;
+      border: none;
+      box-shadow: 0px 1px 13px 0px #0000000d;
+      padding: 10px 22px;
+      font-size: 16px;
+  }
+
+  .form-control-t3a {
+      height: 55px;
+      border: 2px dashed #dddddd75;
+      padding: 10px 22px;
+      font-size: 16px;
+  }
+
+  #pro-23m .field-2t6 p  {
+      position: absolute;
+      bottom: 14px;
+      right: 15px;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--main-color);
+      font-weight: 500;
+  }
+
+  .fa-rm3:before {
+      content: "\f594";
+  }
+
+  .fa-peo:before {
+      content: "\f1d8";
+  }
+
+  .map-y1v:before {
+      content: "\f279";
+  }
+
+  .fa-fng:before {
+      content: "\f1da";
+  }
+
+
+  /* These were inline style tags. Uses id+class to override almost everything */
+  #sho-fmx.style-dnY6o {
+     display: none;
+  }
