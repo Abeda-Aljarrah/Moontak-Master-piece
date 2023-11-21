@@ -24,7 +24,7 @@ Control Board
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>4</h3>
+              <h3>{{$categoryCount}}</h3>
 
               <p>Our Categories</p>
             </div>
@@ -39,7 +39,7 @@ Control Board
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>4<sup style="font-size: 20px"></sup></h3>
+              <h3>{{$productCount}}<sup style="font-size: 20px"></sup></h3>
 
               <p>Our Products</p>
             </div>
@@ -54,7 +54,7 @@ Control Board
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>4</h3>
+              <h3>{{$userCount}}</h3>
 
               <p>Our Users</p>
             </div>
@@ -69,7 +69,7 @@ Control Board
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>4</h3>
+              <h3>{{$planCount}}</h3>
 
               <p>Our Plans</p>
             </div>

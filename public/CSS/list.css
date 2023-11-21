@@ -1,7 +1,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 body {
   /* background-color: #F6EEE6; */
@@ -20,11 +20,11 @@ fieldset {
   width: 100%;
   height: fit-content;
   padding: 50px;
-  color: #365d5a;
+  color: #232323;
 }
 .list h1 {
   text-align: center;
-  color: #365d5a;
+  color: #232323;
   font-weight: bold;
 }
 form {
@@ -48,15 +48,15 @@ form {
   margin-left: 20px;
   width: 18px;
   height: 18px;
-  background-color: #365d5a;
-  accent-color: #365d5a;
+  background-color: #232323;
+  accent-color: #232323;
   cursor: pointer;
 }
 .bi {
   width: 1.5em;
   height: 1.5em;
   vertical-align: -0.125em;
-  color: #f1895e;
+  color: #5FA800;
   fill: currentcolor;
   cursor: pointer;
 }
@@ -80,10 +80,10 @@ form {
 }
 .list a {
   margin-left: 85%;
-  color: #f1895e;
+  color: #5FA800;
 }
 legend {
-  color: #365d5a;
+  color: #232323;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -91,14 +91,14 @@ legend {
   margin-right: 20px;
 }
 .Baby .label {
-  color: #365d5a;
+  color: #232323;
   font-weight: bold;
 }
 .Notes {
   margin-left: 50px;
 }
 .Notes h3 {
-  color: #f1895e;
+  color: #5FA800;
   margin-bottom: 30px;
   font-weight: bold;
 }
@@ -119,10 +119,10 @@ legend {
 }
 hr {
   width: 100%;
-  border-top: 4px solid #f1895e;
+  border-top: 4px solid #5FA800;
 }
 .Summary {
-  border: #f1895e 4px solid;
+  border: #5FA800 4px solid;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -151,7 +151,7 @@ hr {
   margin-bottom: 15px;
 }
 .summary-wrapper button {
-  background: rgb(236, 110, 85);
+  background: #5FA800;
   font-family: "Work Sans", sans-serif;
   padding: 10px;
   border-radius: 8px;
@@ -174,7 +174,7 @@ hr {
 
 }
 .summary-wrapper button:hover{
-  background-color: #f1895e;
+  background-color: #5FA800;
 }
 .summary-wrapper button a {
   color: white;

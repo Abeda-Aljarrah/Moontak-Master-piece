@@ -3,6 +3,50 @@
 @section('title', 'List')
 @section('css')
     <link rel="stylesheet" href="{{ asset('CSS/style.css') }}" type="text/css">
+    <style>
+        #vola_message {
+            position: fixed;
+            top: 20%;
+            right: 10px;
+            background: #5FA800;
+            /* Background color for success messages */
+            color: #fff;
+            font-size: 24px;
+            /* Text color for success messages */
+            border-radius: 5px;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        #vola_message.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Style for increment and decrement buttons */
+        .pro-qty button {
+            width: 30px;
+            height: 30px;
+            background: #f8f8f8;
+            border: none;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .pro-qty button:hover {
+            background: #e0e0e0;
+        }
+
+        /* Optional: Margin between buttons */
+        .pro-qty button:not(:last-child) {
+            margin-right: 0px;
+        }
+    </style>
 @endsection
 
 @section('js')
@@ -40,6 +84,42 @@
     <section>
 
         <!-- Shoping Cart Section Begin -->
+        @if (session('error'))
+            <div id="vola_message" class="alert alert-primary">{{ session('error') }}</div>
+            <script>
+                // Wait for the document to be fully loaded
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Select the message element
+                    const message = document.getElementById('vola_message');
+
+                    // Add the 'show' class to make the message visible
+                    message.classList.add('show');
+
+                    // Set a timeout to remove the 'show' class after 5 seconds
+                    setTimeout(function() {
+                        message.classList.remove('show');
+                    }, 2000); // 5000 milliseconds = 5 seconds
+                });
+            </script>
+        @endif
+        @if (session('success'))
+            <div id="vola_message" class="alert alert-primary">{{ session('success') }}</div>
+            <script>
+                // Wait for the document to be fully loaded
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Select the message element
+                    const message = document.getElementById('vola_message');
+
+                    // Add the 'show' class to make the message visible
+                    message.classList.add('show');
+
+                    // Set a timeout to remove the 'show' class after 5 seconds
+                    setTimeout(function() {
+                        message.classList.remove('show');
+                    }, 2000); // 5000 milliseconds = 5 seconds
+                });
+            </script>
+        @endif
         <section class="shoping-cart spad">
             <div class="container">
                 <div class="row">
@@ -137,7 +217,7 @@
                                                             <tbody>
                                                                 @foreach ($cart as $cartItem)
                                                                     @if ($category->id == $cartItem->product->category_id)
-                                                                        <tr>
+                                                                        <tr data-id="{{ $cartItem->product->id }}">
                                                                             <td class="shoping__cart__item">
                                                                                 @if ($cartItem->product)
                                                                                     <img src="{{ asset($cartItem->product->main_image) }}"
@@ -152,27 +232,36 @@
                                                                             <td class="shoping__cart__quantity">
                                                                                 <div class="quantity">
                                                                                     <div class="pro-qty">
+                                                                                        <button class="increment">+</button>
                                                                                         <input type="text"
                                                                                             value="{{ $cartItem->Qty }}">
+                                                                                        <button class="decrement">-</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </td>
                                                                             <td class="shoping__cart__total">
                                                                                 ${{ $cartItem->unit_price * $cartItem->Qty }}
                                                                             </td>
-                                                                            <td class="shoping__cart__item__close">
-                                                                                <span class="icon-container">
-                                                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                                                        width="16" height="16"
-                                                                                        fill="currentColor"
-                                                                                        class="bi bi-trash"
-                                                                                        viewBox="0 0 16 16">
-                                                                                        <path
-                                                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z">
-                                                                                        </path>
-                                                                                    </svg>
-                                                                                </span>
+
+                                                                            <td class="actions" data-th="">
+                                                                                <form method="POST"
+                                                                                    action="{{ route('remove.from.cart', ['id' => $cartItem->product->id]) }}">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <!-- Other form inputs or content -->
+                                                                                    <button class="btn btn-danger"
+                                                                                        type="submit"><i
+                                                                                            class="far fa-trash-alt"></i></button>
+                                                                                </form>
                                                                             </td>
+
+                                                                            {{-- <td class="shoping__cart__item__close">
+                                                                                <span
+                                                                                    class="icon-container remove-from-cart">
+                                                                                    <i class="far fa-trash-alt"
+                                                                                        style="color: red;"></i>
+                                                                                </span>
+                                                                            </td> --}}
                                                                         </tr>
                                                                     @endif
                                                                 @endforeach
@@ -298,15 +387,32 @@
                                                                         <td class="shoping__cart__quantity">
                                                                             <div class="quantity">
                                                                                 <div class="pro-qty">
+                                                                                    <button class="increment">+</button>
                                                                                     <input type="text"
-                                                                                        value="{{ $cartItem['Qty'] }}">
+                                                                                        class="quantity-input"
+                                                                                        value="{{ $cartItem['Qty'] }}"
+                                                                                        data-item-id="{{ $product->id }}">
+                                                                                    <button class="decrement">-</button>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
                                                                         <td class="shoping__cart__total">
                                                                             ${{ $cartItem['unit_price'] * $cartItem['Qty'] }}
                                                                         </td>
-                                                                        <td class="shoping__cart__item__close">
+
+                                                                        <td class="actions" data-th="">
+                                                                            <form method="POST"
+                                                                                action="{{ route('remove.from.cart', ['id' => $product->id]) }}">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <!-- Other form inputs or content -->
+                                                                                <button class="btn btn-danger"
+                                                                                    type="submit"><i
+                                                                                        class="far fa-trash-alt"></i></button>
+                                                                            </form>
+                                                                        </td>
+
+                                                                        {{-- <td class="shoping__cart__item__close">
                                                                             <span class="icon-container">
                                                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                                                     width="16" height="16"
@@ -318,7 +424,7 @@
                                                                                     </path>
                                                                                 </svg>
                                                                             </span>
-                                                                        </td>
+                                                                        </td> --}}
                                                                     </tr>
                                                                 @endif
                                                             @endforeach
@@ -360,7 +466,7 @@
                         <div class="shoping__cart__btns">
                             <a href="./product-page.php" class="primary-btn cart-btn button">CONTINUE SHOPPING</a>
                             <!-- <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                                                                                                                    Upadate Cart</a> -->
+                                                                                                                                        Upadate Cart</a> -->
                         </div>
                     </div>
                     <div class="col-lg-6">

@@ -106,4 +106,43 @@ class CartController extends Controller
     {
         //
     }
+    public function remove($id)
+{
+
+    if ($id==null) {
+        // Handle the case when the product is not found
+        // You may want to return a response or redirect with an error message
+        return redirect()->back()->with('error', 'Product not found.');
+    }
+
+    if (auth()->user()) {
+        Cart::where('product_id', $id)->delete();
+    } else {
+        $cart = session('cart');
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+        }
+    }
+
+    return redirect()->back()->with('success', 'Product deleted successfully');
+    // Redirect or return a response as needed
+}
+
+
+public function updateQuantity(Request $request)
+    {
+        // Logic to update cart item quantity
+        $itemId = $request->input('itemId');
+        $newQty = $request->input('newQty');
+
+        // Perform your update logic here...
+
+        // For example, if you want to return the updated total
+        // $newTotal = $newQty * $cartItem['unit_price'];
+
+        // return response()->json(['newTotal' => $newTotal]);
+    }
+
+
 }

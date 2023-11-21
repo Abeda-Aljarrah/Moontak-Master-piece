@@ -216,9 +216,9 @@ ol {
 /*---------------------
   Header
 -----------------------*/
-body{
-	color: #365d5a !important;
-}
+/* body{
+	color: #232323 !important;
+} */
 .header__top {
 	background: #f5f5f5;
 }
@@ -1837,7 +1837,7 @@ tr.product-details.open {
 -----------------------*/
 .button {
     color: rgb(255, 255, 255);
-    background: #365d5a;
+    background: #232323;
       /* background-color: #f1895e; */
     font-family: "Work Sans", sans-serif;
     border-radius: 8px;
@@ -1845,7 +1845,7 @@ tr.product-details.open {
     transition: background-color 0.3s ease-in-out 0s;
 }
 .button:hover{
-    background-color: #f1895e;
+    background-color: #5FA800;
 
 }
 .related-product {
@@ -1965,7 +1965,7 @@ tr.product-details.open {
 
 .shoping__cart__table table tbody tr td.shoping__cart__item__close span {
 	font-size: 24px;
-	color: #365d5a;
+	color: #232323;
 	cursor: pointer;
 }
 
@@ -1993,13 +1993,13 @@ tr.product-details.open {
 .primary-btn.cart-btn {
 	color: #fff;
 	padding: 14px 30px 12px;
-	background: rgb(236, 110, 85);
+	background: #5FA800;
 }
 a.primary-btn.cart-btn {
 	text-decoration: none;
 }
 .primary-btn.cart-btn:hover{
-	background-color: #f1895e;
+	background-color: #5FA800;
 }
 
 .primary-btn.cart-btn span {
@@ -2040,7 +2040,7 @@ a.primary-btn.cart-btn {
 	padding: 15px 30px 11px;
 	font-size: 12px;
 	letter-spacing: 4px;
-	background: rgb(236, 110, 85);
+	background: #5FA800;
 }
 
 .shoping__checkout {
@@ -2080,20 +2080,20 @@ a.primary-btn.cart-btn {
 
 .shoping__checkout ul li span {
 	font-size: 18px;
-	color: #365d5a;
+	color: #232323;
 	float: right;
 }
 
 .shoping__checkout .primary-btn {
 	display: block;
 	text-align: center;
-	background-color: rgb(236, 110, 85);
+	background-color: #5FA800;
 }
 a.primary-btn{
 	text-decoration: none;
 }
 .shoping__checkout .primary-btn:hover{
-	background-color: #f1895e;
+	background-color: #5FA800;
 }
 
 /*---------------------
