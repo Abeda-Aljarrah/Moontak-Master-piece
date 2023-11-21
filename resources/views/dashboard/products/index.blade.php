@@ -54,7 +54,7 @@
                                         <th>Quntity</th>
                                         <th>Unit</th>
                                         <th>weight</th>
-                                        <th>Discount</th>
+                                        {{-- <th>Discount</th> --}}
                                         <th>Expire_date</th>
                                         <th>Action</th>
                                     </tr>
@@ -75,7 +75,7 @@
                                             <td>{{ $product->Qty }}</td>
                                             <td>{{ $product->main_unit }}</td>
                                             <td>{{ $product->main_weight }}</td>
-                                            <td>{{ $product->discount->percent }}</td>
+                                            {{-- <td>{{ $product->discount->percent }}</td> --}}
                                             <td>{{ $product->Expiration_Date }}</td>
 
                                             <td class="project-actions">

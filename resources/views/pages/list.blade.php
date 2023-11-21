@@ -466,7 +466,7 @@
                         <div class="shoping__cart__btns">
                             <a href="./product-page.php" class="primary-btn cart-btn button">CONTINUE SHOPPING</a>
                             <!-- <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                                                                                                                                        Upadate Cart</a> -->
+                                                                                                                                                Upadate Cart</a> -->
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -490,7 +490,8 @@
                             @if (auth()->user())
                                 <a href="{{ route('checkout1') }}" class="primary-btn button">PROCEED TO CHECKOUT</a>
                             @else
-                                <a href="{{ route('login') }}" class="primary-btn button">Login to Checkout</a>
+                                <a href="{{ route('login', ['redirect' => route('checkout1')]) }}"
+                                    class="primary-btn button">Login to Checkout</a>
                             @endif
                         </div>
                     </div>

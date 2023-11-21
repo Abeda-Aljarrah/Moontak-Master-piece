@@ -25,6 +25,16 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
+
+    public function showLoginForm(Request $request)
+    {
+        $redirectTo = $request->input('redirect') ?? RouteServiceProvider::HOME;
+
+        // Store the intended URL in the session
+        $request->session()->put('url.intended', $redirectTo);
+
+        // Your existing login logic here
+    }
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
@@ -36,18 +46,18 @@ class AuthenticatedSessionController extends Controller
         $sessionCart = session('cart');
 
         if ($sessionCart <> null) {
-        foreach ($sessionCart as $item){
-            Cart::create([
-            'user_id' => auth()->user()->id,
-            'product_id' => $item['product_id'],
-            'Qty' => $item['Qty'],
-            'unit_price' => $item['unit_price'],
-        ]);
-        session()->forget('cart');
+            foreach ($sessionCart as $item) {
+                Cart::create([
+                    'user_id' => auth()->user()->id,
+                    'product_id' => $item['product_id'],
+                    'Qty' => $item['Qty'],
+                    'unit_price' => $item['unit_price'],
+                ]);
+                session()->forget('cart');
+            }
         }
-    }
-        // return redirect()->intended(RouteServiceProvider::HOME);
-        return redirect()->back();
+        return redirect()->intended(RouteServiceProvider::HOME);
+        // return redirect()->back();
 
     }
 

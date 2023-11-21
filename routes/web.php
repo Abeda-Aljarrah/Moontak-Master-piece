@@ -36,12 +36,11 @@ Route::get('/category/{id}', [ProductController::class, 'show'])->name('category
 Route::get('/product/{id}', [ProductController::class, 'showsingle'])->name('product');
 Route::get('/list', [CartController::class, 'show'])->name('list');
 Route::post('/addToCart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
-Route::get('/checkout', [OrderDetailController::class, 'show'])->name('checkout1');
+Route::get('/checkout', [OrderDetailController::class, 'show'])->middleware(['auth', 'verified'])->name('checkout1');
 Route::post('/checkout2/{id}', [OrderDetailController::class, 'update'])->name('checkout2');
 Route::post('/checkoutsub/{planId}', [OrderDetailController::class, 'edit'])->name('checkoutsub');
 Route::post('/checkout3/{userId}/{periodId?}', [PeriodController::class, 'show'])->name('checkout3');
 Route::post('/checkout4/{userId}', [OrderController::class, 'show'])->name('checkout4');
-
 Route::delete('remove-from-cart/{id}', [CartController::class, 'remove'])->name('remove.from.cart');
 Route::post('/updateCartItemQuantity', [CartController::class, 'updateQuantity'])->name('updateCartItemQuantity');
 

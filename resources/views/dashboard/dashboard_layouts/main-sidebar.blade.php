@@ -53,12 +53,12 @@
       </a>
     </li>
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a href="{{url('dashboard/partners')}}" class="nav-link">
         <i class="fas fa-handshake nav-icon"></i>
         <p>Partners</p>
       </a>
-    </li>
+    </li> --}}
 
     <li class="nav-item">
       <a href="{{url('dashboard/plans')}}" class="nav-link">
@@ -81,12 +81,12 @@
       </a>
     </li>
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a href="{{url('dashboard/orderdetails')}}" class="nav-link">
         <i class="fas fa-shopping-bag nav-icon"></i>
         <p>Order Details</p>
       </a>
-    </li>
+    </li> --}}
 
     <li class="nav-item">
       <a href="{{url('dashboard/paymentdetails')}}" class="nav-link">
