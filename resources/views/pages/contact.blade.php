@@ -116,7 +116,7 @@
                         data-aria-expanded="true"
                         data-aria-controls="faqCollapse-1"
                       >
-                        <span class="badge">1</span>What is Lorem Ipsum?
+                        <span class="badge">1</span>What is Moontak?
                       </h5>
                     </div>
                   </div>
@@ -238,7 +238,7 @@
                         data-aria-expanded="false"
                         data-aria-controls="faqCollapse-5"
                       >
-                        <span class="badge">5</span> What is Lorem Ipsum?
+                        <span class="badge">5</span> What is the available plans?
                       </h5>
                     </div>
                   </div>

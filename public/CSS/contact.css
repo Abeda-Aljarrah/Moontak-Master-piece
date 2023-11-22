@@ -1,22 +1,42 @@
 * {
     padding: 0px;
     margin: 0px;
-    font-family: 'Raleway', sans-serif;
-  }
-  .pt-5 {
-    padding-top: 150px !important;
-    margin-right: 900px;
-    color: white;
-    /* font-family: "Caveat", cursive; */
     font-family: 'Open Sans', sans-serif;
-    font-size: 110px;
-    /* height: 80vh; */
+}
+  .pt-5 {
+    padding-top: 20vh !important; /* Adjust this value for vertical positioning */
+    margin: 0 auto; /* Center the text horizontally */
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 4rem; /* Adjust the font size as needed */
+    text-align: center; /* Center align the text */
   }
+
+  /* Adjust the jumbotron's height */
   .jumbotron.jumbotron-bg.text-center.rounded-0 {
-    height: 70vh;
+    height: 50vh; /* Adjust the height of the jumbotron */
     background-repeat: no-repeat;
     background-size: cover;
-}
+    position: relative; /* Add position relative for absolute positioning within */
+  }
+
+  /* Darken the background image */
+  .jumbotron.jumbotron-bg.text-center.rounded-0::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); /* Adjust the gradient for darkening */
+    z-index: 1;
+  }
+
+  /* Ensure text appears above the background overlay */
+  .container {
+    position: relative;
+    z-index: 2;
+  }
   /********************************************form*********************************************/
   .name,
   .email,
@@ -32,7 +52,7 @@
   }
   .name input, .email input, .pass input, .re-pass input, .phone input {
     height: 40px;
-    border: #365d5a solid 1px;
+    border: #222 solid 1px;
     border-radius: 10px;
   }
 
@@ -55,7 +75,7 @@
   }
   .form-container button {
     border: none;
-    background-color: #f1895e;
+    background-color: #5FA800;
     padding: 10px;
     border-radius: 5px;
     height: 47px;
@@ -75,14 +95,14 @@
     align-items: center;
     /* background-color: #EDDDCD; */
     padding: 100px;
-    color: #365d5a;
+    color: #222;
   }
   .form h1{
-    color: #365d5a;
+    color: #222;
     font-weight: bold;
   }
   .form span{
-    color: #f1895e;
+    color: #5FA800;
   }
 
 /**********************************************FQA******************************************/
@@ -97,7 +117,7 @@
   display: inline-block;
   font-weight: bolder;
   line-height: 1;
-  color: #365d5a;
+  color: #222;
 }
 .faq-title h2::before {
     content: "";
@@ -105,7 +125,7 @@
     left: 50%;
     width: 60px;
     height: 2px;
-    background: #365d5a;
+    background: #5FA800;
     bottom: -25px;
     margin-left: -30px;
 }
@@ -115,7 +135,7 @@
 }
 
 .faq {
-  background: #C1D9D4;
+  /* background: #5FA800; */
   box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.06);
   border-radius: 4px;
   width: 100%;
@@ -123,7 +143,7 @@
 }
 
 .faq .card {
-  border: 2px solid #365d5a;
+  border: 2px solid #5FA800;
   background: none;
   border-bottom: 1px dashed #CEE1F8;
 }
@@ -139,7 +159,7 @@
 }
 
 .faq .card .card-header:hover {
-    background: rgba(241,137,94,0.1);
+    background: rgba(95, 168, 0, 0.1);
     padding-left: 10px;
 }
 .faq .card .card-header .faq-title {
@@ -172,7 +192,7 @@
   -moz-border-radius: 100px;
   border-radius: 100px;
   text-align: center;
-  background: #365d5a;
+  background: #5FA800;
   color: #fff;
   font-size: 12px;
   margin-right: 20px;
@@ -195,7 +215,6 @@
 }
 .form-container{
     display: flex;
-    /* background-color: #EDDDCD; */
     gap: 100px;
     padding: 20px 100px;
 }
@@ -249,13 +268,13 @@
 
   .list-item {
     line-height: 4;
-    color: #365d5a;
+    color: #5FA800;
   }
 
   .contact-text {
     font: 300 18px 'Lato', sans-serif;
     letter-spacing: 1.9px;
-    color: #365d5a;
+    color: #222;
   }
 
   .place {
@@ -273,13 +292,13 @@
   }
 
   .contact-text a {
-    color: #365d5a;
+    color: #222;
     text-decoration: none;
     transition-duration: 0.2s;
   }
 
   .contact-text a:hover {
-    color: #f1895e;
+    color: #5FA800;
     text-decoration: none;
   }
 
@@ -307,7 +326,7 @@
     line-height: 60px;
     border-radius: 50%;
     color: #fff;
-    background-color: #365d5a;
+    background-color: #5FA800;
     cursor: pointer;
     transition: all .2s ease-in-out;
   }
@@ -337,7 +356,7 @@
   }
 
   .social-media-list li:hover a {
-    color: #365d5a;
+    color: #5FA800;
   }
 
   .copyright {
@@ -362,7 +381,6 @@
     }
     .icon {
       transform: scale(1);
-      color: #365d5a;
       margin-right: 10px;
     }
     .pt-5 {
@@ -379,7 +397,6 @@
     h2 {
       margin-left: 10px;
       padding-top: 30px;
-      color: #365d5a;
       font-weight: bolder;
       font-size: 30px;
     }
@@ -392,8 +409,6 @@
       width: 250px !important;
     }
     .py-5 {
-      background-color: #365d5a;
-      color: #d6cda4;
       padding-top: 50px !important;
       padding-left: 20px !important;
       padding-bottom: 0px !important;
@@ -402,14 +417,11 @@
   .form {
     display: flex;
     flex-direction: column;
-    background-color: #EDDDCD;
     padding: 10px 20px;
-    color: #365d5a;
 }
 .form-container {
     display: flex;
     flex-direction: column;
-    background-color: #EDDDCD;
     gap: 0px;
     padding: 20px 0px;
 }
@@ -439,7 +451,6 @@ form{
     margin-top: 50px;
 }
 .contact-text a {
-    color: #365d5a;
     text-decoration: none;
     transition-duration: 0.2s;
 }
@@ -447,7 +458,6 @@ form{
     margin-left: 10px;
 }
 .faq-section {
-    background: #fdfdfd;
     min-height: 100vh;
     padding: 10vh 0 0;
     margin-bottom: 30px;
@@ -462,7 +472,6 @@ form{
     }
     .icon {
       transform: scale(1.5);
-      color: #365d5a;
       margin-right: 30px;
     }
     body {
@@ -470,8 +479,6 @@ form{
       margin: 0px;
     }
     .py-5 {
-      background-color: #365d5a;
-      color: #d6cda4;
       padding-top: 50px !important;
       padding-left: 10px !important;
       padding-bottom: 0px !important;
@@ -492,14 +499,11 @@ form{
   .form {
     display: flex;
     flex-direction: column;
-    background-color: #EDDDCD;
     padding: 10px 20px;
-    color: #365d5a;
 }
 .form-container {
     display: flex;
     flex-direction: column;
-    background-color: #EDDDCD;
     gap: 0px;
     padding: 20px 200px;
 }
@@ -530,7 +534,6 @@ form{
     margin-top: 50px;
 }
 .contact-text a {
-    color: #365d5a;
     text-decoration: none;
     transition-duration: 0.2s;
 }
@@ -538,7 +541,6 @@ form{
     margin-left: 50px;
 }
 .faq-section {
-    background: #fdfdfd;
     min-height: 100vh;
     padding: 10vh 0 0;
     margin-bottom: 30px;
