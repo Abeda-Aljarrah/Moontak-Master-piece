@@ -90,9 +90,12 @@ class ProductController extends Controller
     public function show($id)
     {
         $products = Product::where('category_id', $id)->get();
+        $category = Category::find($id); // Fetch the specific category by ID
+        $categoryName = $category ? $category->name : 'Category Name Not Found'; // Default message if category not found
+
         $categories = Category::all();
 
-        return view('pages.product-page', compact('categories', 'products', 'id'));
+        return view('pages.product-page', compact('categories', 'products', 'id','categoryName'));
     }
 
 
