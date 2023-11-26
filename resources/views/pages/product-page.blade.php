@@ -17,7 +17,7 @@
 
     <div class="jumbotron jumbotron-bg text-center rounded-0"
         style="
-        background-image: url('https://layerdrops.com/ogenix/main-html/assets/images/backgrounds/page-header-bg.jpg');
+        background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
       ">
         <div class="container">
             <h1 class="pt-5">{{ $categoryName }}</h1>
@@ -41,12 +41,33 @@
 
                 <div class="search-hotel">
                     <h3 class="agileits-sear-head">Search Here</h3>
-                    <form action="#" method="post">
+                    <form action="{{ route('searchfilter') }}" method="get">
+                        @csrf
                         <input type="search" placeholder="Product name..." name="search" required="" />
+                        <input type="hidden" name="id" value="{{ $id }}">
                         <button type="submit" value="">OK</button>
                     </form>
                 </div>
 
+                <hr />
+
+                <!-- Product type -->
+                <div class="left-side">
+                    <h3 class="agileits-sear-head">Category</h3>
+                    <form action="{{ route('filterCategory') }}" method="get">
+                        @csrf
+                        <ul>
+                        @foreach ($categories as $category)
+                            <li>
+                                <input type="checkbox" class="checked" name="categories" value="{{ $category->id }}" />
+                                <span class="span">{{ $category->name }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <button type="submit" value="">OK</button>
+                    </form>
+
+                </div>
                 <hr />
 
                 <div class="d-flex">
@@ -57,7 +78,7 @@
                         <div class="price-input">
                             <div class="field">
                                 <span>Min</span>
-                                <input type="number" class="input-min" value="2.50" />
+                                <input type="number" class="input-min" value="0.50" />
                             </div>
                             <div class="separator">-</div>
                             <div class="field">
@@ -120,26 +141,6 @@
                     </ul>
                 </div>
 
-                <hr />
-
-                <!-- Product type -->
-                <div class="left-side">
-                    <h3 class="agileits-sear-head">Product type</h3>
-                    <ul>
-                        <li>
-                            <input type="checkbox" class="checked" />
-                            <span class="span">Dry</span>
-                        </li>
-                        <li>
-                            <input type="checkbox" class="checked" />
-                            <span class="span">Frozen</span>
-                        </li>
-                        <li>
-                            <input type="checkbox" class="checked" />
-                            <span class="span">Refrigerated</span>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
 

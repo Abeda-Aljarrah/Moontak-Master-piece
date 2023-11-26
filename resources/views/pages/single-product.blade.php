@@ -9,7 +9,7 @@
             position: fixed;
             top: 20%;
             right: 10px;
-            background:#5FA800;
+            background: #5FA800;
             /* Background color for success messages */
             color: #fff;
             font-size: 24px;
@@ -36,24 +36,24 @@
 
 @section('content')
 
-@if (session('success'))
-<div id="vola_message" class="alert alert-primary">{{ session('success') }}</div>
-<script>
-    // Wait for the document to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Select the message element
-        const message = document.getElementById('vola_message');
+    @if (session('success'))
+        <div id="vola_message" class="alert alert-primary">{{ session('success') }}</div>
+        <script>
+            // Wait for the document to be fully loaded
+            document.addEventListener('DOMContentLoaded', function() {
+                // Select the message element
+                const message = document.getElementById('vola_message');
 
-        // Add the 'show' class to make the message visible
-        message.classList.add('show');
+                // Add the 'show' class to make the message visible
+                message.classList.add('show');
 
-        // Set a timeout to remove the 'show' class after 5 seconds
-        setTimeout(function() {
-            message.classList.remove('show');
-        }, 2000); // 5000 milliseconds = 5 seconds
-    });
-</script>
-@endif
+                // Set a timeout to remove the 'show' class after 5 seconds
+                setTimeout(function() {
+                    message.classList.remove('show');
+                }, 2000); // 5000 milliseconds = 5 seconds
+            });
+        </script>
+    @endif
 
     <section id="prodetails" class="section-p1">
         <div class="single-pro-image">
@@ -75,35 +75,36 @@
         </div>
 
         <div class="single-pro-details">
-            <h6>Home / Fruits & Vegetables</h6>
+            <h6>Home / {{ $product->category->name }}</h6>
             <!-- <div class="pro-links">
-                            <a href="#" class="pro-links">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                                  </svg>
-                            </a>
-                        </div> -->
+                                <a href="#" class="pro-links">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                      </svg>
+                                </a>
+                            </div> -->
             <h4>{{ $product->name }}</h4>
 
-            <h2>Approx 1 pieces/Kg</h2>
-            <h2>JOD {{ $product->main_price }}/{{ $product->main_unit }}</h2>
+            {{-- <h2>Approx 1 pieces/Kg</h2> --}}
+            {{-- <h2>JOD {{ $product->main_price }}/{{ $product->main_unit }}</h2> --}}
             <h4>JOD {{ $product->main_price }}/{{ $product->main_unit }}</h4>
 
-            <select name="" id="">
-                <option value="">0.5 Kg (JOD 0.57)</option>
-                <option value="">1 Kg (JOD 1.79)</option>
-                <option value="">1.5 Kg (JOD 1.79)</option>
-                <option value="">2 Kg (JOD 2)</option>
-                <option value="">2.5 Kg (JOD 2.85)</option>
-                <option value="">3 Kg (JOD 3.40)</option>
-                <option value="">3.5 Kg (JOD 4.30)</option>
-                <option value="">4 Kg (JOD 5.10)</option>
-                <option value="">4.5 Kg (JOD 6)</option>
-                <option value="">5 Kg (JOD 6.70)</option>
-            </select>
+            {{-- <select name="" id="">
+                @if ($product->main_unit == 'kg')
+                    <option value="{{ $product->main_price * 0.25 }}">0.25 {{ $product->main_unit }} (JOD {{ $product->main_price * 0.25 }})</option>
+                    <option value="{{ $product->main_price * 0.5 }}">0.5 {{ $product->main_unit }} (JOD {{ $product->main_price / 2 }})</option>
+                    <option value="{{ $product->main_price }}" selected>1 {{ $product->main_unit }} (JOD {{ $product->main_price }})</option>
+                    <option value="{{ $product->main_price * 1.5 }}">1.5 {{ $product->main_unit }} (JOD {{ $product->main_price * 1.5 }})</option>
+                    <option value="{{ $product->main_price * 2 }}">2 {{ $product->main_unit }} (JOD {{ $product->main_price * 2 }})</option>
+                    <option value="{{ $product->main_price * 2.5 }}">2.5 {{ $product->main_unit }} (JOD {{ $product->main_price * 2.5 }})</option>
+                @else
+                <option value="{{ $product->main_price }}" selected> 1{{ $product->main_unit }} (JOD {{ $product->main_price }})</option>
+                @endif
+
+            </select> --}}
             <form method="POST" action="{{ route('addToCart', ['id' => $product->id]) }}">
                 @csrf
-                <input type="number" name="Qty" value="1" min="1">
+                <input type="number" name="Qty" value="1" min="0.25" step="0.25">
                 <button type="submit">Add To Cart</button>
                 {{-- var_dump(session('cart')); --}}
             </form>
@@ -123,17 +124,10 @@
             <div class="pro">
                 <div class="pro-links">
                     <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-heart" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>
+                        <i class="far fa-heart fa-lg"></i>
                     </a>
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                            <path
-                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg>
+                    <a href="#">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
                     </a>
                 </div>
 
@@ -153,17 +147,10 @@
             <div class="pro">
                 <div class="pro-links">
                     <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-heart" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>
+                        <i class="far fa-heart fa-lg"></i>
                     </a>
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                            <path
-                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg>
+                    <a href="#">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
                     </a>
                 </div>
 
@@ -183,17 +170,10 @@
             <div class="pro">
                 <div class="pro-links">
                     <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-heart" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>
+                        <i class="far fa-heart fa-lg"></i>
                     </a>
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                            <path
-                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg>
+                    <a href="#">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
                     </a>
                 </div>
 
@@ -213,17 +193,10 @@
             <div class="pro">
                 <div class="pro-links">
                     <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-heart" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>
+                        <i class="far fa-heart fa-lg"></i>
                     </a>
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                            <path
-                                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg>
+                    <a href="#">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
                     </a>
                 </div>
 
@@ -239,8 +212,7 @@
                 </div>
             </div>
         </div>
-        <svg class="btn2 btn--next" height="96" viewBox="0 0 24 24" width="96"
-            xmlns="http://www.w3.org/2000/svg">
+        <svg class="btn2 btn--next" height="96" viewBox="0 0 24 24" width="96" xmlns="http://www.w3.org/2000/svg">
             <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
             <path d="M0-.25h24v24H0z" fill="none" />
         </svg>
@@ -250,7 +222,7 @@
     <section id="testimonials">
         <div class="testimonial-box-container">
             <svg class="btn2 btn--prev" height="96" viewBox="0 0 24 24" width="96"
-                xmlns="http://www.w3.org/2000/svg">
+                xmlns="http://www.w3.org/2000/svg" style="cursor: pointer">
                 <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
                 <path d="M0-.5h24v24H0z" fill="none" />
             </svg>
@@ -285,10 +257,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                Your grocery website offers an impressive array of fresh produce and pantry staples, making it my go-to for quality items and convenience!
                             </p>
                         </div>
                     </div>
@@ -304,8 +273,8 @@
                                 </div>
                                 <!--name-and-username-->
                                 <div class="name-user">
-                                    <strong>Noah Wood</strong>
-                                    <span>@noahwood</span>
+                                    <strong>Jood Wood</strong>
+                                    <span>@joodwood</span>
                                 </div>
                             </div>
                             <!--reviews------>
@@ -320,10 +289,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                The seamless navigation and prompt delivery have made my shopping experience delightful - thank you for providing such an efficient service!.
                             </p>
                         </div>
                     </div>
@@ -355,10 +321,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                The consistent quality of products and the user-friendly interface keep me coming back - your website truly makes grocery shopping a breeze!
                             </p>
                         </div>
                     </div>
@@ -370,12 +333,12 @@
                             <div class="profile">
                                 <!--img---->
                                 <div class="profile-img">
-                                    <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
+                                    <img src="https://images.unsplash.com/photo-1700676195086-81b936390de4?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                                 </div>
                                 <!--name-and-username-->
                                 <div class="name-user">
-                                    <strong>Oliver Queen</strong>
-                                    <span>@oliverqueen</span>
+                                    <strong>Namaa Queen</strong>
+                                    <span>@namaaqueen</span>
                                 </div>
                             </div>
                             <!--reviews------>
@@ -390,10 +353,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                I'm continually impressed by the diverse range of products available and the hassle-free ordering process - your grocery site has become my favorite destination for all my household needs!
                             </p>
                         </div>
                     </div>
@@ -405,12 +365,12 @@
                             <div class="profile">
                                 <!--img---->
                                 <div class="profile-img">
-                                    <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                                 </div>
                                 <!--name-and-username-->
                                 <div class="name-user">
-                                    <strong>Oliver Queen</strong>
-                                    <span>@oliverqueen</span>
+                                    <strong>Bayan Queen</strong>
+                                    <span>@bayanqueen</span>
                                 </div>
                             </div>
                             <!--reviews------>
@@ -425,10 +385,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                Your website's commitment to timely deliveries and well-packaged items speaks volumes about your dedication to customer satisfaction - thank you for the reliable service!
                             </p>
                         </div>
                     </div>
@@ -436,7 +393,7 @@
                 </div>
             </div>
             <svg class="btn2 btn--next" height="96" viewBox="0 0 24 24" width="96"
-                xmlns="http://www.w3.org/2000/svg">
+                xmlns="http://www.w3.org/2000/svg" style="cursor: pointer">
                 <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
                 <path d="M0-.25h24v24H0z" fill="none" />
             </svg>

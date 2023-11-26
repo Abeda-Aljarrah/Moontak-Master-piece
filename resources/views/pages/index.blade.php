@@ -125,6 +125,13 @@
             opacity: 1;
             transform: translateX(0);
         }
+
+         /* Styles for the "Our Periods" section */
+    /* h4 {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 15px;
+        border-radius: 8px;
+    } */
     </style>
 @endsection
 
@@ -138,56 +145,38 @@
         const prevBtn = document.querySelector('.btn--prev');
         const testimonialBoxes = document.querySelectorAll('.testimonial-box');
 
-        let currentIndex = 0;
         const testimonialWidth = testimonialBoxes[0].offsetWidth;
         const totalTestimonials = testimonialBoxes.length;
-        const visibleTestimonials = 3;
-        const moveAmount = testimonialWidth * visibleTestimonials;
+        const visibleTestimonials = 3; // Display 3 testimonials at a time
+
+        let currentIndex = 0;
+
+        function setTestimonialVisibility() {
+            for (let i = 0; i < totalTestimonials; i++) {
+                if (i >= currentIndex && i < currentIndex + visibleTestimonials) {
+                    testimonialBoxes[i].style.display = 'block';
+                } else {
+                    testimonialBoxes[i].style.display = 'none';
+                }
+            }
+        }
+
+        setTestimonialVisibility();
 
         nextBtn.addEventListener('click', () => {
             if (currentIndex < totalTestimonials - visibleTestimonials) {
                 currentIndex++;
-                moveSlider();
+                setTestimonialVisibility();
             }
         });
 
         prevBtn.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
-                moveSlider();
+                setTestimonialVisibility();
             }
         });
-
-        function moveSlider() {
-            const position = -currentIndex * moveAmount;
-            testimonials.style.transform = `translateX(${position}px)`;
-        }
     </script>
-
-<script>
-    $(document).ready(function () {
-        const supplierSlider = $("#supplier-slider");
-        const slides = supplierSlider.find(".slide");
-        let currentSlideIndex = 0;
-
-        function showNextSlide() {
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            const translateX = -currentSlideIndex * 500; // 500% for each set of 5 slides
-            supplierSlider.css("transform", `translateX(${translateX}%)`);
-        }
-
-        setInterval(showNextSlide, 5000);
-    });
-</script>
-
-
-
-
-
-
-
-
-
 @endsection
 
 
@@ -237,9 +226,6 @@
                         <h1>Fresh for your heath</h1>
                         <a href="link-to-page-1" class="btn btn-primary">Shop now</a>
                     </div>
-                    {{-- <h2>Slide 3</h2>
-                <p>This is the third slide content.</p> --}}
-                    {{-- <a href="link-to-page-3" class="btn btn-primary">Button 3</a> --}}
                 </div>
             </div>
         </div>
@@ -255,21 +241,9 @@
         </button>
     </div>
 
-    {{-- <div class="jumbotron jumbotron-bg text-center rounded-0"
-        style="
-          background-image: url('../image/facebook-page-cover-820x312\ \(2\)\ \(1\)-modified\ \(1\).jpg');
-        ">
-        <div class="container">
-            @if (session('success'))
-        <div id="vola_message" class="alert alert-primary">{{ session('success') }}</div>
-    @endif
-            <h1 class="pt-5 tracking-in-contract">Stay home we deliver</h1>
-        </div>
-    </div> --}}
-
     </section>
 
-    <section class="cat-sec">
+    <section class="cat-sec" id="category">
 
         <div class="col-md-12">
             <div class="section-header d-flex justify-content-between mb-5">
@@ -290,90 +264,6 @@
 
     </section>
 
-
-    {{-- <section style="color: #232323;">
-        <div class="container my-5">
-            <section id="steps">
-                <div class="text-center mb-5">
-                    <h2 class="font-weight-bold display-4 ">How It <span style=" color: #5FA800">Works?</span></h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="bg-light position-relative px-3 my-5">
-                            <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
-                                1
-                            </div>
-                            <div class="px-3 text-center pb-3">
-                                <h4>Create an account</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="bg-light position-relative px-3 my-5">
-                            <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
-                                2
-                            </div>
-                            <div class="px-3 text-center pb-3">
-                                <h4>Create your list by shopping</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="bg-light position-relative px-3 my-5">
-                            <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
-                                3
-                            </div>
-                            <div class="px-3 text-center pb-3">
-                                <h4>Choose a plane</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="bg-light position-relative px-3 my-5">
-                            <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
-                                4
-                            </div>
-                            <div class="px-3 text-center pb-3">
-                                <h4>Choose deliver time</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="bg-light position-relative px-3 my-5">
-                            <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
-                                5
-                            </div>
-                            <div class="px-3 text-center pb-3">
-                                <h4>Add a correct location</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="bg-light position-relative px-3 my-5">
-                            <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
-                                 style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #5FA800">
-                                6
-                            </div>
-                            <div class="px-3 text-center pb-3">
-                                <h4>Enjoy your journey with us!</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </section> --}}
-
-
-
-
-
-
     <div class="our-plans">
         <h2 class="section-title">Our Plans</h2>
         <div class="card-containar fade-in-top" data-aos="fade-up">
@@ -383,6 +273,11 @@
             background-image: url('{{ asset($plan->image) }}');
           ">
                     <h2 class="card-title">{{ $plan->name }}</h2>
+                    <div class="periods">
+                        <h4>Our Periods</h4>
+                        <p class="card-disc">{{ $plan->description }}</p>
+
+                    </div>
                     <button class="card-button">Learn more</button>
                 </div>
             @endforeach
@@ -394,7 +289,7 @@
     <section id="testimonials">
         <div class="testimonial-box-container">
             <svg class="btn2 btn--prev" height="96" viewBox="0 0 24 24" width="96"
-                xmlns="http://www.w3.org/2000/svg">
+                xmlns="http://www.w3.org/2000/svg" style="cursor: pointer">
                 <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
                 <path d="M0-.5h24v24H0z" fill="none" />
             </svg>
@@ -429,10 +324,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                Your grocery website offers an impressive array of fresh produce and pantry staples, making it my go-to for quality items and convenience!
                             </p>
                         </div>
                     </div>
@@ -448,8 +340,8 @@
                                 </div>
                                 <!--name-and-username-->
                                 <div class="name-user">
-                                    <strong>Noah Wood</strong>
-                                    <span>@noahwood</span>
+                                    <strong>Jood Wood</strong>
+                                    <span>@joodwood</span>
                                 </div>
                             </div>
                             <!--reviews------>
@@ -464,10 +356,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                The seamless navigation and prompt delivery have made my shopping experience delightful - thank you for providing such an efficient service!.
                             </p>
                         </div>
                     </div>
@@ -499,10 +388,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                The consistent quality of products and the user-friendly interface keep me coming back - your website truly makes grocery shopping a breeze!
                             </p>
                         </div>
                     </div>
@@ -514,12 +400,12 @@
                             <div class="profile">
                                 <!--img---->
                                 <div class="profile-img">
-                                    <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
+                                    <img src="https://images.unsplash.com/photo-1700676195086-81b936390de4?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                                 </div>
                                 <!--name-and-username-->
                                 <div class="name-user">
-                                    <strong>Oliver Queen</strong>
-                                    <span>@oliverqueen</span>
+                                    <strong>Namaa Queen</strong>
+                                    <span>@namaaqueen</span>
                                 </div>
                             </div>
                             <!--reviews------>
@@ -534,10 +420,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                I'm continually impressed by the diverse range of products available and the hassle-free ordering process - your grocery site has become my favorite destination for all my household needs!
                             </p>
                         </div>
                     </div>
@@ -549,12 +432,12 @@
                             <div class="profile">
                                 <!--img---->
                                 <div class="profile-img">
-                                    <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                                 </div>
                                 <!--name-and-username-->
                                 <div class="name-user">
-                                    <strong>Oliver Queen</strong>
-                                    <span>@oliverqueen</span>
+                                    <strong>Bayan Queen</strong>
+                                    <span>@bayanqueen</span>
                                 </div>
                             </div>
                             <!--reviews------>
@@ -569,10 +452,7 @@
                         <!--Comments---------------------------------------->
                         <div class="client-comment">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
+                                Your website's commitment to timely deliveries and well-packaged items speaks volumes about your dedication to customer satisfaction - thank you for the reliable service!
                             </p>
                         </div>
                     </div>
@@ -580,149 +460,16 @@
                 </div>
             </div>
             <svg class="btn2 btn--next" height="96" viewBox="0 0 24 24" width="96"
-                xmlns="http://www.w3.org/2000/svg">
+                xmlns="http://www.w3.org/2000/svg" style="cursor: pointer">
                 <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
                 <path d="M0-.25h24v24H0z" fill="none" />
             </svg>
         </div>
     </section>
 
-
-
-
-
-    {{-- <h2 class="section-title">Feedback</h2>
-    <section id="testimonials">
-        <!--heading--->
-        <!--testimonials-box-container------>
-        <div class="testimonial-box-container">
-            <svg class="btn2 btn--prev" height="96" viewBox="0 0 24 24" width="96"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
-                <path d="M0-.5h24v24H0z" fill="none" />
-            </svg>
-
-            <div id="slider">
-                <div class="testimonials">
-                    <!--BOX-1-------------->
-                    <div class="testimonial-box">
-                        <!--top------------------------->
-                        <div class="box-top">
-                            <!--profile----->
-                            <div class="profile">
-                                <!--img---->
-                                <div class="profile-img">
-                                    <img src="../image/persons/ian-dooley-d1UPkiFd04A-unsplash.jpg" />
-                                </div>
-                                <!--name-and-username-->
-                                <div class="name-user">
-                                    <strong>Liam mendes</strong>
-                                    <span>@liammendes</span>
-                                </div>
-                            </div>
-                            <!--reviews------>
-                            <div class="reviews">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i><!--Empty star-->
-                            </div>
-                        </div>
-                        <!--Comments---------------------------------------->
-                        <div class="client-comment">
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
-                            </p>
-                        </div>
-                    </div>
-                    <!--BOX-2-------------->
-                    <div class="testimonial-box">
-                        <!--top------------------------->
-                        <div class="box-top">
-                            <!--profile----->
-                            <div class="profile">
-                                <!--img---->
-                                <div class="profile-img">
-                                    <img src="../image/persons/rachel-mcdermott-0fN7Fxv1eWA-unsplash.jpg" />
-                                </div>
-                                <!--name-and-username-->
-                                <div class="name-user">
-                                    <strong>Noah Wood</strong>
-                                    <span>@noahwood</span>
-                                </div>
-                            </div>
-                            <!--reviews------>
-                            <div class="reviews">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i><!--Empty star-->
-                            </div>
-                        </div>
-                        <!--Comments---------------------------------------->
-                        <div class="client-comment">
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
-                            </p>
-                        </div>
-                    </div>
-                    <!--BOX-3-------------->
-                    <div class="testimonial-box">
-                        <!--top------------------------->
-                        <div class="box-top">
-                            <!--profile----->
-                            <div class="profile">
-                                <!--img---->
-                                <div class="profile-img">
-                                    <img src="../image/persons/stephanie-liverani-Zz5LQe-VSMY-unsplash.jpg" />
-                                </div>
-                                <!--name-and-username-->
-                                <div class="name-user">
-                                    <strong>Oliver Queen</strong>
-                                    <span>@oliverqueen</span>
-                                </div>
-                            </div>
-                            <!--reviews------>
-                            <div class="reviews">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i><!--Empty star-->
-                            </div>
-                        </div>
-                        <!--Comments---------------------------------------->
-                        <div class="client-comment">
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Exercitationem, quaerat quis? Provident temporibus architecto
-                                asperiores nobis maiores nisi a. Quae doloribus ipsum aliquam
-                                tenetur voluptates incidunt blanditiis sed atque cumque.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <svg class="btn2 btn--next" height="96" viewBox="0 0 24 24" width="96"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
-                <path d="M0-.25h24v24H0z" fill="none" />
-            </svg>
-        </div>
-    </section> --}}
-
-    <section style="margin: 50px;">
+    <h2 class="section-title suppliers-title">Suppliers</h2>
+    <section style="margin-bottom:50px;">
         <div class="section-header">
-            <h2 class="section-title suppliers-title">Suppliers</h2>
         </div>
         <div class="Suppliers">
             <img src="../image/Suppliers/327425817_576396794017077_4140454578082634265_n-removebg-preview.png"
@@ -735,9 +482,5 @@
             <!-- <img src="/image/Suppliers/المراعي-removebg-preview (1).png" alt="maraee" class="supp-image"> -->
         </div>
     </section>
-
-
-
-
 
 @endsection

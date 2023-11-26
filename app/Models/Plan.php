@@ -12,6 +12,7 @@ class Plan extends Model
     protected $fillable = [
         'name',
         'image',
+        'description'
     ];
 
     public function period()

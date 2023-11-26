@@ -39,7 +39,7 @@
     <div class="navbar">
 
         <div class="logo">
-            <img src="../image/moontakk.png" alt="" style="height: 30px" width="150px">
+            <img src="{{ asset('../image/moontakk.png') }}" alt="" style="height: 30px; width: 150px;">
         </div>
 
 

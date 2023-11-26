@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer-menu">
-                    <img src="../image/logo-footer.png" alt="logo" class="footer-logo" />
+                    <img src="{{ asset('../image/logo-footer.png') }}" alt="logo" class="footer-logo" />
                     <div class="social-links mt-5">
                         <ul class="d-flex list-unstyled gap-2">
                             <li>
@@ -111,7 +111,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <img src="../image/Delivery.png"
+                <img src="{{asset('../image/Delivery.png')}}"
                     alt="" class="delivery-gay" />
             </div>
         </div>

@@ -33,6 +33,8 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/myprofile/{userId}', [UserController::class, 'show'])->name('myprofile');
 Route::get('/test', [HomeController::class, 'index'])->name('test');
 Route::get('/category/{id}', [ProductController::class, 'show'])->name('category');
+Route::get('/categoryfilter', [ProductController::class, 'filterCategory'])->name('filterCategory');
+Route::get('/searchfilter', [ProductController::class, 'searchfilter'])->name('searchfilter');
 Route::get('/product/{id}', [ProductController::class, 'showsingle'])->name('product');
 Route::get('/list', [CartController::class, 'show'])->name('list');
 Route::post('/addToCart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
@@ -42,7 +44,7 @@ Route::post('/checkoutsub/{planId}', [OrderDetailController::class, 'edit'])->na
 Route::post('/checkout3/{userId}/{periodId?}', [PeriodController::class, 'show'])->name('checkout3');
 Route::post('/checkout4/{userId}', [OrderController::class, 'show'])->name('checkout4');
 Route::delete('remove-from-cart/{id}', [CartController::class, 'remove'])->name('remove.from.cart');
-Route::post('/updateCartItemQuantity', [CartController::class, 'updateQuantity'])->name('updateCartItemQuantity');
+Route::post('/update-quantity/{productId}', [CartController::class, 'updateQuantity'])->name('updateQuantity');
 
 
 

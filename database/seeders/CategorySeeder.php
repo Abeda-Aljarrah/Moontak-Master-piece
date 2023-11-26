@@ -38,7 +38,7 @@ class CategorySeeder extends Seeder
         ]);
         Category::create([
             'name' => 'Baby Products',
-            'image' => 'image\icons\pngegg (6).png',
+            'image' => 'image\icons\pngegg (7).png',
         ]);
     }
 }

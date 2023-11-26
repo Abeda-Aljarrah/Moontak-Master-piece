@@ -81,7 +81,7 @@ h3 {
 }
 #product .pro:hover {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
-  background-color: rgba(154, 174, 172, 0.4);
+  background-color: rgba(243, 243, 237, 1);
 }
 #product .pro img {
   width: 80%;
@@ -268,6 +268,14 @@ input[type="range"]::-moz-range-thumb {
 .agileits-sear-head {
   margin-bottom: 20px;
   padding-left: 10px;
+}
+.left-side button {
+  width: 100px;
+  height: 35px;
+  background-color: #5FA800;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
 }
 .search-hotel button {
   width: 40px;

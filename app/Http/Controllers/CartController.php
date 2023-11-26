@@ -130,19 +130,46 @@ class CartController extends Controller
 }
 
 
-public function updateQuantity(Request $request)
-    {
-        // Logic to update cart item quantity
-        $itemId = $request->input('itemId');
-        $newQty = $request->input('newQty');
+public function updateQuantity(Request $request, $productId) {
+    if (auth()->user()) {
 
-        // Perform your update logic here...
-
-        // For example, if you want to return the updated total
-        // $newTotal = $newQty * $cartItem['unit_price'];
-
-        // return response()->json(['newTotal' => $newTotal]);
+    $product = Cart::find($productId);
+    if (!$product) {
+        return response()->json(['error' => 'Product not found'], 404);
     }
+
+    $product->Qty = $request->input('quantity');
+    $product->save();
+
+    $updatedProduct = Cart::find($productId);
+
+    return response()->json([
+        'success' => true,
+        'quantity' => $updatedProduct->Qty,
+        'price' => $updatedProduct->price,
+    ]);
+}else{
+    $cartItems = session('cart');
+
+    if (!isset($cartItems[$productId])) {
+        return response()->json(['error' => 'Product not found'], 404);
+    }
+
+    $cartItem = $cartItems[$productId];
+    $cartItem['Qty'] = $request->input('quantity');
+
+    // Update the cart item in the session
+    $cartItems[$productId] = $cartItem;
+    session(['cart' => $cartItems]);
+
+    return response()->json([
+        'success' => true,
+        'quantity' => $cartItem['Qty'],
+        // Add other necessary data here
+    ]);
+}
+}
+
 
 
 }

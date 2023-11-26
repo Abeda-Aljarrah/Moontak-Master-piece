@@ -3,6 +3,8 @@
 @section('title', 'List')
 @section('css')
     <link rel="stylesheet" href="{{ asset('CSS/style.css') }}" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
         #vola_message {
             position: fixed;
@@ -62,6 +64,41 @@
                 productDetails.classList.toggle('open');
             });
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+    $(document).on('click', '.plus, .minus', function() {
+        var productId = $(this).data('product-id');
+        var quantityInput = $('input[name="quantity[' + productId + ']"]');
+        var currentQuantity = parseFloat(quantityInput.val());
+
+        if ($(this).hasClass('plus')) {
+            var newQuantity = (currentQuantity + 0.25).toFixed(2);
+            quantityInput.val(newQuantity);
+        } else if ($(this).hasClass('minus')) {
+            var newQuantity = (currentQuantity - 0.25).toFixed(2);
+            quantityInput.val(Math.max(newQuantity, 0));
+        }
+
+        $.ajax({
+            url: '/update-quantity/' + productId,
+            method: 'POST',
+            data: {
+                quantity: quantityInput.val(),
+                _token: '{{ csrf_token() }}',
+            },
+            success: function(response) {
+                console.log('Quantity updated successfully');
+                // Update UI if needed
+            },
+            error: function(error) {
+                console.error('Failed to update quantity');
+            }
+        });
+    });
+});
+
+
     </script>
 @endsection
 
@@ -149,7 +186,7 @@
                                             @foreach ($cart as $cartItem)
                                                 @if ($category->id == $cartItem->product->category_id)
                                                     @php
-                                                        $totalQuantity += $cartItem->Qty;
+                                                        $totalQuantity += 1; // Increment the quantity by 1 for each valid product
                                                         $totalPrice += $cartItem->unit_price * $cartItem->Qty;
                                                     @endphp
                                                 @endif
@@ -229,16 +266,18 @@
                                                                             <td class="shoping__cart__price">
                                                                                 {{ $cartItem->unit_price }}
                                                                             </td>
+
                                                                             <td class="shoping__cart__quantity">
-                                                                                <div class="quantity">
+                                                                                <div class="quantity-counter">
                                                                                     <div class="pro-qty">
-                                                                                        <button class="increment">+</button>
+                                                                                        <button class="minus" data-product-id="{{ $cartItem->id }}">-</button>
                                                                                         <input type="text"
-                                                                                            value="{{ $cartItem->Qty }}">
-                                                                                        <button class="decrement">-</button>
+                                                                                        class="quantity" name="quantity[{{ $cartItem->id }}]" value="{{ $cartItem->Qty }}" readonly>
+                                                                                        <button class="plus" data-product-id="{{ $cartItem->id }}">+</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </td>
+
                                                                             <td class="shoping__cart__total">
                                                                                 ${{ $cartItem->unit_price * $cartItem->Qty }}
                                                                             </td>
@@ -303,7 +342,7 @@
                                             @endphp
                                             @if ($product && $category->id == $product->category_id)
                                                 @php
-                                                    $totalQuantity += $cartItem['Qty'];
+                                                    $totalQuantity += 1; // Increment the quantity by 1 for each valid product
                                                     $totalPrice += $cartItem['unit_price'] * $cartItem['Qty'];
                                                 @endphp
                                             @endif
@@ -384,18 +423,18 @@
                                                                         <td class="shoping__cart__price">
                                                                             {{ $cartItem['unit_price'] }}
                                                                         </td>
+
                                                                         <td class="shoping__cart__quantity">
-                                                                            <div class="quantity">
+                                                                            <div class="quantity-counter">
                                                                                 <div class="pro-qty">
-                                                                                    <button class="increment">+</button>
+                                                                                    <button class="minus" data-product-id="{{ $product->id }}">-</button>
                                                                                     <input type="text"
-                                                                                        class="quantity-input"
-                                                                                        value="{{ $cartItem['Qty'] }}"
-                                                                                        data-item-id="{{ $product->id }}">
-                                                                                    <button class="decrement">-</button>
+                                                                                    class="quantity" name="quantity[{{ $product->id }}]" value="{{ $cartItem['Qty'] }}" readonly>
+                                                                                    <button class="plus" data-product-id="{{ $product->id }}">+</button>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
+
                                                                         <td class="shoping__cart__total">
                                                                             ${{ $cartItem['unit_price'] * $cartItem['Qty'] }}
                                                                         </td>
@@ -466,7 +505,7 @@
                         <div class="shoping__cart__btns">
                             <a href="./product-page.php" class="primary-btn cart-btn button">CONTINUE SHOPPING</a>
                             <!-- <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                                                                                                                                                Upadate Cart</a> -->
+                                                                                                                                                            Upadate Cart</a> -->
                         </div>
                     </div>
                     <div class="col-lg-6">

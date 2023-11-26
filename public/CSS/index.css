@@ -79,13 +79,8 @@ body {
   padding: 30px 0;
   color: #232323;
 }
-.card-title {
-  padding-top: 0px;
-  margin-left: 0px;
-  margin-bottom: 100px;
-  font-size: 35px;
-}
-.card-button {
+
+/* .card-button {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -106,16 +101,57 @@ body {
 .card-button:hover{
     background-color: #5FA800;
 
-}
-/* .card-button {
-  width: 200px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: #f1895e;
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
 } */
+
+.card {
+    /* ... (existing card styles) ... */
+    /* Additional styles for content inside the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* Style for the title of the subscription */
+.card-title {
+    font-size: 32px; /* Increase font size */
+    margin: 30px 0px; /* Adjust spacing from the top */
+    color: #fff; /* Change text color */
+    text-transform: uppercase; /* Transform text to uppercase */
+    letter-spacing: 1px; /* Add letter spacing for clarity */
+    transition: transform 0.3s ease-in-out; /* Add transition effect */
+  }
+
+  /* On hover, apply a slight scale effect to the title */
+  .card-title:hover {
+    transform: scale(1.05);
+  }
+
+  /* Style for the description of the subscription */
+  .card-disc {
+    font-size: 20px;
+    margin-top: 10px; /* Adjust spacing from the title */
+    color: #fff; /* Change text color to white */
+  }
+/* Style for the "Learn more" button */
+.card-button {
+    margin-top: 20px; /* Add space between description and button */
+    padding: 12px 24px;
+    font-size: 18px;
+    color: #fff;
+    background: #5FA800;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .card-button:hover {
+    background-color: #4c8200; /* Darker shade of the original color on hover */
+  }
+
 
 /***********************************************Category*****************************************************/
 .bounce-in-fwd {
@@ -188,8 +224,8 @@ body {
   text-align: center;
 }
 .category-image {
-  width: 100px;
-  height: 100px;
+  width: 123px;
+  height: 120px;
 }
 h3 {
   font-size: 20px;
@@ -362,7 +398,7 @@ h3 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 50px 0px;
+    margin: 20px 0px;
   }
 
   .testimonial-heading {

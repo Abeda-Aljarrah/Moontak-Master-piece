@@ -9,6 +9,7 @@
   display: flex;
   margin-right: 20px;
   color: #232323;
+  margin-top: 30px;
 }
 #prodetails .single-pro-image {
   width: 40%;
@@ -41,7 +42,7 @@
   margin-bottom: 10px;
 }
 #prodetails .single-pro-details input {
-  width: 50px;
+  width: 80px;
   height: 47px;
   padding-left: 10px;
   font-size: 16px;
@@ -92,13 +93,13 @@
 
 /*****************************************************best seller***********************************************************/
 .best-seller {
-  display: grid;
-  grid-template-columns: 100px auto auto auto auto 100px;
-  margin: 50px;
-  text-align: center;
-  align-items: center;
-  justify-content: space-between;
-}
+    display: grid;
+    grid-template-columns: 100px auto auto auto auto 100px;
+    margin: 20px 50px;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+  }
 .best-seller .pro {
   width: 200px;
   min-width: 250px;
@@ -113,9 +114,10 @@
   color: #232323;
 }
 .best-seller .pro a {
-  margin-left: 20px;
-  color: #232323;
-}
+    margin-left: 20px;
+    color: #5FA800;
+    text-decoration: none;
+  }
 .best-seller .pro:hover {
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
   background-color: rgba(154, 174, 172, 0.4);
@@ -133,10 +135,10 @@
   text-align: center;
 }
 .pro-links {
-  margin-left: 80px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
+    margin-left: 110px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
 .bi {
   width: 2em;
   height: 2em;
@@ -161,7 +163,7 @@
   color: #232323;
   margin-left: 50px;
   margin-top: 30px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 /***********************************************Reviews*****************************************************/

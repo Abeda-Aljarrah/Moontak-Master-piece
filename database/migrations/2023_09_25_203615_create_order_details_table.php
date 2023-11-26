@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->decimal('unit_price');
-            $table->integer('Qty');
+            $table->double('Qty');
             $table->timestamps();
         });
     }

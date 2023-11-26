@@ -95,7 +95,7 @@ class ProductController extends Controller
 
         $categories = Category::all();
 
-        return view('pages.product-page', compact('categories', 'products', 'id','categoryName'));
+        return view('pages.product-page', compact('categories', 'products', 'id', 'categoryName'));
     }
 
 
@@ -236,5 +236,29 @@ class ProductController extends Controller
 
 
         return $relativeImagePath;
+    }
+    public function filterCategory(Request $request)
+    {
+        $id = $request->input('categories');
+        $products = Product::where('category_id', $id)->get();
+        $category = Category::find($id); // Fetch the specific category by ID
+        $categoryName = $category ? $category->name : 'Category Name Not Found'; // Default message if category not found
+
+        $categories = Category::all();
+
+        return view('pages.product-page', compact('categories', 'products', 'id', 'categoryName','category'));
+    }
+    public function searchfilter(Request $request)
+    {
+        $search = $request->input('search');
+        $id = $request->input('id');
+
+        $products = Product::where('name', $search)->get();
+        $category = Category::find($id); // Fetch the specific category by ID
+        $categoryName = $category ? $category->name : 'Category Name Not Found'; // Default message if category not found
+
+        $categories = Category::all();
+
+        return view('pages.product-page', compact('categories', 'products', 'id', 'categoryName','category'));
     }
 }
