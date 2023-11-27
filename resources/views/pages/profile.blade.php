@@ -18,7 +18,7 @@
                 <div class="col-ox5">
                     <div class="sidebar-ooy">
                         <div class="sidebar-aba">
-                            <img src="https://andit.co/projects/html/and-tour/demo/assets/img/common/dashboard-user.png">
+                            <img src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=2048x2048&w=is&k=20&c=X7M3yQkbRq7zIsY16tuaHy8Wu_oo5j-Hp8Uqe7wWxDY=">
                             <h3>
                                 {{ $user->name }}
                             </h3>

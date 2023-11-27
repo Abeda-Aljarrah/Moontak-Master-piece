@@ -89,7 +89,7 @@
 
 
 
-    {{-- <script>
+    <script>
         const navbar = document.querySelector('.navbar')
 
         navbar.querySelector('.toggle').addEventListener('click', () => {
@@ -113,4 +113,4 @@
 
 
         })
-    </script> --}}
+    </script>

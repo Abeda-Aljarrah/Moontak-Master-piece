@@ -312,7 +312,7 @@ body {
     position: relative;
     display: block;
     counter-reset: count;
-    padding: 120px 0 120px;
+    padding: 120px 0px 120px;
     z-index: 1;
 }
 
@@ -1128,47 +1128,37 @@ h6 {
 /***********************************************Mobile*****************************************************/
 
 @media screen and (max-width: 480px) {
-  .img-fluid {
-    margin-left: 0px;
-  }
-  .icon {
-    transform: scale(1);
-    color: #365d5a;
-    margin-right: 10px;
-  }
+
   .pt-5 {
-    padding-top: 190px !important;
-    margin-right: 0px;
-    color: white;
-    font-family: "Caveat", cursive;
-    font-family: "Delicious Handrawn", cursive;
-    font-size: 70px;
+    display: none;
+}
+.jumbotron.jumbotron-bg.text-center.rounded-0::before {
+    display: none;
+}
+.jumbotron.jumbotron-bg.text-center.rounded-0 {
+    display: none;
 }
   .delivery-gay {
     display: none;
   }
-  h2 {
+  .about-ori {
+    position: relative;
+    display: block;
+    counter-reset: count;
+    padding: 50px 10px 50px;
+    z-index: 1;
+}
+  /* h2 {
     margin-left: 0px;
     padding-top: 0px;
     color: #365d5a;
     font-weight: bolder;
     font-size: 30px;
-  }
+  } */
   /* .title {
     display: none;
     margin-left: 10px;
   } */
-
-  .footer-logo {
-    width: 250px !important;
-  }
-  .py-5 {
-    background-color: #365d5a;
-    color: #d6cda4;
-    padding-top: 50px !important;
-    padding-left: 20px !important;
-    padding-bottom: 0px !important;
-}
   /* h3 {
     font-size: 15px;
   } */
@@ -1251,112 +1241,10 @@ h6 {
 /***********************************************Tablet*****************************************************/
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
-  .img-fluid {
-    width: 300px;
-    margin-left: 0px;
-  }
-  .icon {
-    transform: scale(1.5);
-    color: #365d5a;
-    margin-right: 30px;
-  }
+
   body {
     padding: 0px;
     margin: 0px;
-  }
-  .py-5 {
-    background-color: #365d5a;
-    color: #d6cda4;
-    padding-top: 50px !important;
-    padding-left: 10px !important;
-    padding-bottom: 0px !important;
-  }
-  .delivery-gay {
-    display: none;
-  }
-
-  .footer-logo {
-    width: 250px !important;
-  }
-
-  .footer-menu h3 {
-    font-size: 25px !important;
-    font-weight: bold;
-  }
-  /*******************************************************************/
-  .our-vision {
-    background-color: #C1D9D4;
-    display: flex;
-    /* flex-direction: column; */
-    color: #365d5a;
-    font-weight: bold;
-    padding: 50px 50px;
-  }
-  .Our-Goal {
-    display: flex;
-    flex-direction: column;
-    color: #365d5a;
-    font-weight: bold;
-    padding: 0px 0px;
-    background-color: #EDDDCD;
-    gap: 10px;
-  }
-  .feature {
-    display:grid;
-    grid-template-columns: auto auto;
-    gap: 80px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    padding: 50px;
-    background-color: #C1D9D4;
-    color: #365d5a;
-  }
-  .vision-text p {
-    width: 100%;
-    margin-top: 50px;
-    line-height: 40px;
-    font-size: 20px;
-    padding: 0px 20px;
-  }
-  .vision-text h1 {
-    font-size: 50px;
-    font-weight: bolder;
-    text-align: center;
-  }
-  .Goal-text p {
-    width: 100%;
-    margin-top: 50px;
-    line-height: 40px;
-    font-size: 20px;
-    padding: 0px 20px;
-  }
-  .Goal-text h1 {
-    font-size: 50px;
-    font-weight: bolder;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .Goal-img{
-    display: none;
-  }
-  .vision-img{
-    display: none;
-  }
-  .container .row {
-    gap: 50px;
-    justify-content: center;
-  }
-  .team h1{
-    font-size: 40px;
-    font-weight: bold;
-    color: #365d5a;
-    padding: 20px;
-    text-align: center;
-  }
-  .feature img {
-    width: 150px;
-    height: 150px;
   }
 
 }

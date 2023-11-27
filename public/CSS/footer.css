@@ -38,8 +38,8 @@
   /***********************************************Mobile*****************************************************/
 @media screen and (max-width: 480px) {
     .py-5 {
-      background-color: #365d5a;
-      color: #d6cda4;
+      background-color: #5FA800;
+      color: #fff;
       padding-top: 50px !important;
       padding-left: 10px !important;
       padding-bottom: 0px !important;
@@ -63,8 +63,8 @@
 
   @media screen and (min-width: 481px) and (max-width: 768px) {
     .py-5 {
-      background-color: #365d5a;
-      color: #d6cda4;
+      background-color: #5FA800;
+      color: #fff;
       padding-top: 50px !important;
       padding-left: 10px !important;
       padding-bottom: 0px !important;

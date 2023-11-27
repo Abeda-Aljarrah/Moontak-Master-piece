@@ -511,14 +511,8 @@ h3 {
   }
 /***********************************************Mobile*****************************************************/
 @media screen and (max-width: 480px) {
-  .img-fluid {
-    width: 300px;
-    margin-left: 0px;
-  }
-  .icon {
-    transform: scale(1);
-    color: #365d5a;
-    margin-right: 10px;
+  #carouselExampleAutoplaying {
+    display: none;
   }
   body {
     padding: 0px;
@@ -575,31 +569,24 @@ h3 {
   #How{
     display:none ;
   }
-  .py-5 {
-    background-color: #365d5a;
-    color: #d6cda4;
-    padding-top: 50px !important;
-    padding-left: 10px !important;
-    padding-bottom: 0px !important;
-  }
   .delivery-gay {
     display: none;
   }
-  h2 {
+  /* h2 {
     margin-left: 0px;
     padding-top: 0px;
     color: #365d5a;
     font-weight: bolder;
-  }
+  } */
   .testimonial-box {
     width: 200px;
     box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
-    background-color: #e9ba9f;
+    background-color: #F2EBD9;
     padding: 20px;
     margin: 5px;
     cursor: pointer;
   }
-  .footer-logo {
+  /* .footer-logo {
     width: 250px !important;
   }
   h3 {
@@ -610,20 +597,18 @@ h3 {
   }
   .containers {
     display: none;
-}
+} */
 }
 
 /***********************************************Tablet*****************************************************/
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
+    #carouselExampleAutoplaying {
+        display: none;
+      }
   .img-fluid {
     width: 300px;
     margin-left: 0px;
-  }
-  .icon {
-    transform: scale(1);
-    color: #365d5a;
-    margin-right: 10px;
   }
   body {
     padding: 0px;
@@ -685,14 +670,7 @@ h3 {
     margin-bottom: 50px;
     padding-right: 0px;
   }
-  .py-5 {
-    background-color: #365d5a;
-    color: #d6cda4;
-    padding-top: 50px !important;
-    padding-left: 10px !important;
-    padding-bottom: 0px !important;
-  }
-  .delivery-gay {
+  /* .delivery-gay {
     display: none;
   }
   h2 {
@@ -700,11 +678,11 @@ h3 {
     padding-top: 0px;
     color: #365d5a;
     font-weight: bolder;
-  }
+  } */
   .testimonial-box {
     width: 700px !important;
     box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
-    background-color: #e9ba9f;
+    background-color: #F2EBD9;
     padding: 20px;
     margin: 5px;
     cursor: pointer;
@@ -725,7 +703,7 @@ h3 {
   .signin {
     font-size: 20px;
     margin-right: 30px;
-    color: #365d5a;
+    color: #5FA800;
   }
   .containers {
     display: none;

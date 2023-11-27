@@ -456,38 +456,11 @@ input[type="range"]::-moz-range-thumb {
     padding: 0px;
     margin: 0px;
   }
-  .img-fluid {
-    margin-left: 0px;
-  }
-  .icon {
-    transform: scale(1);
-    color: #365d5a;
-    margin-right: 10px;
-  }
-  .py-5 {
-    background-color: #365d5a;
-    color: #d6cda4;
-    padding-top: 50px !important;
-    padding-left: 10px !important;
-    padding-bottom: 0px !important;
-  }
-  .delivery-gay {
-    display: none;
-  }
-  h2 {
-    margin-left: 10px;
-    padding-top: 30px;
-    color: #365d5a;
-    font-weight: bolder;
-    font-size: 30px;
-  }
+
   .title {
     margin-left: 10px;
   }
 
-  .footer-logo {
-    width: 250px !important;
-  }
   h3 {
     font-size: 15px;
   }
@@ -524,6 +497,14 @@ input[type="range"]::-moz-range-thumb {
     margin-left: 55%;
     margin-top: 30px;
   }
+  .pt-5 {
+    padding-top: 5vh !important;
+    margin: 0 auto;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+}
 }
 
 /***********************************************Tablet*****************************************************/
@@ -533,40 +514,9 @@ input[type="range"]::-moz-range-thumb {
         width: 300px;
         margin-left: 0px;
       }
-      .icon {
-        transform: scale(1);
-        color: #365d5a;
-        margin-right: 10px;
-      }
       body {
         padding: 0px;
         margin: 0px;
-      }
-      .py-5 {
-        background-color: #365d5a;
-        color: #d6cda4;
-        padding-top: 50px !important;
-        padding-left: 10px !important;
-        padding-bottom: 0px !important;
-      }
-      .delivery-gay {
-        display: none;
-      }
-      h2 {
-        margin-left: 10px;
-        padding-top: 30px;
-        color: #365d5a;
-        font-weight: bolder;
-      }
-      .footer-logo {
-        width: 250px !important;
-      }
-      h3 {
-        font-size: 18px;
-      }
-      .footer-menu h3 {
-        font-size: 25px !important;
-        font-weight: bold;
       }
       h2 {
         font-size: 40px;

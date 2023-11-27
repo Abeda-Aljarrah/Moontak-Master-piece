@@ -2990,7 +2990,7 @@ h1.pt-5 {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	h1.pt-5 {
-		/* padding-top: 190px !important; */
+		padding-top: 10px !important;
 		margin-right: 0px;
 		color: white;
 		font-family: "Caveat", cursive;
@@ -3487,18 +3487,13 @@ h1.pt-5 {
 
 @media only screen and (max-width: 479px) {
 	h1.pt-5 {
-		/* padding-top: 190px !important; */
-		margin-right: 0px;
-		color: white;
-		font-family: "Caveat", cursive;
-		font-family: "Delicious Handrawn", cursive;
-		font-size: 50px;
+		display: none;
 	  }
 	.hero__search__form form .hero__search__categories {
 		display: none;
 	}
 	.featured__controls ul li {
-		margin-bottom: 10px;
+		margin-bottom: 0px;
 	}
 	.product__details__text ul li b {
 		width: 100px;

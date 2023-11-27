@@ -193,25 +193,16 @@ hr {
   .img-fluid {
     margin-left: 0px;
   }
-  .icon {
-    transform: scale(1);
-    color: #365d5a;
-    margin-right: 10px;
+  div.jumbotron{
+    display: none;
   }
-  .py-5 {
-    background-color: #365d5a;
-    color: #d6cda4;
-    padding-top: 50px !important;
-    padding-left: 10px !important;
-    padding-bottom: 0px !important;
-  }
-  .delivery-gay {
+  h1.pt-5{
     display: none;
   }
   h2 {
     margin-left: 10px;
     padding-top: 30px;
-    color: #365d5a;
+    color: #232323;
     font-weight: bolder;
     font-size: 30px;
   }
@@ -234,7 +225,7 @@ hr {
     width: 100%;
     height: fit-content;
     padding: 10px;
-    color: #365d5a;
+    color: #232323;
   }
   fieldset {
     border: 1px solid black;
@@ -252,7 +243,7 @@ hr {
   .container .counter {
     margin-left: 10px;
     width: 30px;
-    color: #365d5a;
+    color: #232323;
   }
   .img-container {
     display: none;
@@ -263,7 +254,7 @@ hr {
   }
   .list a {
     margin-left: 50%;
-    color: #f1895e;
+    color: #5FA800;
   }
   .voucher input {
     width: 100px;
@@ -280,7 +271,7 @@ hr {
     width: 1em;
     height: 1em;
     vertical-align: -0.125em;
-    color: #f1895e;
+    color: #5FA800;
     fill: currentcolor;
     cursor: pointer;
   }

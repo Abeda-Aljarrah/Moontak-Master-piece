@@ -299,25 +299,10 @@
   .img-fluid {
     margin-left: 0px;
   }
-  .icon {
-    transform: scale(1);
-    color: #365d5a;
-    margin-right: 10px;
-  }
-  .py-5 {
-    background-color: #365d5a;
-    color: #d6cda4;
-    padding-top: 50px !important;
-    padding-left: 10px !important;
-    padding-bottom: 0px !important;
-  }
-  .delivery-gay {
-    display: none;
-  }
   h2 {
     margin-left: 10px;
     padding-top: 30px;
-    color: #365d5a;
+    color: #232323;
     font-weight: bolder;
     font-size: 30px;
   }
@@ -336,7 +321,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 20px;
-    color: #365d5a;
+    color: #232323;
   }
   .small-img-group {
     /* display: none; */
@@ -367,7 +352,7 @@
   .testimonial-box {
     width: 300px;
     box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
-    background-color: #e9ba9f;
+    background-color: #F2EBD9;
     padding: 20px;
     margin: 5px;
     cursor: pointer;
@@ -375,38 +360,26 @@
   #testimonials .btn2 {
     display: none;
 }
+#testimonials {
+    margin: 0px 0px;
+}
+#prodetails .single-pro-details input {
+    margin-bottom: 10px;
+}
 }
 
 /***********************************************Tablet*****************************************************/
 
 @media screen and (min-width: 481px) and (max-width: 768px){
-    .img-fluid {
-        width: 300px;
-        margin-left: 0px;
-      }
-      .icon {
-        transform: scale(1);
-        color: #365d5a;
-        margin-right: 10px;
-      }
+
       body {
         padding: 0px;
         margin: 0px;
       }
-      .py-5 {
-        background-color: #365d5a;
-        color: #d6cda4;
-        padding-top: 50px !important;
-        padding-left: 10px !important;
-        padding-bottom: 0px !important;
-      }
-      .delivery-gay {
-        display: none;
-      }
       h2 {
         margin-left: 10px;
         padding-top: 30px;
-        color: #365d5a;
+        color: #232323;
         font-weight: bolder;
       }
       .footer-logo {
@@ -433,7 +406,7 @@
         display: flex;
         flex-direction: column;
         margin-right: 20px;
-        color: #365d5a;
+        color: #232323;
       }
       .small-img-group {
         /* display: none; */
@@ -464,12 +437,20 @@
       .testimonial-box {
         width: 600px;
         box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
-        background-color: #e9ba9f;
+        background-color: #F2EBD9;
         padding: 20px;
         margin: 5px;
         cursor: pointer;
       }
-      #testimonials .btn2 {
-        display: none;
+
+    #testimonials {
+        margin: 0px 0px;
+    }
+    .btn2 {
+        transform: translateY(-50%);
+        fill: #232323;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        margin-top: 50px;
     }
 }
