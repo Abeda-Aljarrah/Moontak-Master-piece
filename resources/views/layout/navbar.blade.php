@@ -64,7 +64,7 @@
         </div>
         <div>
             @if (auth()->check())
-                <a href="{{ route('myprofile', ['userId' => auth()->user()->id]) }}">
+                <a href="{{ route('profile.edit')}}">
                     <span class="material-symbols-outlined icon">account_circle</span>
                 </a>
             @endif

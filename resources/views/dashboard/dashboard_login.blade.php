@@ -28,7 +28,7 @@
       <div style="display: flex; justify-content: center; align-items: center;">
 
 
-        <img src="{{ asset('assets/img/logo.png') }}" alt="" width="50px">
+        {{-- <img src="{{ asset('assets/img/logo.png') }}" alt="" width="50px"> --}}
     </div>
 
       <p class="login-box-msg">Sign in to start your session</p>

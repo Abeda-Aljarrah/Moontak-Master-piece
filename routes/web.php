@@ -13,6 +13,7 @@ use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,7 @@ Route::get('/categoryfilter', [ProductController::class, 'filterCategory'])->nam
 Route::get('/searchfilter', [ProductController::class, 'searchfilter'])->name('searchfilter');
 Route::get('/product/{id}', [ProductController::class, 'showsingle'])->name('product');
 Route::get('/list', [CartController::class, 'show'])->name('list');
+Route::get('/order', [OrderController::class, 'order'])->name('order');
 Route::post('/addToCart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
 Route::get('/checkout', [OrderDetailController::class, 'show'])->middleware(['auth', 'verified'])->name('checkout1');
 Route::post('/checkout2/{id}', [OrderDetailController::class, 'update'])->name('checkout2');

@@ -10,6 +10,8 @@ use App\Models\Period;
 use App\Models\PaymentDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Validator;
+use Stripe;
 
 class OrderController extends Controller
 {
@@ -56,6 +58,7 @@ class OrderController extends Controller
      */
     public function show(Request $request, $userId)
     {
+        // dd(session()->all());
 
         $user = auth()->user();
         User::find($userId)->update([
@@ -78,11 +81,17 @@ class OrderController extends Controller
             'amount' => $request->input('total'), // You need to ensure 'total' is in the form data
         ]);
 
+        $subTotal = $request->input('sub_total');
+        $subFee = $request->input('sub_fee');
+
+        // Use these values while creating the order
         $order = Order::create([
             'user_id' => $userId,
             'payment_id' => $paymentDetail->id,
             'total_price' => $request->input('total'),
             'delivery_id' => $deliveryInfo->id,
+            'sub_total' => $subTotal,
+            'sub_fee' => $subFee,
         ]);
 
         // Get the user's cart items
@@ -103,8 +112,9 @@ class OrderController extends Controller
         Cart::where('user_id', $user->id)->delete();
 
         return redirect()->route('home', compact('userId'))->with('success', 'Your order placed.');
-
     }
+
+
 
 
     /**
@@ -139,5 +149,18 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+    public function order(Order $order)
+    {
+        //
+        $user = auth()->user();
+        $orders = Order::where('user_id', $user->id)->get();
+
+        // Check if the user is found
+        if (!$user) {
+            // Handle the case where the user is not found, for example, redirect to an error page.
+            return redirect()->route('error.page');
+        }
+        return view('pages.order', compact('user','orders'));
     }
 }

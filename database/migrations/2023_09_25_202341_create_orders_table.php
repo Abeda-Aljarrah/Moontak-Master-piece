@@ -20,6 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('payment_id');
             $table->foreign('payment_id')->references('id')->on('payment_details')->onDelete('cascade');
             $table->decimal('total_price');
+            $table->decimal('sub_total');
+            $table->decimal('sub_fee')->nullable();
             $table->unsignedBigInteger('delivery_id');
             $table->foreign('delivery_id')->references('id')->on('delivery_infos')->onDelete('cascade');
             $table->dateTime('require_date')->nullable();

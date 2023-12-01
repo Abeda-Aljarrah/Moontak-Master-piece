@@ -73,6 +73,7 @@
                             <small class="text-muted">Brief description</small>
                         </div>
                         <span class="text-muted">JOD {{ $totalPrice }}</span>
+
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
@@ -80,6 +81,7 @@
                             <small class="text-muted">Brief description</small>
                         </div>
                         <span class="text-muted">JOD {{ $subscriptionFee }}</span>
+
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
@@ -93,8 +95,6 @@
                         // $totalWithDiscount = $totalPrice + $price - $discountAmount;
                         $total = $totalPrice + $subscriptionFee;
                     @endphp
-
-
                     <li class="list-group-item d-flex justify-content-between bg-light">
                         <div class="text-success">
                             <h6 class="my-0">Promo code</h6>
@@ -103,17 +103,20 @@
                         <span class="text-success">0</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <span >Total (JOD)</span>
+                        <span>Total (JOD)</span>
                         <strong>JOD {{ $total }}</strong>
                     </li>
                     <input type="hidden" name="total" id="total" value="{{ $total }}">
+                    <input type="hidden" name="sub_total" id="sub_total" value="{{ $totalPrice }}">
+                    <input type="hidden" name="sub_fee" id="sub_fee" value="{{ $subscriptionFee }}">
 
                 </ul>
 
                 <form class="card p-2">
                     <div style="display: flex; align-items: center;">
                         <input type="text" class="form-control" placeholder="Promo code">
-                        <button style="background-color: #5FA800; height: 40px; margin:10px; border:none " type="submit" class="btn btn-secondary">Apply</button>
+                        <button style="background-color: #5FA800; height: 40px; margin:10px; border:none " type="submit"
+                            class="btn btn-secondary">Apply</button>
                     </div>
                 </form>
 
@@ -126,6 +129,8 @@
                     @csrf
                     @method('post')
                     <input type="hidden" name="total" id="total" value="{{ $total }}">
+                    <input type="hidden" name="sub_total" id="sub_total" value="{{ $totalPrice }}">
+                    <input type="hidden" name="sub_fee" id="sub_fee" value="{{ $subscriptionFee }}">
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -198,7 +203,8 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="cc-name">Name on card</label>
-                            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                            <input type="text" name="name" class="form-control" id="cc-name" placeholder=""
+                                required>
                             <small class="text-muted">Full name as displayed on card</small>
                             <div class="invalid-feedback">
                                 Name on card is required
@@ -206,7 +212,8 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="cc-number">Credit card number</label>
-                            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                            <input type="text" name="number" class="form-control" id="cc-number" placeholder=""
+                                required>
                             <div class="invalid-feedback">
                                 Credit card number is required
                             </div>
@@ -215,21 +222,24 @@
                     <div class="row">
                         <div class="col-md-3 mb-3">
                             <label for="cc-expiration">Expiration</label>
-                            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                            <input type="text" name="exp_year" class="form-control" id="cc-expiration"
+                                placeholder="" required>
                             <div class="invalid-feedback">
                                 Expiration date required
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="cc-cvv">CVV</label>
-                            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                            <input type="text" class="form-control" name="cvc" id="cc-cvv" placeholder=""
+                                required>
                             <div class="invalid-feedback">
                                 Security code required
                             </div>
                         </div>
                     </div>
                     <hr class="mb-4">
-                    <button class="btn btn-primary btn-lg btn-block" style="background-color: #5FA800; border: none" type="submit">Place order</button>
+                    <button class="btn btn-primary btn-lg btn-block" style="background-color: #5FA800; border: none"
+                        type="submit">Place order</button>
                 </form>
             </div>
         </div>

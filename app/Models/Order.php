@@ -13,6 +13,8 @@ class Order extends Model
         'user_id',
         'payment_id',
         'total_price',
+        'sub_total',
+        'sub_fee',
         'created_time',
         'delivery_id',
         'require_date',
