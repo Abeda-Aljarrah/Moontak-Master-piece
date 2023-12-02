@@ -1,6 +1,6 @@
 @extends('dashboard.dashboard_layouts.master')
 
-@section('title','Show Volunteers')
+@section('title','Plans')
 
 
 @section('css')
@@ -11,11 +11,11 @@
 @endsection
 
 @section('title_page1')
-Volunteers
+Plans
 @endsection
 
 @section('title_page2')
-Volunteers list
+Plans list
 @endsection
 
 @section('content')

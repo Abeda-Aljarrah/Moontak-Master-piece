@@ -47,6 +47,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         //
         $relativeImagePath = null; // Initialize relativeImagePath as null
 
@@ -56,10 +57,6 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'main_price' => [
-                'required',
-                'regex:/^\d{1,3}(\.\d{1,2})?$/',
-            ],
         ]);
 
 

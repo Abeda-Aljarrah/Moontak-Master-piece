@@ -22,7 +22,7 @@ class Order extends Model
 
     public function paymentdetail()
     {
-        return $this->hasOne(PaymentDetail::class, 'payment_id');
+        return $this->belongsTo(PaymentDetail::class, 'payment_id');
     }
     public function user()
     {
@@ -34,6 +34,6 @@ class Order extends Model
     }
     public function deliveryInfo()
     {
-        return $this->hasOne(DeliveryInfo::class, 'delivery_id');
+        return $this->belongsTo(DeliveryInfo::class, 'delivery_id');
     }
 }

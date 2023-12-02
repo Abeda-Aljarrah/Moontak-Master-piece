@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Period;
+use App\Models\Plan;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,8 +21,9 @@ class SubscriptionController extends Controller
         $subscriptions = Subscription::get();
         $user = User::all();
         $periods = Period::all();
+        $plans = Plan::all();
 
-        return view('dashboard.subscriptions.index', compact('subscriptions','user','periods'));
+        return view('dashboard.subscriptions.index', compact('subscriptions','user','periods','plans'));
     }
 
     /**
@@ -94,9 +96,10 @@ class SubscriptionController extends Controller
         $subscriptions = Subscription::findOrFail($id);
         $user = User::get();
         $periods = Period::all();
+        $plans = Plan::all();
 
 
-        return view('dashboard.subscriptions.edit', compact('subscriptions','user','periods'));
+        return view('dashboard.subscriptions.edit', compact('subscriptions','user','periods','plans'));
     }
 
     /**

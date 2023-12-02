@@ -1,6 +1,6 @@
 @extends('dashboard.dashboard_layouts.master')
 
-@section('title', 'Show Jobs')
+@section('title', 'Show Payment')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">

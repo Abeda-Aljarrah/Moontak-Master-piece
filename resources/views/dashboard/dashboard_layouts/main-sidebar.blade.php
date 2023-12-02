@@ -88,12 +88,12 @@
       </a>
     </li> --}}
 
-    <li class="nav-item">
+    {{-- <li class="nav-item">
       <a href="{{url('dashboard/paymentdetails')}}" class="nav-link">
         <i class="fas fa-credit-card nav-icon"></i>
         <p>Payment Details</p>
       </a>
-    </li>
+    </li> --}}
 
     <li class="nav-item">
       <a href="{{url('dashboard/subscriptions')}}" class="nav-link">

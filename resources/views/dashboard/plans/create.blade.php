@@ -27,8 +27,17 @@ Create New plan
         </div>
 
         <div class="form-group">
-            <label for="image">Product Image:</label>
+            <label for="image">Plan Image:</label>
             <input type="file"  class="form-control" name="image" required width="100px" height="100px">
+            @error('image')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="description">Plan discription:</label>
+            <input type="text"  class="form-control" name="description" >
             @error('image')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

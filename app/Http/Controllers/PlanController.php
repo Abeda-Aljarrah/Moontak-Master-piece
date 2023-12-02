@@ -41,6 +41,7 @@ class PlanController extends Controller
     public function store(Request $request)
     {
         //
+
         $relativeImagePath = null; // Initialize relativeImagePath as null
 
         $newImageName = uniqid() . '-' . $request->name . '.' . $request->file('image')->extension();
@@ -55,6 +56,7 @@ class PlanController extends Controller
 
         Plan::create([
             'name' => $request->input('name'),
+            'description' => $request->input('description'),
             'image' => $relativeImagePath,
         ]);
 

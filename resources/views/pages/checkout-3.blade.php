@@ -187,16 +187,16 @@
 
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
-                            <input id="card" type="radio" name="payment" class="custom-control-input" checked
+                            <input id="card" type="radio" name="payment" class="custom-control-input" value="Credit card"
                                 required>
                             <label class="custom-control-label" for="card">Credit card</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input id="cash" type="radio" name="payment" class="custom-control-input" required>
+                            <input id="cash" type="radio" name="payment" class="custom-control-input" value="Cash" required checked>
                             <label class="custom-control-label" for="cash">Cash</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input id="paypal" type="radio" name="payment" class="custom-control-input" required>
+                            <input id="paypal" type="radio" name="payment" class="custom-control-input" value="PayPal" required>
                             <label class="custom-control-label" for="paypal">PayPal</label>
                         </div>
                     </div>

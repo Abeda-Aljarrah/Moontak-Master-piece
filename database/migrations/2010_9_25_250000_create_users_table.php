@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('phone')->nullable();
             // $table->unsignedBigInteger('sub_id')->nullable();
-            $table->integer('role')->nullable();
+            $table->integer('role')->nullable()->default(0); // Setting default value to 0
             $table->string('address')->nullable();
             $table->rememberToken();
             $table->timestamps();

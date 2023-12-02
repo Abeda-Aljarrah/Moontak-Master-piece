@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
             'name'=>'Abeda',
             'email'=>'abeda.aljarrah@gmail.com',
             'password'=>'123456789',
+            'role'=>'1'
         ]);
     }
 }

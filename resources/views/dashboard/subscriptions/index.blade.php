@@ -1,6 +1,6 @@
 @extends('dashboard.dashboard_layouts.master')
 
-@section('title','Show Volunteers')
+@section('title','Show Subscriptions')
 
 
 @section('css')
@@ -31,12 +31,12 @@ Subscriptions list
             @endif
           </div>
           <div class="card">
-            <div class="card-header">
+            {{-- <div class="card-header">
                 <!-- Add a link to create a new user -->
                 <a class="btn btn-primary btn-sm float-left" href="{{ route('subscriptions.create') }}">
                     <i class="fas fa-receipt nav-icon"></i> Add New Subscription
                 </a>
-            </div>
+            </div> --}}
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -45,10 +45,11 @@ Subscriptions list
                     <th>#ID</th>
                     <th>User Name</th>
                     <th>Period title</th>
+                    <th>Plan title</th>
                     <th>start_date</th>
                     <th>end_date</th>
                     <th>is_active</th>
-                    <th>Action</th>
+                    {{-- <th>Action</th> --}}
                 </tr>
                 </thead>
                 <tbody>
@@ -60,33 +61,11 @@ Subscriptions list
                 <td>{{ $i }}</td>
                 <td>{{ $subscription->user->name }}</td>
                 <td>{{ $subscription->period ? $subscription->period->title : 'N/A' }}</td>
+                <td>{{ $subscription->period && $subscription->period->plan ? $subscription->period->plan->name : 'N/A' }}</td>
                 <td>{{ $subscription->start_date }}</td>
                 <td>{{ $subscription->end_date }}</td>
                 <td>{{ $subscription->is_active }}</td>
-                <td class="project-actions ">
-                  {{-- <a class="btn btn-primary btn-sm" href="#">
-                      <i class="fas fa-folder">
-                      </i>
-                      View
-                  </a> --}}
-                  <a class="btn btn-info btn-sm" href="{{ route('subscriptions.edit',$subscription->id) }}">
-                      <i class="fas fa-pencil-alt">
-                      </i>
-                      Edit
-                  </a>
-                  {{-- <a class="btn btn-danger btn-sm" href="#">
-                      <i class="fas fa-trash">
-                      </i>
-                      Delete
-                  </a> --}}
 
-                  {{-- <form action="{{route('subscriptions.destroy',$subscription->id)}}"  method="POST"  style="display: inline;">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" class="btn btn-danger btn-sm"
-                    onclick="return confirm('Are you sure you want to delete this coupon?')">Delete</button>
-                  </form> --}}
-              </td>
 
                 @php
                   $i++;

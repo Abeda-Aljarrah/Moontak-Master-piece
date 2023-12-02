@@ -38,6 +38,14 @@ Edit Subscriptions
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <label for="plan_id">Plan title:</label>
+            <select name="plan_id" id="plan_id" class="form-control">
+                @foreach ($plans as $plan)
+                    <option value="{{ $plan->id }}">{{ $plan->name }}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="form-group" >
           <label for="start_date">start_date:</label>
           <input type="date" name="start_date" class="form-control" id="start_date"  placeholder="Enter start_date">

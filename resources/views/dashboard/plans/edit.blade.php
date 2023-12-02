@@ -33,6 +33,16 @@ Edit plan
             @enderror
         </div>
         <div class="form-group">
+            <label for="description">plan description:</label>
+            <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" required
+                value="{{ old('description', $plans->description) }}">
+            @error('description')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="form-group">
             <label for="image">Plan Image:</label>
             <input type="file" name="image" class="form-control-file @error('image') is-invalid @enderror"
                 width="100px" height="100px">

@@ -1,6 +1,6 @@
 @extends('dashboard.dashboard_layouts.master')
 
-@section('title', 'Show Jobs')
+@section('title', 'Show Orders')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -33,9 +33,8 @@
                                         <th>#ID</th>
                                         <th>User_Name</th>
                                         <th>Total_price</th>
-                                        <th>require_date</th>
-                                        <th>delivery_id</th>
-                                        <th>payment_id</th>
+                                        <th>Addres</th>
+                                        <th>Payment method</th>
                                         <th>created_at</th>
                                     </tr>
                                 </thead>
@@ -48,9 +47,8 @@
                                             <td>{{ $i }}</td>
                                             <td>{{ $order->user->name }}</td>
                                             <td>{{ $order->total_price }}</td>
-                                            <td>{{ $order->require_date }}</td>
-                                            <td>{{ $order->delivery_id }}</td>
-                                            <td>{{ $order->payment_id }}</td>
+                                            <td>{{ $order->deliveryInfo->main_address }}</td>
+                                            <td>{{ $order->paymentdetail->method }}</td>
                                             <td>{{ $order->created_at }}</td>
                                             @php
                                             $i++;

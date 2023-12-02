@@ -30,6 +30,7 @@
     <link href="{{ asset('CSS/header.css') }}" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
     @yield('css')
 
 </head>
@@ -49,8 +50,39 @@
             <li><a href="{{ route('about') }}">About</a></li>
             <li><a href="{{ route('contact') }}">Contact Us</a></li>
             <li><a href="#">Blog</a></li>
+
+            <div class="mobile">
+                @if (auth()->check())
+                    <a href="{{ route('list') }}">
+                        <span class="material-symbols-outlined icon">shopping_cart</span>
+                    </a>
+                @else
+                    <a href="{{ route('list') }}">
+                        <span class="material-symbols-outlined icon">shopping_cart</span>
+                    </a>
+                @endif
+
+            </div>
+
+            <div class="mobile">
+                @if (auth()->check())
+                    <a href="{{ route('profile.edit')}}">
+                        <span class="material-symbols-outlined icon">account_circle</span>
+                    </a>
+                @endif
+            </div>
+
+            <div class="mobile" style="padding-left: 0px">
+                @if (auth()->check())
+                    <button class="signin"><a style="padding-left: 0px" href="{{ route('logout') }}">Logout</a></button>
+                @else
+                    <button class="signin"><a style="padding-left: 0px" href="{{ url('login') }}">Login</a></button>
+                @endif
+            </div>
+
         </ul>
-        <div>
+
+        <div class="lab">
             @if (auth()->check())
                 <a href="{{ route('list') }}">
                     <span class="material-symbols-outlined icon">shopping_cart</span>
@@ -62,7 +94,8 @@
             @endif
 
         </div>
-        <div>
+
+        <div class="lab">
             @if (auth()->check())
                 <a href="{{ route('profile.edit')}}">
                     <span class="material-symbols-outlined icon">account_circle</span>
@@ -70,13 +103,14 @@
             @endif
         </div>
 
+        <div class="lab" style="padding-left: 0px">
+            @if (auth()->check())
+                <button class="signin"><a style="padding-left: 0px" href="{{ route('logout') }}">Logout</a></button>
+            @else
+                <button class="signin"><a style="padding-left: 0px" href="{{ url('login') }}">Login</a></button>
+            @endif
+        </div>
 
-
-        @if (auth()->check())
-            <button class="signin"><a href="{{ route('logout') }}">Logout</a></button>
-        @else
-            <button class="signin"><a href="{{ url('login') }}">Login</a></button>
-        @endif
 
 
 

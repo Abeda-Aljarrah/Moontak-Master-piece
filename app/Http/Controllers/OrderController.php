@@ -23,10 +23,12 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $orders = Order::get();
+        $orders = Order::with('deliveryInfo')->get();
         $user = User::all();
+        $deliveryInfo = DeliveryInfo::all();
+        $paymentdetail = PaymentDetail::all();
 
-        return view('dashboard.orders.index', compact('orders', 'user'));
+        return view('dashboard.orders.index', compact('orders', 'user','deliveryInfo','paymentdetail'));
     }
 
     /**
